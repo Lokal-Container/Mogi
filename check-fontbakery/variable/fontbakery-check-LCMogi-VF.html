@@ -367,12 +367,12 @@ or inverted outline direction:</p>
 <p>When creating a variable font, the designer must make sure that corresponding paths have the same start points across masters, as well as that corresponding component shapes are placed in the same order within a glyph across masters. If this is not done, the glyph will not interpolate correctly.</p>
 <p>Here we check for the presence of potential interpolation errors using the fontTools.varLib.interpolatable module.</p>
 
-<details><summary>⚠️ <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>Interpolation issues were found in the font: 	- Contour order differs in glyph 'ellipsis': [0, 1, 2] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11f9e4f70&gt;, [2, 1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11f9e5180&gt;.</p>
-<pre><code>- Contour order differs in glyph 'quotedblleft': [0, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11f9e4f70&gt;, [1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11f9e5180&gt;.
+<details><summary>⚠️ <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>Interpolation issues were found in the font: 	- Contour order differs in glyph 'quotedblleft': [0, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e8fa0&gt;, [1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e91b0&gt;.</p>
+<pre><code>- Contour order differs in glyph 'ellipsis': [0, 1, 2] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e8fa0&gt;, [2, 1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e91b0&gt;.
 
-- Contour order differs in glyph 'quotedblright': [0, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11f9e4f70&gt;, [1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11f9e5180&gt;. 
+- Contour order differs in glyph 'quotedblbase': [0, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e8fa0&gt;, [1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e91b0&gt;. 
 
-- Contour order differs in glyph 'quotedblbase': [0, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11f9e4f70&gt;, [1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11f9e5180&gt;. [code: interpolation-issues]
+- Contour order differs in glyph 'quotedblright': [0, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e8fa0&gt;, [1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e91b0&gt;. [code: interpolation-issues]
 </code></pre>
 </span></li></ul></div></details>
 <h3>Check math signs have the same width.</h3>
@@ -385,9 +385,9 @@ The following math glyphs have a different width, though:</p>
 <p>Width = 499:
 plus</p>
 <p>Width = 426:
-greater, less</p>
+less, greater</p>
 <p>Width = 439:
-plusminus, logicalnot</p>
+logicalnot, plusminus</p>
 <p>Width = 457:
 multiply</p>
 <p>Width = 339:

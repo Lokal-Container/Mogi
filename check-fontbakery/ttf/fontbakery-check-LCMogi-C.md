@@ -93,7 +93,6 @@ or inverted outline direction:
 * uni21A6 (component uni21A4)
 * uni21B0 (component uni21B2)
 * uni2198.ss01 (component uni2197.ss01)
-* arrowdown.ss01 (component arrowup.ss01)
 * arrowleft.ss01 (component arrowright.ss01)
 * uni2196.ss01 (component uni2197.ss01)
  [code: transformed-components]
@@ -189,7 +188,7 @@ Width = 521:
 notequal
 
 Width = 543:
-greaterequal, lessequal
+lessequal, greaterequal
  [code: width-outliers]
 </div></details><details><summary>⚠ <b>WARN:</b> Are there any misaligned on-curve points? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_alignment_miss">com.google.fonts/check/outline_alignment_miss</a>)</summary><div>
 

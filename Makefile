@@ -39,7 +39,7 @@ check-fonts:
 build: dependencies
 	. venv/bin/activate
 	mkdir -p $(TTFDIR)
-	fontmake -g "$(SOURCES)" -o ttf --output-dir $(TTFDIR) -i --verbose DEBUG
+	fontmake -g "$(SOURCES)" -o ttf --output-dir $(TTFDIR) -i --flatten-components --verbose DEBUG
 	mkdir -p $(OTFDIR)
 	fontmake -g "$(SOURCES)" -o otf --output-dir $(OTFDIR) -i --verbose DEBUG
 	python3 scripts/build.py

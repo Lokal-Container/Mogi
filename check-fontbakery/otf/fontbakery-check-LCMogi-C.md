@@ -105,7 +105,7 @@ Width = 521:
 notequal
 
 Width = 543:
-lessequal, greaterequal
+greaterequal, lessequal
  [code: width-outliers]
 </div></details><details><summary>⚠ <b>WARN:</b> Are there any misaligned on-curve points? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_alignment_miss">com.google.fonts/check/outline_alignment_miss</a>)</summary><div>
 
