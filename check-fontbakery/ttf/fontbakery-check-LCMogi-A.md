@@ -60,7 +60,7 @@ Fontbakery version: 0.8.11
 >This four-way distinction should also be reflected in the OS/2.fsSelection field, using bits 0 and 5.
 >
 * 💤 **SKIP** Unfulfilled Conditions: RIBBI_ttFonts
-</div></details><br></div></details><details><summary><b>[95] LCDemo-A.otf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
+</div></details><br></div></details><details><summary><b>[95] LCMogi-A.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
 
 >
 >A font's winAscent and winDescent values should be greater than or equal to the head table's yMax, abs(yMin) values. If they are less than these values, clipping can occur on Windows platforms (https://github.com/RedHatBrand/Overpass/issues/33).
@@ -69,8 +69,7 @@ Fontbakery version: 0.8.11
 >
 >When the win Metrics are significantly greater than the upm, the linespacing can appear too loose. To counteract this, enabling the OS/2 fsSelection bit 7 (Use_Typo_Metrics), will force Windows to use the OS/2 typo values instead. This means the font developer can control the linespacing with the typo values, whilst avoiding clipping by setting the win values to values greater than the yMax and abs(yMin).
 >
-* 🔥 **FAIL** OS/2.usWinAscent value 1000 is too large. It should be less than double the yMax. Current yMax value is 0 [code: ascent]
-* 🔥 **FAIL** OS/2.usWinDescent value 200 is too large. It should be less than double the yMin. Current absolute yMin value is 0 [code: descent]
+* 🔥 **FAIL** OS/2.usWinDescent value should be equal or greater than 269, but got 200 instead. [code: descent]
 </div></details><details><summary>🔥 <b>FAIL:</b> Checking OS/2 Metrics match hhea Metrics. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/os2_metrics_match_hhea">com.google.fonts/check/os2_metrics_match_hhea</a>)</summary><div>
 
 >
@@ -90,37 +89,198 @@ Fontbakery version: 0.8.11
 
 
 * 🔥 **FAIL** Whitespace glyph missing for codepoint 0x00A0. [code: missing-whitespace-glyph-0x00A0]
-</div></details><details><summary>⚠ <b>WARN:</b> Font contains '.notdef' as its first glyph? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/mandatory_glyphs">com.google.fonts/check/mandatory_glyphs</a>)</summary><div>
+</div></details><details><summary>🔥 <b>FAIL:</b> Ensure component transforms do not perform scaling or rotation. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/transformed_components">com.google.fonts/check/transformed_components</a>)</summary><div>
 
 >
->The OpenType specification v1.8.2 recommends that the first glyph is the '.notdef' glyph without a codepoint assigned and with a drawing.
+>Some families have glyphs which have been constructed by using transformed components e.g the 'u' being constructed from a flipped 'n'.
 >
->https://docs.microsoft.com/en-us/typography/opentype/spec/recom#glyph-0-the-notdef-glyph
+>From a designers point of view, this sounds like a win (less work). However, such approaches can lead to rasterization issues, such as having the 'u' not sitting on the baseline at certain sizes after running the font through ttfautohint.
 >
->Pre-v1.8, it was recommended that fonts should also contain 'space', 'CR' and '.null' glyphs. This might have been relevant for MacOS 9 applications.
+>Other issues are outlines that end up reversed when only one dimension is flipped while the other isn't.
 >
-* ⚠ **WARN** Glyph '.notdef' should contain a drawing, but it is empty. [code: empty]
-</div></details><details><summary>⚠ <b>WARN:</b> Check font contains no unreachable glyphs (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/unreachable_glyphs">com.google.fonts/check/unreachable_glyphs</a>)</summary><div>
+>As of July 2019, Marc Foley observed that ttfautohint assigns cvt values to transformed glyphs as if they are not transformed and the result is they render very badly, and that vttLib does not support flipped components.
+>
+>When building the font with fontmake, the problem can be fixed by adding this to the command line:
+>
+>--filter DecomposeTransformedComponentsFilter
+>
+* 🔥 **FAIL** The following glyphs had components with scaling or rotation
+or inverted outline direction:
+
+* exclamdown (component exclam)
+* backslash (component slash)
+* parenright (component parenleft)
+* braceright (component braceleft)
+* bracketright (component bracketleft)
+* guillemotright (component guillemotleft)
+* guilsinglright (component guilsinglleft)
+* less (component greater)
+* lessequal (component greaterequal)
+* uni2198 (component uni2197)
+* arrowleft (component arrowright)
+* uni2196 (component uni2197)
+* uni21A6 (component uni21A4)
+* uni21B0 (component uni21B2)
+* uni2198.ss01 (component uni2197.ss01)
+* arrowdown.ss01 (component arrowup.ss01)
+* arrowleft.ss01 (component arrowright.ss01)
+* uni2196.ss01 (component uni2197.ss01)
+ [code: transformed-components]
+</div></details><details><summary>🔥 <b>FAIL:</b> Ensure soft_dotted characters lose their dot when combined with marks that replace the dot. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/soft_dotted">com.google.fonts/check/soft_dotted</a>)</summary><div>
 
 >
->Glyphs are either accessible directly through Unicode codepoints or through substitution rules.
+>An accent placed on characters with a "soft dot", like i or j, causes the dot to disappear. An explicit dot above can be added where required. See "Diacritics on i and j" in Section 7.1, "Latin" in The Unicode Standard.
 >
->In Color Fonts, glyphs are also referenced by the COLR table.
+>Characters with the Soft_Dotted property are listed in https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt
 >
->Any glyphs not accessible by either of these means are redundant and serve only to increase the font's file size.
->
-* ⚠ **WARN** The following glyphs could not be reached by codepoint or substitution rules:
+* 🔥 **FAIL** The dot of soft dotted characters used in orthographies must disappear in the following strings: j̀ j́ j̃ j̄ j̈ į̀ į́ į̂ į̃ į̄ į̌
 
-	- at.001
- [code: unreachable-glyphs]
+The dot of soft dotted characters should disappear in other cases, for example: ĩ̦ ĭ̦ i̦̇ i̦̊ i̦̋ ǐ̦ i̦̒ ĵ j̆ j̇ j̊ j̋ ǰ j̒ j̦̀ j̦́ ĵ̦ j̦̃ j̦̄ j̦̆ [code: soft-dotted]
+</div></details><details><summary>⚠ <b>WARN:</b> Check if each glyph has the recommended amount of contours. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/contour_count">com.google.fonts/check/contour_count</a>)</summary><div>
+
+>
+>Visually QAing thousands of glyphs by hand is tiring. Most glyphs can only be constructured in a handful of ways. This means a glyph's contour count will only differ slightly amongst different fonts, e.g a 'g' could either be 2 or 3 contours, depending on whether its double story or single story.
+>
+>However, a quotedbl should have 2 contours, unless the font belongs to a display family.
+>
+>This check currently does not cover variable fonts because there's plenty of alternative ways of constructing glyphs with multiple outlines for each feature in a VarFont. The expected contour count data for this check is currently optimized for the typical construction of glyphs in static fonts.
+>
+* ⚠ **WARN** This check inspects the glyph outlines and detects the total number of contours in each of them. The expected values are infered from the typical ammounts of contours observed in a large collection of reference font families. The divergences listed below may simply indicate a significantly different design on some of your glyphs. On the other hand, some of these may flag actual bugs in the font such as glyphs mapped to an incorrect codepoint. Please consider reviewing the design and codepoint assignment of these to make sure they are correct.
+
+The following glyphs do not have the recommended number of contours:
+
+	- Glyph name: percent	Contours detected: 6	Expected: 5
+
+	- Glyph name: onequarter	Contours detected: 5	Expected: 3 or 4
+
+	- Glyph name: onehalf	Contours detected: 4	Expected: 3
+
+	- Glyph name: threequarters	Contours detected: 5	Expected: 3 or 4
+
+	- Glyph name: aogonek	Contours detected: 3	Expected: 2
+
+	- Glyph name: dcroat	Contours detected: 3	Expected: 2
+
+	- Glyph name: eogonek	Contours detected: 3	Expected: 2
+
+	- Glyph name: hbar	Contours detected: 2	Expected: 1
+
+	- Glyph name: Ohungarumlaut	Contours detected: 3	Expected: 4
+
+	- Glyph name: ohungarumlaut	Contours detected: 3	Expected: 4 
+
+	- 38 more.
+
+Use -F or --full-lists to disable shortening of long lists.
+ [code: contour-count]
+</div></details><details><summary>⚠ <b>WARN:</b> Ensure dotted circle glyph is present and can attach marks. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/dotted_circle">com.google.fonts/check/dotted_circle</a>)</summary><div>
+
+>
+>The dotted circle character (U+25CC) is inserted by shaping engines before mark glyphs which do not have an associated base, especially in the context of broken syllabic clusters.
+>
+>For fonts containing combining marks, it is recommended that the dotted circle character be included so that these isolated marks can be displayed properly; for fonts supporting complex scripts, this should be considered mandatory.
+>
+>Additionally, when a dotted circle glyph is present, it should be able to display all marks correctly, meaning that it should contain anchors for all attaching marks.
+>
+* ⚠ **WARN** No dotted circle glyph present [code: missing-dotted-circle]
+</div></details><details><summary>⚠ <b>WARN:</b> Check math signs have the same width. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/math_signs_width">com.google.fonts/check/math_signs_width</a>)</summary><div>
+
+>
+>It is a common practice to have math signs sharing the same width (preferably the same width as tabular figures accross the entire font family).
+>
+>This probably comes from the will to avoid additional tabular math signs knowing that their design can easily share the same width.
+>
+* ⚠ **WARN** The most common width is 431 among a set of 3 math glyphs.
+The following math glyphs have a different width, though:
+
+Width = 499:
+plus
+
+Width = 426:
+less, greater
+
+Width = 439:
+plusminus, logicalnot
+
+Width = 457:
+multiply
+
+Width = 339:
+divide
+
+Width = 379:
+minus
+
+Width = 376:
+approxequal
+
+Width = 409:
+notequal
+ [code: width-outliers]
 </div></details><details><summary>⚠ <b>WARN:</b> Checking Vertical Metric Linegaps. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/hhea.html#com.google.fonts/check/linegaps">com.google.fonts/check/linegaps</a>)</summary><div>
 
 
 * ⚠ **WARN** OS/2 sTypoLineGap is not equal to 0. [code: OS/2]
-</div></details><details><summary>⚠ <b>WARN:</b> Does GPOS table have kerning information? This check skips monospaced fonts as defined by post.isFixedPitch value (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/gpos.html#com.google.fonts/check/gpos_kerning_info">com.google.fonts/check/gpos_kerning_info</a>)</summary><div>
+</div></details><details><summary>⚠ <b>WARN:</b> Do any segments have colinear vectors? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_colinear_vectors">com.google.fonts/check/outline_colinear_vectors</a>)</summary><div>
 
+>
+>This check looks for consecutive line segments which have the same angle. This normally happens if an outline point has been added by accident.
+>
+>This check is not run for variable fonts, as they may legitimately have colinear vectors.
+>
+* ⚠ **WARN** The following glyphs have colinear vectors:
 
-* ⚠ **WARN** GPOS table lacks kerning information. [code: lacks-kern-info]
+	* d (U+0064): L<<558.0,0.0>--<549.0,226.0>> -> L<<549.0,226.0>--<549.0,227.0>>
+
+	* dcaron (U+010F): L<<558.0,0.0>--<549.0,226.0>> -> L<<549.0,226.0>--<549.0,227.0>>
+
+	* dcroat (U+0111): L<<558.0,0.0>--<549.0,226.0>> -> L<<549.0,226.0>--<549.0,227.0>> 
+
+	* p (U+0070): L<<318.0,565.0>--<327.0,339.0>> -> L<<327.0,339.0>--<327.0,338.0>> [code: found-colinear-vectors]
+</div></details><details><summary>⚠ <b>WARN:</b> Do outlines contain any jaggy segments? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_jaggy_segments">com.google.fonts/check/outline_jaggy_segments</a>)</summary><div>
+
+>
+>This check heuristically detects outline segments which form a particularly small angle, indicative of an outline error. This may cause false positives in cases such as extreme ink traps, so should be regarded as advisory and backed up by manual inspection.
+>
+* ⚠ **WARN** The following glyphs have jaggy segments:
+
+	* onehalf (U+00BD): B<<934.5,212.5>-<897.0,173.0>-<816.0,149.0>>/B<<816.0,149.0>-<855.0,154.0>-<890.5,157.0>> = 9.198601848444214
+
+	* uni00B2 (U+00B2): B<<430.0,407.0>-<390.0,364.0>-<302.0,338.0>>/B<<302.0,338.0>-<344.0,344.0>-<382.5,347.0>> = 8.329912457884046 
+
+	* uni2082 (U+2082): B<<430.0,229.0>-<390.0,186.0>-<302.0,160.0>>/B<<302.0,160.0>-<344.0,166.0>-<382.5,169.0>> = 8.329912457884046 [code: found-jaggy-segments]
+</div></details><details><summary>⚠ <b>WARN:</b> Do outlines contain any semi-vertical or semi-horizontal lines? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_semi_vertical">com.google.fonts/check/outline_semi_vertical</a>)</summary><div>
+
+>
+>This check detects line segments which are nearly, but not quite, exactly horizontal or vertical. Sometimes such lines are created by design, but often they are indicative of a design error.
+>
+>This check is disabled for italic styles, which often contain nearly-upright lines.
+>
+* ⚠ **WARN** The following glyphs have semi-vertical/semi-horizontal lines:
+
+	* bracketleft (U+005B): L<<20.0,689.0>--<322.0,690.0>>
+
+	* bracketleft (U+005B): L<<322.0,1.0>--<20.0,0.0>>
+
+	* bracketright (U+005D): L<<15.0,1.0>--<317.0,0.0>>
+
+	* bracketright (U+005D): L<<317.0,689.0>--<15.0,690.0>>
+
+	* uni00B5 (U+00B5): L<<408.0,271.0>--<409.0,565.0>>
+
+	* uni03BC (U+03BC): L<<408.0,271.0>--<409.0,565.0>>
+
+	* uni21B0 (U+21B0): L<<607.0,0.0>--<606.0,316.0>>
+
+	* uni21B1 (U+21B1): L<<10.0,0.0>--<11.0,316.0>>
+
+	* uni21B2 (U+21B2): L<<607.0,690.0>--<606.0,374.0>>
+
+	* z (U+007A): L<<20.0,566.0>--<602.0,565.0>> 
+
+	* 6 more.
+
+Use -F or --full-lists to disable shortening of long lists. [code: found-semi-vertical]
 </div></details><details><summary>💤 <b>SKIP:</b> Font has **proper** whitespace glyph names? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/whitespace_glyphnames">com.google.fonts/check/whitespace_glyphnames</a>)</summary><div>
 
 >
@@ -147,16 +307,6 @@ Fontbakery version: 0.8.11
 >Per Bureau of Indian Standards every font supporting one of the official Indian languages needs to include Unicode Character “₹” (U+20B9) Indian Rupee Sign.
 >
 * 💤 **SKIP** Unfulfilled Conditions: is_indic_font
-</div></details><details><summary>💤 <b>SKIP:</b> Check if each glyph has the recommended amount of contours. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/contour_count">com.google.fonts/check/contour_count</a>)</summary><div>
-
->
->Visually QAing thousands of glyphs by hand is tiring. Most glyphs can only be constructured in a handful of ways. This means a glyph's contour count will only differ slightly amongst different fonts, e.g a 'g' could either be 2 or 3 contours, depending on whether its double story or single story.
->
->However, a quotedbl should have 2 contours, unless the font belongs to a display family.
->
->This check currently does not cover variable fonts because there's plenty of alternative ways of constructing glyphs with multiple outlines for each feature in a VarFont. The expected contour count data for this check is currently optimized for the typical construction of glyphs in static fonts.
->
-* 💤 **SKIP** Unfulfilled Conditions: is_ttf
 </div></details><details><summary>💤 <b>SKIP:</b> Does the font contain chws and vchw features? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/cjk_chws_feature">com.google.fonts/check/cjk_chws_feature</a>)</summary><div>
 
 >
@@ -165,40 +315,6 @@ Fontbakery version: 0.8.11
 >The chws_tool utility (https://github.com/googlefonts/chws_tool) can be used to add these features automatically.
 >
 * 💤 **SKIP** Unfulfilled Conditions: is_cjk_font
-</div></details><details><summary>💤 <b>SKIP:</b> Ensure component transforms do not perform scaling or rotation. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/transformed_components">com.google.fonts/check/transformed_components</a>)</summary><div>
-
->
->Some families have glyphs which have been constructed by using transformed components e.g the 'u' being constructed from a flipped 'n'.
->
->From a designers point of view, this sounds like a win (less work). However, such approaches can lead to rasterization issues, such as having the 'u' not sitting on the baseline at certain sizes after running the font through ttfautohint.
->
->Other issues are outlines that end up reversed when only one dimension is flipped while the other isn't.
->
->As of July 2019, Marc Foley observed that ttfautohint assigns cvt values to transformed glyphs as if they are not transformed and the result is they render very badly, and that vttLib does not support flipped components.
->
->When building the font with fontmake, the problem can be fixed by adding this to the command line:
->
->--filter DecomposeTransformedComponentsFilter
->
-* 💤 **SKIP** Unfulfilled Conditions: is_ttf
-</div></details><details><summary>💤 <b>SKIP:</b> Ensure dotted circle glyph is present and can attach marks. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/dotted_circle">com.google.fonts/check/dotted_circle</a>)</summary><div>
-
->
->The dotted circle character (U+25CC) is inserted by shaping engines before mark glyphs which do not have an associated base, especially in the context of broken syllabic clusters.
->
->For fonts containing combining marks, it is recommended that the dotted circle character be included so that these isolated marks can be displayed properly; for fonts supporting complex scripts, this should be considered mandatory.
->
->Additionally, when a dotted circle glyph is present, it should be able to display all marks correctly, meaning that it should contain anchors for all attaching marks.
->
-* 💤 **SKIP** Unfulfilled Conditions: is_ttf
-</div></details><details><summary>💤 <b>SKIP:</b> Ensure soft_dotted characters lose their dot when combined with marks that replace the dot. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/soft_dotted">com.google.fonts/check/soft_dotted</a>)</summary><div>
-
->
->An accent placed on characters with a "soft dot", like i or j, causes the dot to disappear. An explicit dot above can be added where required. See "Diacritics on i and j" in Section 7.1, "Latin" in The Unicode Standard.
->
->Characters with the Soft_Dotted property are listed in https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt
->
-* 💤 **SKIP** It is not clear if the soft dotted characters have glyphs with dots.
 </div></details><details><summary>💤 <b>SKIP:</b> Ensure that the font can be rasterized by FreeType. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.adobe.fonts/check/freetype_rasterizer">com.adobe.fonts/check/freetype_rasterizer</a>)</summary><div>
 
 >
@@ -223,22 +339,30 @@ Fontbakery version: 0.8.11
 >Here we check for the presence of potential interpolation errors using the fontTools.varLib.interpolatable module.
 >
 * 💤 **SKIP** Unfulfilled Conditions: is_variable_font
+</div></details><details><summary>💤 <b>SKIP:</b> Is the CFF subr/gsubr call depth > 10? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/cff.html#com.adobe.fonts/check/cff_call_depth">com.adobe.fonts/check/cff_call_depth</a>)</summary><div>
+
+>
+>Per "The Type 2 Charstring Format, Technical Note #5177", the "Subr nesting, stack limit" is 10.
+>
+* 💤 **SKIP** Unfulfilled Conditions: is_cff
 </div></details><details><summary>💤 <b>SKIP:</b> Is the CFF2 subr/gsubr call depth > 10? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/cff.html#com.adobe.fonts/check/cff2_call_depth">com.adobe.fonts/check/cff2_call_depth</a>)</summary><div>
 
 >
 >Per "The CFF2 CharString Format", the "Subr nesting, stack limit" is 10.
 >
 * 💤 **SKIP** Unfulfilled Conditions: is_cff2
+</div></details><details><summary>💤 <b>SKIP:</b> Does the font use deprecated CFF operators or operations? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/cff.html#com.adobe.fonts/check/cff_deprecated_operators">com.adobe.fonts/check/cff_deprecated_operators</a>)</summary><div>
+
+>
+>The 'dotsection' operator and the use of 'endchar' to build accented characters from the Adobe Standard Encoding Character Set ("seac") are deprecated in CFF. Adobe recommends repairing any fonts that use these, especially endchar-as-seac, because a rendering issue was discovered in Microsoft Word with a font that makes use of this operation. The check treats that usage as a FAIL. There are no known ill effects of using dotsection, so that check is a WARN.
+>
+* 💤 **SKIP** Unfulfilled Conditions: is_cff
 </div></details><details><summary>💤 <b>SKIP:</b> Checking head.macStyle value. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/head.html#com.google.fonts/check/mac_style">com.google.fonts/check/mac_style</a>)</summary><div>
 
 >
 >The values of the flags on the macStyle entry on the 'head' OpenType table that describe whether a font is bold and/or italic must be coherent with the actual style of the font as inferred by its filename.
 >
 * 💤 **SKIP** Unfulfilled Conditions: style
-</div></details><details><summary>💤 <b>SKIP:</b> Check if OS/2 xAvgCharWidth is correct. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/os2.html#com.google.fonts/check/xavgcharwidth">com.google.fonts/check/xavgcharwidth</a>)</summary><div>
-
-
-* 💤 **SKIP** Unfulfilled Conditions: is_ttf
 </div></details><details><summary>💤 <b>SKIP:</b> Checking OS/2 achVendID against configuration. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/os2.html#com.thetypefounders/check/vendor_id">com.thetypefounders/check/vendor_id</a>)</summary><div>
 
 >
@@ -258,62 +382,14 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >https://docs.microsoft.com/en-us/typography/opentype/spec/post
 >
 * 💤 **SKIP** Unfulfilled Conditions: style
-</div></details><details><summary>💤 <b>SKIP:</b> Checking correctness of monospaced metadata. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/name.html#com.google.fonts/check/monospace">com.google.fonts/check/monospace</a>)</summary><div>
+</div></details><details><summary>💤 <b>SKIP:</b> CFF table FontName must match name table ID 6 (PostScript name). (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/name.html#com.adobe.fonts/check/name/postscript_vs_cff">com.adobe.fonts/check/name/postscript_vs_cff</a>)</summary><div>
 
 >
->There are various metadata in the OpenType spec to specify if a font is monospaced or not. If the font is not truly monospaced, then no monospaced metadata should be set (as sometimes they mistakenly are...)
+>The PostScript name entries in the font's 'name' table should match the FontName string in the 'CFF ' table.
 >
->Requirements for monospace fonts:
+>The 'CFF ' table has a lot of information that is duplicated in other tables. This information should be consistent across tables, because there's no guarantee which table an app will get the data from.
 >
->* post.isFixedPitch - "Set to 0 if the font is proportionally spaced, non-zero if the font is not proportionally spaced (monospaced)" (https://www.microsoft.com/typography/otspec/post.htm)
->
->* hhea.advanceWidthMax must be correct, meaning no glyph's width value is greater. (https://www.microsoft.com/typography/otspec/hhea.htm)
->
->* OS/2.panose.bProportion must be set to 9 (monospace) on latin text fonts.
->
->* OS/2.panose.bSpacing must be set to 3 (monospace) on latin hand written or latin symbol fonts.
->
->* Spec says: "The PANOSE definition contains ten digits each of which currently describes up to sixteen variations. Windows uses bFamilyType, bSerifStyle and bProportion in the font mapper to determine family type. It also uses bProportion to determine if the font is monospaced." (https://www.microsoft.com/typography/otspec/os2.htm#pan https://monotypecom-test.monotype.de/services/pan2)
->
->* OS/2.xAvgCharWidth must be set accurately. "OS/2.xAvgCharWidth is used when rendering monospaced fonts, at least by Windows GDI" (http://typedrawers.com/discussion/comment/15397/#Comment_15397)
->
->Also we should report an error for glyphs not of average width.
->
->Please also note:
->
->Thomas Phinney told us that a few years ago (as of December 2019), if you gave a font a monospace flag in Panose, Microsoft Word would ignore the actual advance widths and treat it as monospaced.
->
->Source: https://typedrawers.com/discussion/comment/45140/#Comment_45140
->
-* 💤 **SKIP** Unfulfilled Conditions: is_ttf
-</div></details><details><summary>💤 <b>SKIP:</b> Name table ID 6 (PostScript name) must be consistent across platforms. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/name.html#com.adobe.fonts/check/name/postscript_name_consistency">com.adobe.fonts/check/name/postscript_name_consistency</a>)</summary><div>
-
->
->The PostScript name entries in the font's 'name' table should be consistent across platforms.
->
->This is the TTF/CFF2 equivalent of the CFF 'name/postscript_vs_cff' check.
->
-* 💤 **SKIP** Unfulfilled Conditions: not is_cff
-</div></details><details><summary>💤 <b>SKIP:</b> Does the number of glyphs in the loca table match the maxp table? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/loca.html#com.google.fonts/check/loca/maxp_num_glyphs">com.google.fonts/check/loca/maxp_num_glyphs</a>)</summary><div>
-
-
-* 💤 **SKIP** Unfulfilled Conditions: is_ttf
-</div></details><details><summary>💤 <b>SKIP:</b> Is there any unused data at the end of the glyf table? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/glyf.html#com.google.fonts/check/glyf_unused_data">com.google.fonts/check/glyf_unused_data</a>)</summary><div>
-
-
-* 💤 **SKIP** Unfulfilled Conditions: is_ttf
-</div></details><details><summary>💤 <b>SKIP:</b> Check for points out of bounds. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/glyf.html#com.google.fonts/check/points_out_of_bounds">com.google.fonts/check/points_out_of_bounds</a>)</summary><div>
-
-
-* 💤 **SKIP** Unfulfilled Conditions: is_ttf
-</div></details><details><summary>💤 <b>SKIP:</b> Check glyphs do not have duplicate components which have the same x,y coordinates. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/glyf.html#com.google.fonts/check/glyf_non_transformed_duplicate_components">com.google.fonts/check/glyf_non_transformed_duplicate_components</a>)</summary><div>
-
->
->There have been cases in which fonts had faulty double quote marks, with each of them containing two single quote marks as components with the same x, y coordinates which makes them visually look like single quote marks.
->
->This check ensures that glyphs do not contain duplicate components which have the same x,y coordinates.
->
-* 💤 **SKIP** Unfulfilled Conditions: is_ttf
+* 💤 **SKIP** Unfulfilled Conditions: is_cff
 </div></details><details><summary>💤 <b>SKIP:</b> The variable font 'wght' (Weight) axis coordinate must be 400 on the 'Regular' instance. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.google.fonts/check/varfont/regular_wght_coord">com.google.fonts/check/varfont/regular_wght_coord</a>)</summary><div>
 
 >
@@ -527,6 +603,10 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >
 * ℹ **INFO** This font contains the following optional tables:
 
+	- loca
+
+	- GPOS 
+
 	- GSUB [code: optional-tables]
 * 🍞 **PASS** Font contains all required tables.
 </div></details><details><summary>ℹ <b>INFO:</b> List all superfamily filepaths (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/superfamily/list">com.google.fonts/check/superfamily/list</a>)</summary><div>
@@ -536,7 +616,7 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >
 >Only the fontfiles in these directories will be considered in superfamily-level checks.
 >
-* ℹ **INFO** fonts/otf [code: family-path]
+* ℹ **INFO** fonts/ttf [code: family-path]
 </div></details><details><summary>🍞 <b>PASS:</b> Name table records must not have trailing spaces. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/name/trailing_spaces">com.google.fonts/check/name/trailing_spaces</a>)</summary><div>
 
 
@@ -553,6 +633,16 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >Older versions will also not report problems that are detected by new checks added to the tool in more recent updates.
 >
 * 🍞 **PASS** Font Bakery is up-to-date.
+</div></details><details><summary>🍞 <b>PASS:</b> Font contains '.notdef' as its first glyph? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/mandatory_glyphs">com.google.fonts/check/mandatory_glyphs</a>)</summary><div>
+
+>
+>The OpenType specification v1.8.2 recommends that the first glyph is the '.notdef' glyph without a codepoint assigned and with a drawing.
+>
+>https://docs.microsoft.com/en-us/typography/opentype/spec/recom#glyph-0-the-notdef-glyph
+>
+>Pre-v1.8, it was recommended that fonts should also contain 'space', 'CR' and '.null' glyphs. This might have been relevant for MacOS 9 applications.
+>
+* 🍞 **PASS** OK
 </div></details><details><summary>🍞 <b>PASS:</b> Whitespace glyphs have ink? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/whitespace_ink">com.google.fonts/check/whitespace_ink</a>)</summary><div>
 
 
@@ -589,6 +679,16 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 
 * 🍞 **PASS** Hey! It all looks good!
+</div></details><details><summary>🍞 <b>PASS:</b> Check font contains no unreachable glyphs (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/unreachable_glyphs">com.google.fonts/check/unreachable_glyphs</a>)</summary><div>
+
+>
+>Glyphs are either accessible directly through Unicode codepoints or through substitution rules.
+>
+>In Color Fonts, glyphs are also referenced by the COLR table.
+>
+>Any glyphs not accessible by either of these means are redundant and serve only to increase the font's file size.
+>
+* 🍞 **PASS** Font did not contain any unreachable glyphs
 </div></details><details><summary>🍞 <b>PASS:</b> Does the font contain a soft hyphen? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/soft_hyphen">com.google.fonts/check/soft_hyphen</a>)</summary><div>
 
 >
@@ -619,26 +719,6 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >https://docs.microsoft.com/en-us/typography/opentype/spec/otff#table-directory
 >
 * 🍞 **PASS** Font has the correct sfntVersion value.
-</div></details><details><summary>🍞 <b>PASS:</b> Check math signs have the same width. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/math_signs_width">com.google.fonts/check/math_signs_width</a>)</summary><div>
-
->
->It is a common practice to have math signs sharing the same width (preferably the same width as tabular figures accross the entire font family).
->
->This probably comes from the will to avoid additional tabular math signs knowing that their design can easily share the same width.
->
-* 🍞 **PASS** Looks good.
-</div></details><details><summary>🍞 <b>PASS:</b> Is the CFF subr/gsubr call depth > 10? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/cff.html#com.adobe.fonts/check/cff_call_depth">com.adobe.fonts/check/cff_call_depth</a>)</summary><div>
-
->
->Per "The Type 2 Charstring Format, Technical Note #5177", the "Subr nesting, stack limit" is 10.
->
-* 🍞 **PASS** Maximum call depth not exceeded.
-</div></details><details><summary>🍞 <b>PASS:</b> Does the font use deprecated CFF operators or operations? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/cff.html#com.adobe.fonts/check/cff_deprecated_operators">com.adobe.fonts/check/cff_deprecated_operators</a>)</summary><div>
-
->
->The 'dotsection' operator and the use of 'endchar' to build accented characters from the Adobe Standard Encoding Character Set ("seac") are deprecated in CFF. Adobe recommends repairing any fonts that use these, especially endchar-as-seac, because a rendering issue was discovered in Microsoft Word with a font that makes use of this operation. The check treats that usage as a FAIL. There are no known ill effects of using dotsection, so that check is a WARN.
->
-* 🍞 **PASS** No deprecated CFF operators used.
 </div></details><details><summary>🍞 <b>PASS:</b> Checking unitsPerEm value is reasonable. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/head.html#com.google.fonts/check/unitsperem">com.google.fonts/check/unitsperem</a>)</summary><div>
 
 >
@@ -655,6 +735,10 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 
 * 🍞 **PASS** All font version fields match.
+</div></details><details><summary>🍞 <b>PASS:</b> Check if OS/2 xAvgCharWidth is correct. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/os2.html#com.google.fonts/check/xavgcharwidth">com.google.fonts/check/xavgcharwidth</a>)</summary><div>
+
+
+* 🍞 **PASS** OS/2 xAvgCharWidth value is correct.
 </div></details><details><summary>🍞 <b>PASS:</b> Check if OS/2 fsSelection matches head macStyle bold and italic bits. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/os2.html#com.adobe.fonts/check/fsselection_matches_macstyle">com.adobe.fonts/check/fsselection_matches_macstyle</a>)</summary><div>
 
 >
@@ -688,7 +772,7 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >
 >Acceptable post format versions are 2 and 3 for TTF and OTF CFF2 builds, and post format 3 for CFF builds.
 >
-* 🍞 **PASS** Font has an acceptable post format 3.0 table version.
+* 🍞 **PASS** Font has an acceptable post format 2.0 table version.
 </div></details><details><summary>🍞 <b>PASS:</b> Check name table for empty records. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/name.html#com.adobe.fonts/check/name/empty_records">com.adobe.fonts/check/name/empty_records</a>)</summary><div>
 
 >
@@ -699,6 +783,34 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 
 * 🍞 **PASS** Description strings in the name table do not contain any copyright string.
+</div></details><details><summary>🍞 <b>PASS:</b> Checking correctness of monospaced metadata. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/name.html#com.google.fonts/check/monospace">com.google.fonts/check/monospace</a>)</summary><div>
+
+>
+>There are various metadata in the OpenType spec to specify if a font is monospaced or not. If the font is not truly monospaced, then no monospaced metadata should be set (as sometimes they mistakenly are...)
+>
+>Requirements for monospace fonts:
+>
+>* post.isFixedPitch - "Set to 0 if the font is proportionally spaced, non-zero if the font is not proportionally spaced (monospaced)" (https://www.microsoft.com/typography/otspec/post.htm)
+>
+>* hhea.advanceWidthMax must be correct, meaning no glyph's width value is greater. (https://www.microsoft.com/typography/otspec/hhea.htm)
+>
+>* OS/2.panose.bProportion must be set to 9 (monospace) on latin text fonts.
+>
+>* OS/2.panose.bSpacing must be set to 3 (monospace) on latin hand written or latin symbol fonts.
+>
+>* Spec says: "The PANOSE definition contains ten digits each of which currently describes up to sixteen variations. Windows uses bFamilyType, bSerifStyle and bProportion in the font mapper to determine family type. It also uses bProportion to determine if the font is monospaced." (https://www.microsoft.com/typography/otspec/os2.htm#pan https://monotypecom-test.monotype.de/services/pan2)
+>
+>* OS/2.xAvgCharWidth must be set accurately. "OS/2.xAvgCharWidth is used when rendering monospaced fonts, at least by Windows GDI" (http://typedrawers.com/discussion/comment/15397/#Comment_15397)
+>
+>Also we should report an error for glyphs not of average width.
+>
+>Please also note:
+>
+>Thomas Phinney told us that a few years ago (as of December 2019), if you gave a font a monospace flag in Panose, Microsoft Word would ignore the actual advance widths and treat it as monospaced.
+>
+>Source: https://typedrawers.com/discussion/comment/45140/#Comment_45140
+>
+* 🍞 **PASS** Font is not monospaced and all related metadata look good. [code: good]
 </div></details><details><summary>🍞 <b>PASS:</b> Does full font name begin with the font family name? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/name.html#com.google.fonts/check/name/match_familyname_fullfont">com.google.fonts/check/name/match_familyname_fullfont</a>)</summary><div>
 
 >
@@ -717,14 +829,18 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 
 * 🍞 **PASS** Font follows the family naming recommendations.
-</div></details><details><summary>🍞 <b>PASS:</b> CFF table FontName must match name table ID 6 (PostScript name). (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/name.html#com.adobe.fonts/check/name/postscript_vs_cff">com.adobe.fonts/check/name/postscript_vs_cff</a>)</summary><div>
+</div></details><details><summary>🍞 <b>PASS:</b> Name table ID 6 (PostScript name) must be consistent across platforms. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/name.html#com.adobe.fonts/check/name/postscript_name_consistency">com.adobe.fonts/check/name/postscript_name_consistency</a>)</summary><div>
 
 >
->The PostScript name entries in the font's 'name' table should match the FontName string in the 'CFF ' table.
+>The PostScript name entries in the font's 'name' table should be consistent across platforms.
 >
->The 'CFF ' table has a lot of information that is duplicated in other tables. This information should be consistent across tables, because there's no guarantee which table an app will get the data from.
+>This is the TTF/CFF2 equivalent of the CFF 'name/postscript_vs_cff' check.
 >
-* 🍞 **PASS** Name table PostScript name matches CFF table FontName.
+* 🍞 **PASS** Entries in the "name" table for ID 6 (PostScript name) are consistent.
+</div></details><details><summary>🍞 <b>PASS:</b> Does the number of glyphs in the loca table match the maxp table? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/loca.html#com.google.fonts/check/loca/maxp_num_glyphs">com.google.fonts/check/loca/maxp_num_glyphs</a>)</summary><div>
+
+
+* 🍞 **PASS** 'loca' table matches numGlyphs in 'maxp' table.
 </div></details><details><summary>🍞 <b>PASS:</b> MaxAdvanceWidth is consistent with values in the Hmtx and Hhea tables? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/hhea.html#com.google.fonts/check/maxadvancewidth">com.google.fonts/check/maxadvancewidth</a>)</summary><div>
 
 
@@ -775,6 +891,10 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >Only combining mark glyphs should be in that class. Any non-mark glyph must not be in that class, in particular spacing glyphs.
 >
 * 🍞 **PASS** Font does not have non-mark characters in the GDEF mark glyph class.
+</div></details><details><summary>🍞 <b>PASS:</b> Does GPOS table have kerning information? This check skips monospaced fonts as defined by post.isFixedPitch value (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/gpos.html#com.google.fonts/check/gpos_kerning_info">com.google.fonts/check/gpos_kerning_info</a>)</summary><div>
+
+
+* 🍞 **PASS** GPOS table check for kerning information passed.
 </div></details><details><summary>🍞 <b>PASS:</b> Is there a usable "kern" table declared in the font? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/kern.html#com.google.fonts/check/kern_table">com.google.fonts/check/kern_table</a>)</summary><div>
 
 >
@@ -789,6 +909,22 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >Given all of the above, we currently treat kerning on a v0 kern table as a good-to-have (but optional) feature.
 >
 * 🍞 **PASS** Font does not declare an optional "kern" table.
+</div></details><details><summary>🍞 <b>PASS:</b> Is there any unused data at the end of the glyf table? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/glyf.html#com.google.fonts/check/glyf_unused_data">com.google.fonts/check/glyf_unused_data</a>)</summary><div>
+
+
+* 🍞 **PASS** There is no unused data at the end of the glyf table.
+</div></details><details><summary>🍞 <b>PASS:</b> Check for points out of bounds. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/glyf.html#com.google.fonts/check/points_out_of_bounds">com.google.fonts/check/points_out_of_bounds</a>)</summary><div>
+
+
+* 🍞 **PASS** All glyph paths have coordinates within bounds!
+</div></details><details><summary>🍞 <b>PASS:</b> Check glyphs do not have duplicate components which have the same x,y coordinates. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/glyf.html#com.google.fonts/check/glyf_non_transformed_duplicate_components">com.google.fonts/check/glyf_non_transformed_duplicate_components</a>)</summary><div>
+
+>
+>There have been cases in which fonts had faulty double quote marks, with each of them containing two single quote marks as components with the same x, y coordinates which makes them visually look like single quote marks.
+>
+>This check ensures that glyphs do not contain duplicate components which have the same x,y coordinates.
+>
+* 🍞 **PASS** Glyphs do not contain duplicate components which have the same x,y coordinates.
 </div></details><details><summary>🍞 <b>PASS:</b> Does the font have any invalid feature tags? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/layout.html#com.google.fonts/check/layout_valid_feature_tags">com.google.fonts/check/layout_valid_feature_tags</a>)</summary><div>
 
 >
@@ -814,7 +950,7 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >
 >Not all such misaligned curve points are a mistake, and sometimes the design may call for points in locations near the boundaries. As this check is liable to generate significant numbers of false positives, it will pass if there are more than 100 reported misalignments.
 >
-* 🍞 **PASS** Y-coordinates of points fell on appropriate boundaries.
+* 🍞 **PASS** So many Y-coordinates of points were close to boundaries that this was probably by design.
 </div></details><details><summary>🍞 <b>PASS:</b> Are any segments inordinately short? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_short_segments">com.google.fonts/check/outline_short_segments</a>)</summary><div>
 
 >
@@ -822,34 +958,12 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >
 >This check is not run for variable fonts, as they may legitimately have short segments. As this check is liable to generate significant numbers of false positives, it will pass if there are more than 100 reported short segments.
 >
-* 🍞 **PASS** No short segments were found.
-</div></details><details><summary>🍞 <b>PASS:</b> Do any segments have colinear vectors? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_colinear_vectors">com.google.fonts/check/outline_colinear_vectors</a>)</summary><div>
-
->
->This check looks for consecutive line segments which have the same angle. This normally happens if an outline point has been added by accident.
->
->This check is not run for variable fonts, as they may legitimately have colinear vectors.
->
-* 🍞 **PASS** No colinear vectors found.
-</div></details><details><summary>🍞 <b>PASS:</b> Do outlines contain any jaggy segments? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_jaggy_segments">com.google.fonts/check/outline_jaggy_segments</a>)</summary><div>
-
->
->This check heuristically detects outline segments which form a particularly small angle, indicative of an outline error. This may cause false positives in cases such as extreme ink traps, so should be regarded as advisory and backed up by manual inspection.
->
-* 🍞 **PASS** No jaggy segments found.
-</div></details><details><summary>🍞 <b>PASS:</b> Do outlines contain any semi-vertical or semi-horizontal lines? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_semi_vertical">com.google.fonts/check/outline_semi_vertical</a>)</summary><div>
-
->
->This check detects line segments which are nearly, but not quite, exactly horizontal or vertical. Sometimes such lines are created by design, but often they are indicative of a design error.
->
->This check is disabled for italic styles, which often contain nearly-upright lines.
->
-* 🍞 **PASS** No semi-horizontal/semi-vertical lines found.
+* 🍞 **PASS** So many short segments were found that this was probably by design.
 </div></details><br></div></details>
 
 ### Summary
 
 | 💔 ERROR | 🔥 FAIL | ⚠ WARN | 💤 SKIP | ℹ INFO | 🍞 PASS | 🔎 DEBUG |
 |:-----:|:----:|:----:|:----:|:----:|:----:|:----:|
-| 0 | 3 | 4 | 48 | 2 | 48 | 0 |
-| 0% | 3% | 4% | 46% | 2% | 46% | 0% |
+| 0 | 5 | 7 | 40 | 2 | 51 | 0 |
+| 0% | 5% | 7% | 38% | 2% | 49% | 0% |

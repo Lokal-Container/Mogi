@@ -30,6 +30,14 @@ Fontbakery version: 0.8.11
 
 
 * 🍞 **PASS** Fonts have consistent PANOSE family type.
+</div></details><details><summary>🍞 <b>PASS:</b> Check that OS/2.fsSelection bold & italic settings are unique for each NameID1 (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/os2.html#com.adobe.fonts/check/family/bold_italic_unique_for_nameid1">com.adobe.fonts/check/family/bold_italic_unique_for_nameid1</a>)</summary><div>
+
+>
+>Per the OpenType spec: name ID 1 'is used in combination with Font Subfamily name (name ID 2), and should be shared among at most four fonts that differ only in weight or style.
+>
+>This four-way distinction should also be reflected in the OS/2.fsSelection field, using bits 0 and 5.
+>
+* 🍞 **PASS** The OS/2.fsSelection bold & italic settings were unique within each compatible family group.
 </div></details><details><summary>🍞 <b>PASS:</b> Fonts have consistent underline thickness? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/post.html#com.google.fonts/check/family/underline_thickness">com.google.fonts/check/family/underline_thickness</a>)</summary><div>
 
 >
@@ -52,15 +60,7 @@ Fontbakery version: 0.8.11
 >Check that related Upright and Italic VFs have a 'ital' axis in STAT table.
 >
 * 🍞 **PASS** OK
-</div></details><details><summary>💤 <b>SKIP:</b> Check that OS/2.fsSelection bold & italic settings are unique for each NameID1 (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/os2.html#com.adobe.fonts/check/family/bold_italic_unique_for_nameid1">com.adobe.fonts/check/family/bold_italic_unique_for_nameid1</a>)</summary><div>
-
->
->Per the OpenType spec: name ID 1 'is used in combination with Font Subfamily name (name ID 2), and should be shared among at most four fonts that differ only in weight or style.
->
->This four-way distinction should also be reflected in the OS/2.fsSelection field, using bits 0 and 5.
->
-* 💤 **SKIP** Unfulfilled Conditions: RIBBI_ttFonts
-</div></details><br></div></details><details><summary><b>[95] LC.Mogi-B.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
+</div></details><br></div></details><details><summary><b>[95] LCMogi-VF.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
 
 >
 >A font's winAscent and winDescent values should be greater than or equal to the head table's yMax, abs(yMin) values. If they are less than these values, clipping can occur on Windows platforms (https://github.com/RedHatBrand/Overpass/issues/33).
@@ -69,7 +69,7 @@ Fontbakery version: 0.8.11
 >
 >When the win Metrics are significantly greater than the upm, the linespacing can appear too loose. To counteract this, enabling the OS/2 fsSelection bit 7 (Use_Typo_Metrics), will force Windows to use the OS/2 typo values instead. This means the font developer can control the linespacing with the typo values, whilst avoiding clipping by setting the win values to values greater than the yMax and abs(yMin).
 >
-* 🔥 **FAIL** OS/2.usWinDescent value should be equal or greater than 270, but got 200 instead. [code: descent]
+* 🔥 **FAIL** OS/2.usWinDescent value should be equal or greater than 269, but got 200 instead. [code: descent]
 </div></details><details><summary>🔥 <b>FAIL:</b> Checking OS/2 Metrics match hhea Metrics. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/os2_metrics_match_hhea">com.google.fonts/check/os2_metrics_match_hhea</a>)</summary><div>
 
 >
@@ -122,7 +122,6 @@ or inverted outline direction:
 * uni21A6 (component uni21A4)
 * uni21B0 (component uni21B2)
 * uni2198.ss01 (component uni2197.ss01)
-* arrowdown.ss01 (component arrowup.ss01)
 * arrowleft.ss01 (component arrowright.ss01)
 * uni2196.ss01 (component uni2197.ss01)
  [code: transformed-components]
@@ -135,44 +134,27 @@ or inverted outline direction:
 >
 * 🔥 **FAIL** The dot of soft dotted characters used in orthographies must disappear in the following strings: j̀ j́ j̃ j̄ j̈ į̀ į́ į̂ į̃ į̄ į̌
 
-The dot of soft dotted characters should disappear in other cases, for example: ĵ j̆ j̇ j̊ j̋ ǰ j̒ j̦̀ j̦́ ĵ̦ j̦̃ j̦̄ j̦̆ j̦̇ j̦̈ j̦̊ j̦̋ ǰ̦ j̦̒ j̧̀ [code: soft-dotted]
-</div></details><details><summary>⚠ <b>WARN:</b> Check if each glyph has the recommended amount of contours. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/contour_count">com.google.fonts/check/contour_count</a>)</summary><div>
+The dot of soft dotted characters should disappear in other cases, for example: ĩ̦ ĭ̦ i̦̇ i̦̊ i̦̋ ǐ̦ i̦̒ ĵ j̆ j̇ j̊ j̋ ǰ j̒ j̦̀ j̦́ ĵ̦ j̦̃ j̦̄ j̦̆ [code: soft-dotted]
+</div></details><details><summary>🔥 <b>FAIL:</b> The variable font 'wdth' (Width) axis coordinate must be 100 on the 'Regular' instance. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.google.fonts/check/varfont/regular_wdth_coord">com.google.fonts/check/varfont/regular_wdth_coord</a>)</summary><div>
 
 >
->Visually QAing thousands of glyphs by hand is tiring. Most glyphs can only be constructured in a handful of ways. This means a glyph's contour count will only differ slightly amongst different fonts, e.g a 'g' could either be 2 or 3 contours, depending on whether its double story or single story.
+>According to the Open-Type spec's registered design-variation tag 'wdth' available at https://docs.microsoft.com/en-gb/typography/opentype/spec/dvaraxistag_wdth
 >
->However, a quotedbl should have 2 contours, unless the font belongs to a display family.
+>If a variable font has a 'wdth' (Width) axis, then the coordinate of its 'Regular' instance is required to be 100.
 >
->This check currently does not cover variable fonts because there's plenty of alternative ways of constructing glyphs with multiple outlines for each feature in a VarFont. The expected contour count data for this check is currently optimized for the typical construction of glyphs in static fonts.
+* 🔥 **FAIL** "Regular" instance not present. [code: no-regular-instance]
+</div></details><details><summary>🔥 <b>FAIL:</b> STAT table has Axis Value tables? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/stat.html#com.adobe.fonts/check/stat_has_axis_value_tables">com.adobe.fonts/check/stat_has_axis_value_tables</a>)</summary><div>
+
 >
-* ⚠ **WARN** This check inspects the glyph outlines and detects the total number of contours in each of them. The expected values are infered from the typical ammounts of contours observed in a large collection of reference font families. The divergences listed below may simply indicate a significantly different design on some of your glyphs. On the other hand, some of these may flag actual bugs in the font such as glyphs mapped to an incorrect codepoint. Please consider reviewing the design and codepoint assignment of these to make sure they are correct.
-
-The following glyphs do not have the recommended number of contours:
-
-	- Glyph name: percent	Contours detected: 6	Expected: 5
-
-	- Glyph name: onequarter	Contours detected: 5	Expected: 3 or 4
-
-	- Glyph name: onehalf	Contours detected: 4	Expected: 3
-
-	- Glyph name: threequarters	Contours detected: 5	Expected: 3 or 4
-
-	- Glyph name: aogonek	Contours detected: 3	Expected: 2
-
-	- Glyph name: dcroat	Contours detected: 3	Expected: 2
-
-	- Glyph name: eogonek	Contours detected: 3	Expected: 2
-
-	- Glyph name: hbar	Contours detected: 2	Expected: 1
-
-	- Glyph name: Ohungarumlaut	Contours detected: 3	Expected: 4
-
-	- Glyph name: ohungarumlaut	Contours detected: 3	Expected: 4 
-
-	- 38 more.
-
-Use -F or --full-lists to disable shortening of long lists.
- [code: contour-count]
+>According to the OpenType spec, in a variable font, it is strongly recommended that axis value tables be included for every element of typographic subfamily names for all of the named instances defined in the 'fvar' table.
+>
+>Axis value tables are particularly important for variable fonts, but can also be used in non-variable fonts. When used in non-variable fonts, axis value tables for particular values should be implemented consistently across fonts in the family.
+>
+>If present, Format 4 Axis Value tables are checked to ensure they have more than one AxisValueRecord (a strong recommendation from the OpenType spec).
+>
+>https://docs.microsoft.com/en-us/typography/opentype/spec/stat#axis-value-tables
+>
+* 🔥 **FAIL** STAT table has no Axis Value tables. [code: no-axis-value-tables]
 </div></details><details><summary>⚠ <b>WARN:</b> Ensure dotted circle glyph is present and can attach marks. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/dotted_circle">com.google.fonts/check/dotted_circle</a>)</summary><div>
 
 >
@@ -183,6 +165,20 @@ Use -F or --full-lists to disable shortening of long lists.
 >Additionally, when a dotted circle glyph is present, it should be able to display all marks correctly, meaning that it should contain anchors for all attaching marks.
 >
 * ⚠ **WARN** No dotted circle glyph present [code: missing-dotted-circle]
+</div></details><details><summary>⚠ <b>WARN:</b> Detect any interpolation issues in the font. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/interpolation_issues">com.google.fonts/check/interpolation_issues</a>)</summary><div>
+
+>
+>When creating a variable font, the designer must make sure that corresponding paths have the same start points across masters, as well as that corresponding component shapes are placed in the same order within a glyph across masters. If this is not done, the glyph will not interpolate correctly.
+>
+>Here we check for the presence of potential interpolation errors using the fontTools.varLib.interpolatable module.
+>
+* ⚠ **WARN** Interpolation issues were found in the font: 	- Contour order differs in glyph 'ellipsis': [0, 1, 2] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11d8eb340>, [2, 1, 0] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11d8e8a30>.
+
+	- Contour order differs in glyph 'quotedblright': [0, 1] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11d8eb340>, [1, 0] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11d8e8a30>.
+
+	- Contour order differs in glyph 'quotedblbase': [0, 1] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11d8eb340>, [1, 0] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11d8e8a30>. 
+
+	- Contour order differs in glyph 'quotedblleft': [0, 1] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11d8eb340>, [1, 0] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11d8e8a30>. [code: interpolation-issues]
 </div></details><details><summary>⚠ <b>WARN:</b> Check math signs have the same width. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/math_signs_width">com.google.fonts/check/math_signs_width</a>)</summary><div>
 
 >
@@ -190,96 +186,75 @@ Use -F or --full-lists to disable shortening of long lists.
 >
 >This probably comes from the will to avoid additional tabular math signs knowing that their design can easily share the same width.
 >
-* ⚠ **WARN** The most common width is 463 among a set of 2 math glyphs.
+* ⚠ **WARN** The most common width is 431 among a set of 3 math glyphs.
 The following math glyphs have a different width, though:
 
-Width = 536:
+Width = 499:
 plus
 
-Width = 431:
-equal
+Width = 426:
+less, greater
 
-Width = 476:
-plusminus, logicalnot
+Width = 439:
+logicalnot, plusminus
 
-Width = 494:
+Width = 457:
 multiply
 
-Width = 376:
+Width = 339:
 divide
 
-Width = 416:
+Width = 379:
 minus
 
-Width = 413:
+Width = 376:
 approxequal
 
-Width = 446:
+Width = 409:
 notequal
-
-Width = 468:
-greaterequal, lessequal
  [code: width-outliers]
 </div></details><details><summary>⚠ <b>WARN:</b> Checking Vertical Metric Linegaps. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/hhea.html#com.google.fonts/check/linegaps">com.google.fonts/check/linegaps</a>)</summary><div>
 
 
 * ⚠ **WARN** OS/2 sTypoLineGap is not equal to 0. [code: OS/2]
-</div></details><details><summary>⚠ <b>WARN:</b> Do outlines contain any jaggy segments? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_jaggy_segments">com.google.fonts/check/outline_jaggy_segments</a>)</summary><div>
+</div></details><details><summary>⚠ <b>WARN:</b> Are there any misaligned on-curve points? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_alignment_miss">com.google.fonts/check/outline_alignment_miss</a>)</summary><div>
 
 >
->This check heuristically detects outline segments which form a particularly small angle, indicative of an outline error. This may cause false positives in cases such as extreme ink traps, so should be regarded as advisory and backed up by manual inspection.
+>This check heuristically looks for on-curve points which are close to, but do not sit on, significant boundary coordinates. For example, a point which has a Y-coordinate of 1 or -1 might be a misplaced baseline point. As well as the baseline, here we also check for points near the x-height (but only for lowercase Latin letters), cap-height, ascender and descender Y coordinates.
 >
-* ⚠ **WARN** The following glyphs have jaggy segments:
-
-	* onehalf (U+00BD): B<<1010.5,213.0>-<970.0,173.0>-<881.0,148.0>>/B<<881.0,148.0>-<923.0,154.0>-<962.0,157.0>> = 7.55989057492785
-
-	* uni00B2 (U+00B2): B<<463.5,407.0>-<420.0,364.0>-<325.0,338.0>>/B<<325.0,338.0>-<370.0,344.0>-<412.0,347.0>> = 7.71149560549847 
-
-	* uni2082 (U+2082): B<<463.5,229.0>-<420.0,186.0>-<325.0,160.0>>/B<<325.0,160.0>-<370.0,166.0>-<412.0,169.0>> = 7.71149560549847 [code: found-jaggy-segments]
-</div></details><details><summary>⚠ <b>WARN:</b> Do outlines contain any semi-vertical or semi-horizontal lines? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_semi_vertical">com.google.fonts/check/outline_semi_vertical</a>)</summary><div>
-
+>Not all such misaligned curve points are a mistake, and sometimes the design may call for points in locations near the boundaries. As this check is liable to generate significant numbers of false positives, it will pass if there are more than 100 reported misalignments.
 >
->This check detects line segments which are nearly, but not quite, exactly horizontal or vertical. Sometimes such lines are created by design, but often they are indicative of a design error.
->
->This check is disabled for italic styles, which often contain nearly-upright lines.
->
-* ⚠ **WARN** The following glyphs have semi-vertical/semi-horizontal lines:
+* ⚠ **WARN** The following glyphs have on-curve points which have potentially incorrect y coordinates:
 
-	* C (U+0043): L<<668.0,648.0>--<670.0,391.0>>
+	* dollar (U+0024): X=261.0,Y=-2.0 (should be at baseline 0?)
 
-	* Cacute (U+0106): L<<668.0,648.0>--<670.0,391.0>>
+	* dollar (U+0024): X=261.0,Y=-2.0 (should be at baseline 0?)
 
-	* Ccaron (U+010C): L<<668.0,648.0>--<670.0,391.0>>
+	* ampersand (U+0026): X=338.5,Y=-2.0 (should be at baseline 0?)
 
-	* Ccedilla (U+00C7): L<<668.0,648.0>--<670.0,391.0>>
+	* three (U+0033): X=146.5,Y=1.0 (should be at baseline 0?)
 
-	* Cdotaccent (U+010A): L<<668.0,648.0>--<670.0,391.0>>
+	* five (U+0035): X=129.0,Y=-0.5 (should be at baseline 0?)
 
-	* bracketleft (U+005B): L<<20.0,689.0>--<359.0,690.0>>
+	* nine (U+0039): X=139.5,Y=-0.5 (should be at baseline 0?)
 
-	* bracketleft (U+005B): L<<359.0,1.0>--<20.0,0.0>>
+	* G (U+0047): X=509.0,Y=-1.0 (should be at baseline 0?)
 
-	* bracketright (U+005D): L<<15.0,1.0>--<354.0,0.0>>
+	* T (U+0054): X=15.0,Y=689.0 (should be at cap-height 690?)
 
-	* bracketright (U+005D): L<<354.0,689.0>--<15.0,690.0>>
+	* T (U+0054): X=621.0,Y=689.0 (should be at cap-height 690?)
 
-	* uni00B5 (U+00B5): L<<429.0,270.0>--<430.0,565.0>> 
+	* bracketleft (U+005B): X=20.0,Y=689.0 (should be at cap-height 690?) 
 
-	* 11 more.
+	* 86 more.
 
-Use -F or --full-lists to disable shortening of long lists. [code: found-semi-vertical]
+Use -F or --full-lists to disable shortening of long lists. [code: found-misalignments]
 </div></details><details><summary>💤 <b>SKIP:</b> Font has **proper** whitespace glyph names? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/whitespace_glyphnames">com.google.fonts/check/whitespace_glyphnames</a>)</summary><div>
 
 >
 >This check enforces adherence to recommended whitespace (codepoints 0020 and 00A0) glyph names according to the Adobe Glyph List.
 >
 * 💤 **SKIP** Unfulfilled Conditions: not missing_whitespace_chars
-</div></details><details><summary>💤 <b>SKIP:</b> Check correctness of STAT table strings  (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/STAT_strings">com.google.fonts/check/STAT_strings</a>)</summary><div>
-
->
->On the STAT table, the "Italic" keyword must not be used on AxisValues for variation axes other than 'ital'.
->
-* 💤 **SKIP** Unfulfilled Conditions: has_STAT_table
 </div></details><details><summary>💤 <b>SKIP:</b> Each font in set of sibling families must have the same set of vertical metrics values. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/superfamily/vertical_metrics">com.google.fonts/check/superfamily/vertical_metrics</a>)</summary><div>
 
 >
@@ -294,6 +269,16 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-semi-ve
 >Per Bureau of Indian Standards every font supporting one of the official Indian languages needs to include Unicode Character “₹” (U+20B9) Indian Rupee Sign.
 >
 * 💤 **SKIP** Unfulfilled Conditions: is_indic_font
+</div></details><details><summary>💤 <b>SKIP:</b> Check if each glyph has the recommended amount of contours. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/contour_count">com.google.fonts/check/contour_count</a>)</summary><div>
+
+>
+>Visually QAing thousands of glyphs by hand is tiring. Most glyphs can only be constructured in a handful of ways. This means a glyph's contour count will only differ slightly amongst different fonts, e.g a 'g' could either be 2 or 3 contours, depending on whether its double story or single story.
+>
+>However, a quotedbl should have 2 contours, unless the font belongs to a display family.
+>
+>This check currently does not cover variable fonts because there's plenty of alternative ways of constructing glyphs with multiple outlines for each feature in a VarFont. The expected contour count data for this check is currently optimized for the typical construction of glyphs in static fonts.
+>
+* 💤 **SKIP** Unfulfilled Conditions: not is_variable_font
 </div></details><details><summary>💤 <b>SKIP:</b> Does the font contain chws and vchw features? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/cjk_chws_feature">com.google.fonts/check/cjk_chws_feature</a>)</summary><div>
 
 >
@@ -318,14 +303,6 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-semi-ve
 >This is automatic substitution by the text editors, not by fonts. It is also used by designers in text composition practice to create nicely shaped paragraphs. If the space and the nbspace are not the same width, it breaks the text composition of documents.
 >
 * 💤 **SKIP** Unfulfilled Conditions: not missing_whitespace_chars
-</div></details><details><summary>💤 <b>SKIP:</b> Detect any interpolation issues in the font. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/interpolation_issues">com.google.fonts/check/interpolation_issues</a>)</summary><div>
-
->
->When creating a variable font, the designer must make sure that corresponding paths have the same start points across masters, as well as that corresponding component shapes are placed in the same order within a glyph across masters. If this is not done, the glyph will not interpolate correctly.
->
->Here we check for the presence of potential interpolation errors using the fontTools.varLib.interpolatable module.
->
-* 💤 **SKIP** Unfulfilled Conditions: is_variable_font
 </div></details><details><summary>💤 <b>SKIP:</b> Is the CFF subr/gsubr call depth > 10? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/cff.html#com.adobe.fonts/check/cff_call_depth">com.adobe.fonts/check/cff_call_depth</a>)</summary><div>
 
 >
@@ -344,12 +321,6 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-semi-ve
 >The 'dotsection' operator and the use of 'endchar' to build accented characters from the Adobe Standard Encoding Character Set ("seac") are deprecated in CFF. Adobe recommends repairing any fonts that use these, especially endchar-as-seac, because a rendering issue was discovered in Microsoft Word with a font that makes use of this operation. The check treats that usage as a FAIL. There are no known ill effects of using dotsection, so that check is a WARN.
 >
 * 💤 **SKIP** Unfulfilled Conditions: is_cff
-</div></details><details><summary>💤 <b>SKIP:</b> Checking head.macStyle value. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/head.html#com.google.fonts/check/mac_style">com.google.fonts/check/mac_style</a>)</summary><div>
-
->
->The values of the flags on the macStyle entry on the 'head' OpenType table that describe whether a font is bold and/or italic must be coherent with the actual style of the font as inferred by its filename.
->
-* 💤 **SKIP** Unfulfilled Conditions: style
 </div></details><details><summary>💤 <b>SKIP:</b> Checking OS/2 achVendID against configuration. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/os2.html#com.thetypefounders/check/vendor_id">com.thetypefounders/check/vendor_id</a>)</summary><div>
 
 >
@@ -357,18 +328,6 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-semi-ve
 >
 * 💤 **SKIP** Add the `vendor_id` key to a `fontbakery.yaml` file on your font project directory to enable this check.
 You'll also need to use the `--configuration` flag when invoking fontbakery.
-</div></details><details><summary>💤 <b>SKIP:</b> Checking OS/2 fsSelection value. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/os2.html#com.google.fonts/check/fsselection">com.google.fonts/check/fsselection</a>)</summary><div>
-
-
-* 💤 **SKIP** Unfulfilled Conditions: style
-</div></details><details><summary>💤 <b>SKIP:</b> Checking post.italicAngle value. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/post.html#com.google.fonts/check/italic_angle">com.google.fonts/check/italic_angle</a>)</summary><div>
-
->
->The 'post' table italicAngle property should be a reasonable amount, likely not more than 30°. Note that in the OpenType specification, the value is negative for a rightward lean.
->
->https://docs.microsoft.com/en-us/typography/opentype/spec/post
->
-* 💤 **SKIP** Unfulfilled Conditions: style
 </div></details><details><summary>💤 <b>SKIP:</b> CFF table FontName must match name table ID 6 (PostScript name). (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/name.html#com.adobe.fonts/check/name/postscript_vs_cff">com.adobe.fonts/check/name/postscript_vs_cff</a>)</summary><div>
 
 >
@@ -384,15 +343,7 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >
 >If a variable font has a 'wght' (Weight) axis, then the coordinate of its 'Regular' instance is required to be 400.
 >
-* 💤 **SKIP** Unfulfilled Conditions: is_variable_font, has_wght_axis
-</div></details><details><summary>💤 <b>SKIP:</b> The variable font 'wdth' (Width) axis coordinate must be 100 on the 'Regular' instance. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.google.fonts/check/varfont/regular_wdth_coord">com.google.fonts/check/varfont/regular_wdth_coord</a>)</summary><div>
-
->
->According to the Open-Type spec's registered design-variation tag 'wdth' available at https://docs.microsoft.com/en-gb/typography/opentype/spec/dvaraxistag_wdth
->
->If a variable font has a 'wdth' (Width) axis, then the coordinate of its 'Regular' instance is required to be 100.
->
-* 💤 **SKIP** Unfulfilled Conditions: is_variable_font, has_wdth_axis
+* 💤 **SKIP** Unfulfilled Conditions: has_wght_axis
 </div></details><details><summary>💤 <b>SKIP:</b> The variable font 'slnt' (Slant) axis coordinate must be zero on the 'Regular' instance. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.google.fonts/check/varfont/regular_slnt_coord">com.google.fonts/check/varfont/regular_slnt_coord</a>)</summary><div>
 
 >
@@ -400,7 +351,7 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >
 >If a variable font has a 'slnt' (Slant) axis, then the coordinate of its 'Regular' instance is required to be zero.
 >
-* 💤 **SKIP** Unfulfilled Conditions: is_variable_font, has_slnt_axis
+* 💤 **SKIP** Unfulfilled Conditions: has_slnt_axis
 </div></details><details><summary>💤 <b>SKIP:</b> The variable font 'ital' (Italic) axis coordinate must be zero on the 'Regular' instance. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.google.fonts/check/varfont/regular_ital_coord">com.google.fonts/check/varfont/regular_ital_coord</a>)</summary><div>
 
 >
@@ -408,7 +359,7 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >
 >If a variable font has a 'ital' (Italic) axis, then the coordinate of its 'Regular' instance is required to be zero.
 >
-* 💤 **SKIP** Unfulfilled Conditions: is_variable_font, has_ital_axis
+* 💤 **SKIP** Unfulfilled Conditions: has_ital_axis
 </div></details><details><summary>💤 <b>SKIP:</b> The variable font 'opsz' (Optical Size) axis coordinate should be between 10 and 16 on the 'Regular' instance. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.google.fonts/check/varfont/regular_opsz_coord">com.google.fonts/check/varfont/regular_opsz_coord</a>)</summary><div>
 
 >
@@ -416,7 +367,7 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >
 >If a variable font has an 'opsz' (Optical Size) axis, then the coordinate of its 'Regular' instance is recommended to be a value in the range 10 to 16.
 >
-* 💤 **SKIP** Unfulfilled Conditions: is_variable_font, has_opsz_axis
+* 💤 **SKIP** Unfulfilled Conditions: has_opsz_axis
 </div></details><details><summary>💤 <b>SKIP:</b> The variable font 'wght' (Weight) axis coordinate must be 700 on the 'Bold' instance. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.google.fonts/check/varfont/bold_wght_coord">com.google.fonts/check/varfont/bold_wght_coord</a>)</summary><div>
 
 >
@@ -424,7 +375,7 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >
 >But Dave Crossland suggested that we should enforce a required value of 700 in this case (NOTE: a distinction is made between "no bold instance present" vs "bold instance is present but its wght coordinate is not == 700").
 >
-* 💤 **SKIP** Unfulfilled Conditions: is_variable_font, has_wght_axis
+* 💤 **SKIP** Unfulfilled Conditions: has_wght_axis
 </div></details><details><summary>💤 <b>SKIP:</b> The variable font 'wght' (Weight) axis coordinate must be within spec range of 1 to 1000 on all instances. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.google.fonts/check/varfont/wght_valid_range">com.google.fonts/check/varfont/wght_valid_range</a>)</summary><div>
 
 >
@@ -432,15 +383,7 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >
 >On the 'wght' (Weight) axis, the valid coordinate range is 1-1000.
 >
-* 💤 **SKIP** Unfulfilled Conditions: is_variable_font, has_wght_axis
-</div></details><details><summary>💤 <b>SKIP:</b> The variable font 'wdth' (Width) axis coordinate must strictly greater than zero. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.google.fonts/check/varfont/wdth_valid_range">com.google.fonts/check/varfont/wdth_valid_range</a>)</summary><div>
-
->
->According to the Open-Type spec's registered design-variation tag 'wdth' available at https://docs.microsoft.com/en-gb/typography/opentype/spec/dvaraxistag_wdth
->
->On the 'wdth' (Width) axis, the valid numeric range is strictly greater than zero.
->
-* 💤 **SKIP** Unfulfilled Conditions: is_variable_font, has_wdth_axis
+* 💤 **SKIP** Unfulfilled Conditions: has_wght_axis
 </div></details><details><summary>💤 <b>SKIP:</b> The variable font 'slnt' (Slant) axis coordinate specifies positive values in its range?  (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.google.fonts/check/varfont/slnt_range">com.google.fonts/check/varfont/slnt_range</a>)</summary><div>
 
 >
@@ -448,95 +391,49 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >
 >[...] the scale for the Slant axis is interpreted as the angle of slant in counter-clockwise degrees from upright. This means that a typical, right-leaning oblique design will have a negative slant value. This matches the scale used for the italicAngle field in the post table.
 >
-* 💤 **SKIP** Unfulfilled Conditions: is_variable_font, has_slnt_axis
-</div></details><details><summary>💤 <b>SKIP:</b> Validates that the value of axisNameID used by each VariationAxisRecord is greater than 255 and less than 32768. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.adobe.fonts/check/varfont/valid_axis_nameid">com.adobe.fonts/check/varfont/valid_axis_nameid</a>)</summary><div>
-
->
->According to the 'fvar' documentation in OpenType spec v1.9 https://docs.microsoft.com/en-us/typography/opentype/spec/fvar
->
->The axisNameID field provides a name ID that can be used to obtain strings from the 'name' table that can be used to refer to the axis in application user interfaces. The name ID must be greater than 255 and less than 32768.
->
-* 💤 **SKIP** Unfulfilled Conditions: is_variable_font
-</div></details><details><summary>💤 <b>SKIP:</b> Validates that the value of subfamilyNameID used by each InstanceRecord is 2, 17, or greater than 255 and less than 32768. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.adobe.fonts/check/varfont/valid_subfamily_nameid">com.adobe.fonts/check/varfont/valid_subfamily_nameid</a>)</summary><div>
-
->
->According to the 'fvar' documentation in OpenType spec v1.9 https://docs.microsoft.com/en-us/typography/opentype/spec/fvar
->
->The subfamilyNameID field provides a name ID that can be used to obtain strings from the 'name' table that can be treated as equivalent to name ID 17 (typographic subfamily) strings for the given instance. Values of 2 or 17 can be used; otherwise, values must be greater than 255 and less than 32768.
->
-* 💤 **SKIP** Unfulfilled Conditions: is_variable_font
-</div></details><details><summary>💤 <b>SKIP:</b> Validates that the value of postScriptNameID used by each InstanceRecord is 6, 0xFFFF, or greater than 255 and less than 32768. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.adobe.fonts/check/varfont/valid_postscript_nameid">com.adobe.fonts/check/varfont/valid_postscript_nameid</a>)</summary><div>
-
->
->According to the 'fvar' documentation in OpenType spec v1.9 https://docs.microsoft.com/en-us/typography/opentype/spec/fvar
->
->The postScriptNameID field provides a name ID that can be used to obtain strings from the 'name' table that can be treated as equivalent to name ID 6 (PostScript name) strings for the given instance. Values of 6 and 0xFFFF can be used; otherwise, values must be greater than 255 and less than 32768.
->
-* 💤 **SKIP** Unfulfilled Conditions: is_variable_font
-</div></details><details><summary>💤 <b>SKIP:</b> Validates that when an instance record is included for the default instance, its subfamilyNameID value is set to a name ID whose string is equal to the string of either name ID 2 or 17, and its postScriptNameID value is set to a name ID whose string is equal to the string of name ID 6. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.adobe.fonts/check/varfont/valid_default_instance_nameids">com.adobe.fonts/check/varfont/valid_default_instance_nameids</a>)</summary><div>
-
->
->According to the 'fvar' documentation in OpenType spec v1.9.1 https://docs.microsoft.com/en-us/typography/opentype/spec/fvar
->
->The default instance of a font is that instance for which the coordinate value of each axis is the defaultValue specified in the corresponding variation axis record. An instance record is not required for the default instance, though an instance record can be provided. When enumerating named instances, the default instance should be enumerated even if there is no corresponding instance record. If an instance record is included for the default instance (that is, an instance record has coordinates set to default values), then the nameID value should be set to either 2 or 17 or to a name ID with the same value as name ID 2 or 17. Also, if a postScriptNameID is included in instance records, and the postScriptNameID value should be set to 6 or to a name ID with the same value as name ID 6.
->
-* 💤 **SKIP** Unfulfilled Conditions: is_variable_font
-</div></details><details><summary>💤 <b>SKIP:</b> Validates that all of the instance records in a given font have the same size. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.adobe.fonts/check/varfont/same_size_instance_records">com.adobe.fonts/check/varfont/same_size_instance_records</a>)</summary><div>
-
->
->According to the 'fvar' documentation in OpenType spec v1.9 https://docs.microsoft.com/en-us/typography/opentype/spec/fvar
->
->All of the instance records in a given font must be the same size, with all either including or omitting the postScriptNameID field. [...] If the value is 0xFFFF, then the value is ignored, and no PostScript name equivalent is provided for the instance.
->
-* 💤 **SKIP** Unfulfilled Conditions: is_variable_font
-</div></details><details><summary>💤 <b>SKIP:</b> Validates that all of the instance records in a given font have distinct data. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.adobe.fonts/check/varfont/distinct_instance_records">com.adobe.fonts/check/varfont/distinct_instance_records</a>)</summary><div>
-
->
->According to the 'fvar' documentation in OpenType spec v1.9 https://docs.microsoft.com/en-us/typography/opentype/spec/fvar
->
->All of the instance records in a font should have distinct coordinates and distinct subfamilyNameID and postScriptName ID values. If two or more records share the same coordinates, the same nameID values or the same postScriptNameID values, then all but the first can be ignored.
->
-* 💤 **SKIP** Unfulfilled Conditions: is_variable_font
-</div></details><details><summary>💤 <b>SKIP:</b> Validate foundry-defined design-variation axis tag names. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.adobe.fonts/check/varfont/foundry_defined_tag_name">com.adobe.fonts/check/varfont/foundry_defined_tag_name</a>)</summary><div>
-
->
->According to the Open-Type spec's syntactic requirements for foundry-defined design-variation axis tags available at https://learn.microsoft.com/en-us/typography/opentype/spec/dvaraxisreg
->
->Foundry-defined tags must begin with an uppercase letter and must use only uppercase letters or digits.
->
-* 💤 **SKIP** Unfulfilled Conditions: is_variable_font
-</div></details><details><summary>💤 <b>SKIP:</b> All fvar axes have a correspondent Axis Record on STAT table? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/stat.html#com.google.fonts/check/varfont/stat_axis_record_for_each_axis">com.google.fonts/check/varfont/stat_axis_record_for_each_axis</a>)</summary><div>
-
->
->According to the OpenType spec, there must be an Axis Record for every axis defined in the fvar table.
->
->https://docs.microsoft.com/en-us/typography/opentype/spec/stat#axis-records
->
-* 💤 **SKIP** Unfulfilled Conditions: is_variable_font
-</div></details><details><summary>💤 <b>SKIP:</b> STAT table has Axis Value tables? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/stat.html#com.adobe.fonts/check/stat_has_axis_value_tables">com.adobe.fonts/check/stat_has_axis_value_tables</a>)</summary><div>
-
->
->According to the OpenType spec, in a variable font, it is strongly recommended that axis value tables be included for every element of typographic subfamily names for all of the named instances defined in the 'fvar' table.
->
->Axis value tables are particularly important for variable fonts, but can also be used in non-variable fonts. When used in non-variable fonts, axis value tables for particular values should be implemented consistently across fonts in the family.
->
->If present, Format 4 Axis Value tables are checked to ensure they have more than one AxisValueRecord (a strong recommendation from the OpenType spec).
->
->https://docs.microsoft.com/en-us/typography/opentype/spec/stat#axis-value-tables
->
-* 💤 **SKIP** Unfulfilled Conditions: has_STAT_table
+* 💤 **SKIP** Unfulfilled Conditions: has_slnt_axis
 </div></details><details><summary>💤 <b>SKIP:</b> Ensure 'ital' STAT axis is boolean value (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/stat.html#com.google.fonts/check/italic_axis_in_stat_is_boolean">com.google.fonts/check/italic_axis_in_stat_is_boolean</a>)</summary><div>
 
 >
 >Check that the value of the 'ital' STAT axis is boolean (either 0 or 1), and elided for the Upright and not elided for the Italic, and that the Upright is linked to the Italic.
 >
-* 💤 **SKIP** Unfulfilled Conditions: style, has_STAT_table
+* 💤 **SKIP** Font doesn't have an ital axis
 </div></details><details><summary>💤 <b>SKIP:</b> Ensure 'ital' STAT axis is last. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/stat.html#com.google.fonts/check/italic_axis_last">com.google.fonts/check/italic_axis_last</a>)</summary><div>
 
 >
 >Check that the 'ital' STAT axis is last in axis order.
 >
-* 💤 **SKIP** Unfulfilled Conditions: style, has_STAT_table
+* 💤 **SKIP** No 'ital' axis in STAT.
+</div></details><details><summary>💤 <b>SKIP:</b> Are any segments inordinately short? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_short_segments">com.google.fonts/check/outline_short_segments</a>)</summary><div>
+
+>
+>This check looks for outline segments which seem particularly short (less than 0.6% of the overall path length).
+>
+>This check is not run for variable fonts, as they may legitimately have short segments. As this check is liable to generate significant numbers of false positives, it will pass if there are more than 100 reported short segments.
+>
+* 💤 **SKIP** Unfulfilled Conditions: is_not_variable_font
+</div></details><details><summary>💤 <b>SKIP:</b> Do any segments have colinear vectors? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_colinear_vectors">com.google.fonts/check/outline_colinear_vectors</a>)</summary><div>
+
+>
+>This check looks for consecutive line segments which have the same angle. This normally happens if an outline point has been added by accident.
+>
+>This check is not run for variable fonts, as they may legitimately have colinear vectors.
+>
+* 💤 **SKIP** Unfulfilled Conditions: is_not_variable_font
+</div></details><details><summary>💤 <b>SKIP:</b> Do outlines contain any jaggy segments? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_jaggy_segments">com.google.fonts/check/outline_jaggy_segments</a>)</summary><div>
+
+>
+>This check heuristically detects outline segments which form a particularly small angle, indicative of an outline error. This may cause false positives in cases such as extreme ink traps, so should be regarded as advisory and backed up by manual inspection.
+>
+* 💤 **SKIP** Unfulfilled Conditions: is_not_variable_font
+</div></details><details><summary>💤 <b>SKIP:</b> Do outlines contain any semi-vertical or semi-horizontal lines? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_semi_vertical">com.google.fonts/check/outline_semi_vertical</a>)</summary><div>
+
+>
+>This check detects line segments which are nearly, but not quite, exactly horizontal or vertical. Sometimes such lines are created by design, but often they are indicative of a design error.
+>
+>This check is disabled for italic styles, which often contain nearly-upright lines.
+>
+* 💤 **SKIP** Unfulfilled Conditions: is_not_variable_font
 </div></details><details><summary>💤 <b>SKIP:</b> Check that texts shape as per expectation (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Shaping Checks>.html#com.google.fonts/check/shaping/regression">com.google.fonts/check/shaping/regression</a>)</summary><div>
 
 >
@@ -603,16 +500,7 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >
 >Only the fontfiles in these directories will be considered in superfamily-level checks.
 >
-* ℹ **INFO** fonts/ttf [code: family-path]
-</div></details><details><summary>ℹ <b>INFO:</b> Font follows the family naming recommendations? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/name.html#com.google.fonts/check/family_naming_recommendations">com.google.fonts/check/family_naming_recommendations</a>)</summary><div>
-
-
-* ℹ **INFO** Font does not follow some family naming recommendations:
-
-| Field | Value | Recommendation |
-|:----- |:----- |:-------------- |
-| PostScript Name | LC.Mogi-B | May contain only a-zA-Z0-9 characters and an hyphen. |
- [code: bad-entries]
+* ℹ **INFO** fonts/variable [code: family-path]
 </div></details><details><summary>🍞 <b>PASS:</b> Name table records must not have trailing spaces. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/name/trailing_spaces">com.google.fonts/check/name/trailing_spaces</a>)</summary><div>
 
 
@@ -649,6 +537,12 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >Some font editors store source data in their own SFNT tables, and these can sometimes sneak into final release files, which should only have OpenType spec tables.
 >
 * 🍞 **PASS** There are no unwanted tables.
+</div></details><details><summary>🍞 <b>PASS:</b> Check correctness of STAT table strings  (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/STAT_strings">com.google.fonts/check/STAT_strings</a>)</summary><div>
+
+>
+>On the STAT table, the "Italic" keyword must not be used on AxisValues for variation axes other than 'ital'.
+>
+* 🍞 **PASS** Looks good!
 </div></details><details><summary>🍞 <b>PASS:</b> Glyph names are all valid? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/valid_glyphnames">com.google.fonts/check/valid_glyphnames</a>)</summary><div>
 
 >
@@ -731,6 +625,13 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 
 * 🍞 **PASS** All font version fields match.
+</div></details><details><summary>🍞 <b>PASS:</b> Checking head.macStyle value. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/head.html#com.google.fonts/check/mac_style">com.google.fonts/check/mac_style</a>)</summary><div>
+
+>
+>The values of the flags on the macStyle entry on the 'head' OpenType table that describe whether a font is bold and/or italic must be coherent with the actual style of the font as inferred by its filename.
+>
+* 🍞 **PASS** head macStyle ITALIC bit is properly set.
+* 🍞 **PASS** head macStyle BOLD bit is properly set.
 </div></details><details><summary>🍞 <b>PASS:</b> Check if OS/2 xAvgCharWidth is correct. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/os2.html#com.google.fonts/check/xavgcharwidth">com.google.fonts/check/xavgcharwidth</a>)</summary><div>
 
 
@@ -753,6 +654,12 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >So here we simply detect as a FAIL when a given font has no code page declared at all.
 >
 * 🍞 **PASS** At least one code page is defined.
+</div></details><details><summary>🍞 <b>PASS:</b> Checking OS/2 fsSelection value. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/os2.html#com.google.fonts/check/fsselection">com.google.fonts/check/fsselection</a>)</summary><div>
+
+
+* 🍞 **PASS** OS/2 fsSelection REGULAR bit is properly set.
+* 🍞 **PASS** OS/2 fsSelection ITALIC bit is properly set.
+* 🍞 **PASS** OS/2 fsSelection BOLD bit is properly set.
 </div></details><details><summary>🍞 <b>PASS:</b> Font has correct post table version? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/post.html#com.google.fonts/check/post_table_version">com.google.fonts/check/post_table_version</a>)</summary><div>
 
 >
@@ -769,6 +676,14 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >Acceptable post format versions are 2 and 3 for TTF and OTF CFF2 builds, and post format 3 for CFF builds.
 >
 * 🍞 **PASS** Font has an acceptable post format 2.0 table version.
+</div></details><details><summary>🍞 <b>PASS:</b> Checking post.italicAngle value. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/post.html#com.google.fonts/check/italic_angle">com.google.fonts/check/italic_angle</a>)</summary><div>
+
+>
+>The 'post' table italicAngle property should be a reasonable amount, likely not more than 30°. Note that in the OpenType specification, the value is negative for a rightward lean.
+>
+>https://docs.microsoft.com/en-us/typography/opentype/spec/post
+>
+* 🍞 **PASS** Value of post.italicAngle is 0.0 with style="Regular".
 </div></details><details><summary>🍞 <b>PASS:</b> Check name table for empty records. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/name.html#com.adobe.fonts/check/name/empty_records">com.adobe.fonts/check/name/empty_records</a>)</summary><div>
 
 >
@@ -821,6 +736,10 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >https://docs.microsoft.com/en-us/typography/opentype/otspec150/name#name-ids
 >
 * 🍞 **PASS** Full font name begins with the font family name.
+</div></details><details><summary>🍞 <b>PASS:</b> Font follows the family naming recommendations? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/name.html#com.google.fonts/check/family_naming_recommendations">com.google.fonts/check/family_naming_recommendations</a>)</summary><div>
+
+
+* 🍞 **PASS** Font follows the family naming recommendations.
 </div></details><details><summary>🍞 <b>PASS:</b> Name table ID 6 (PostScript name) must be consistent across platforms. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/name.html#com.adobe.fonts/check/name/postscript_name_consistency">com.adobe.fonts/check/name/postscript_name_consistency</a>)</summary><div>
 
 >
@@ -917,6 +836,78 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >This check ensures that glyphs do not contain duplicate components which have the same x,y coordinates.
 >
 * 🍞 **PASS** Glyphs do not contain duplicate components which have the same x,y coordinates.
+</div></details><details><summary>🍞 <b>PASS:</b> The variable font 'wdth' (Width) axis coordinate must strictly greater than zero. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.google.fonts/check/varfont/wdth_valid_range">com.google.fonts/check/varfont/wdth_valid_range</a>)</summary><div>
+
+>
+>According to the Open-Type spec's registered design-variation tag 'wdth' available at https://docs.microsoft.com/en-gb/typography/opentype/spec/dvaraxistag_wdth
+>
+>On the 'wdth' (Width) axis, the valid numeric range is strictly greater than zero.
+>
+* 🍞 **PASS** OK
+</div></details><details><summary>🍞 <b>PASS:</b> Validates that the value of axisNameID used by each VariationAxisRecord is greater than 255 and less than 32768. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.adobe.fonts/check/varfont/valid_axis_nameid">com.adobe.fonts/check/varfont/valid_axis_nameid</a>)</summary><div>
+
+>
+>According to the 'fvar' documentation in OpenType spec v1.9 https://docs.microsoft.com/en-us/typography/opentype/spec/fvar
+>
+>The axisNameID field provides a name ID that can be used to obtain strings from the 'name' table that can be used to refer to the axis in application user interfaces. The name ID must be greater than 255 and less than 32768.
+>
+* 🍞 **PASS** All axisNameID values are valid.
+</div></details><details><summary>🍞 <b>PASS:</b> Validates that the value of subfamilyNameID used by each InstanceRecord is 2, 17, or greater than 255 and less than 32768. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.adobe.fonts/check/varfont/valid_subfamily_nameid">com.adobe.fonts/check/varfont/valid_subfamily_nameid</a>)</summary><div>
+
+>
+>According to the 'fvar' documentation in OpenType spec v1.9 https://docs.microsoft.com/en-us/typography/opentype/spec/fvar
+>
+>The subfamilyNameID field provides a name ID that can be used to obtain strings from the 'name' table that can be treated as equivalent to name ID 17 (typographic subfamily) strings for the given instance. Values of 2 or 17 can be used; otherwise, values must be greater than 255 and less than 32768.
+>
+* 🍞 **PASS** All subfamilyNameID values are valid.
+</div></details><details><summary>🍞 <b>PASS:</b> Validates that the value of postScriptNameID used by each InstanceRecord is 6, 0xFFFF, or greater than 255 and less than 32768. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.adobe.fonts/check/varfont/valid_postscript_nameid">com.adobe.fonts/check/varfont/valid_postscript_nameid</a>)</summary><div>
+
+>
+>According to the 'fvar' documentation in OpenType spec v1.9 https://docs.microsoft.com/en-us/typography/opentype/spec/fvar
+>
+>The postScriptNameID field provides a name ID that can be used to obtain strings from the 'name' table that can be treated as equivalent to name ID 6 (PostScript name) strings for the given instance. Values of 6 and 0xFFFF can be used; otherwise, values must be greater than 255 and less than 32768.
+>
+* 🍞 **PASS** All postScriptNameID values are valid.
+</div></details><details><summary>🍞 <b>PASS:</b> Validates that when an instance record is included for the default instance, its subfamilyNameID value is set to a name ID whose string is equal to the string of either name ID 2 or 17, and its postScriptNameID value is set to a name ID whose string is equal to the string of name ID 6. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.adobe.fonts/check/varfont/valid_default_instance_nameids">com.adobe.fonts/check/varfont/valid_default_instance_nameids</a>)</summary><div>
+
+>
+>According to the 'fvar' documentation in OpenType spec v1.9.1 https://docs.microsoft.com/en-us/typography/opentype/spec/fvar
+>
+>The default instance of a font is that instance for which the coordinate value of each axis is the defaultValue specified in the corresponding variation axis record. An instance record is not required for the default instance, though an instance record can be provided. When enumerating named instances, the default instance should be enumerated even if there is no corresponding instance record. If an instance record is included for the default instance (that is, an instance record has coordinates set to default values), then the nameID value should be set to either 2 or 17 or to a name ID with the same value as name ID 2 or 17. Also, if a postScriptNameID is included in instance records, and the postScriptNameID value should be set to 6 or to a name ID with the same value as name ID 6.
+>
+* 🍞 **PASS** All default instance name strings are valid.
+</div></details><details><summary>🍞 <b>PASS:</b> Validates that all of the instance records in a given font have the same size. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.adobe.fonts/check/varfont/same_size_instance_records">com.adobe.fonts/check/varfont/same_size_instance_records</a>)</summary><div>
+
+>
+>According to the 'fvar' documentation in OpenType spec v1.9 https://docs.microsoft.com/en-us/typography/opentype/spec/fvar
+>
+>All of the instance records in a given font must be the same size, with all either including or omitting the postScriptNameID field. [...] If the value is 0xFFFF, then the value is ignored, and no PostScript name equivalent is provided for the instance.
+>
+* 🍞 **PASS** All instance records have the same size.
+</div></details><details><summary>🍞 <b>PASS:</b> Validates that all of the instance records in a given font have distinct data. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.adobe.fonts/check/varfont/distinct_instance_records">com.adobe.fonts/check/varfont/distinct_instance_records</a>)</summary><div>
+
+>
+>According to the 'fvar' documentation in OpenType spec v1.9 https://docs.microsoft.com/en-us/typography/opentype/spec/fvar
+>
+>All of the instance records in a font should have distinct coordinates and distinct subfamilyNameID and postScriptName ID values. If two or more records share the same coordinates, the same nameID values or the same postScriptNameID values, then all but the first can be ignored.
+>
+* 🍞 **PASS** All instance records are distinct.
+</div></details><details><summary>🍞 <b>PASS:</b> Validate foundry-defined design-variation axis tag names. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.adobe.fonts/check/varfont/foundry_defined_tag_name">com.adobe.fonts/check/varfont/foundry_defined_tag_name</a>)</summary><div>
+
+>
+>According to the Open-Type spec's syntactic requirements for foundry-defined design-variation axis tags available at https://learn.microsoft.com/en-us/typography/opentype/spec/dvaraxisreg
+>
+>Foundry-defined tags must begin with an uppercase letter and must use only uppercase letters or digits.
+>
+* 🍞 **PASS** Axis tag 'wdth' looks good.
+</div></details><details><summary>🍞 <b>PASS:</b> All fvar axes have a correspondent Axis Record on STAT table? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/stat.html#com.google.fonts/check/varfont/stat_axis_record_for_each_axis">com.google.fonts/check/varfont/stat_axis_record_for_each_axis</a>)</summary><div>
+
+>
+>According to the OpenType spec, there must be an Axis Record for every axis defined in the fvar table.
+>
+>https://docs.microsoft.com/en-us/typography/opentype/spec/stat#axis-records
+>
+* 🍞 **PASS** STAT table has all necessary Axis Records.
 </div></details><details><summary>🍞 <b>PASS:</b> Does the font have any invalid feature tags? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/layout.html#com.google.fonts/check/layout_valid_feature_tags">com.google.fonts/check/layout_valid_feature_tags</a>)</summary><div>
 
 >
@@ -935,35 +926,11 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >Incorrect language tags can be indications of typos, leftover debugging code or questionable approaches, or user error in the font editor. Such typos can cause features and language support to fail to work as intended.
 >
 * 🍞 **PASS** No invalid language tags were found
-</div></details><details><summary>🍞 <b>PASS:</b> Are there any misaligned on-curve points? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_alignment_miss">com.google.fonts/check/outline_alignment_miss</a>)</summary><div>
-
->
->This check heuristically looks for on-curve points which are close to, but do not sit on, significant boundary coordinates. For example, a point which has a Y-coordinate of 1 or -1 might be a misplaced baseline point. As well as the baseline, here we also check for points near the x-height (but only for lowercase Latin letters), cap-height, ascender and descender Y coordinates.
->
->Not all such misaligned curve points are a mistake, and sometimes the design may call for points in locations near the boundaries. As this check is liable to generate significant numbers of false positives, it will pass if there are more than 100 reported misalignments.
->
-* 🍞 **PASS** So many Y-coordinates of points were close to boundaries that this was probably by design.
-</div></details><details><summary>🍞 <b>PASS:</b> Are any segments inordinately short? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_short_segments">com.google.fonts/check/outline_short_segments</a>)</summary><div>
-
->
->This check looks for outline segments which seem particularly short (less than 0.6% of the overall path length).
->
->This check is not run for variable fonts, as they may legitimately have short segments. As this check is liable to generate significant numbers of false positives, it will pass if there are more than 100 reported short segments.
->
-* 🍞 **PASS** So many short segments were found that this was probably by design.
-</div></details><details><summary>🍞 <b>PASS:</b> Do any segments have colinear vectors? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_colinear_vectors">com.google.fonts/check/outline_colinear_vectors</a>)</summary><div>
-
->
->This check looks for consecutive line segments which have the same angle. This normally happens if an outline point has been added by accident.
->
->This check is not run for variable fonts, as they may legitimately have colinear vectors.
->
-* 🍞 **PASS** No colinear vectors found.
 </div></details><br></div></details>
 
 ### Summary
 
 | 💔 ERROR | 🔥 FAIL | ⚠ WARN | 💤 SKIP | ℹ INFO | 🍞 PASS | 🔎 DEBUG |
 |:-----:|:----:|:----:|:----:|:----:|:----:|:----:|
-| 0 | 5 | 6 | 40 | 3 | 51 | 0 |
-| 0% | 5% | 6% | 38% | 3% | 49% | 0% |
+| 0 | 7 | 5 | 28 | 2 | 63 | 0 |
+| 0% | 7% | 5% | 27% | 2% | 60% | 0% |
