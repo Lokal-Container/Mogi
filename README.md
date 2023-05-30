@@ -1,16 +1,12 @@
 # LC Mogi
 
-LC Mogi Typeface is a playful font with its own strong character and unique charm.
+LC Mogi Typeface is a playful font with its own strong character and unique charm. Adds an extra touch of playfulness with its distinctive bouncy and chubby letterforms, reminiscent of the plumpness of Bubblegum. It's is suitable for a range of design projects that require a touch of lightheartedness. Whether used in headlines, posters, or branding materials.
 
-LC Mogi adds an extra touch of playfulness with its distinctive.  Letterforms have a chubby and bouncing appearance, reminiscent of the plumpness of Bubblegum.
-
-LC Mogi Typeface is suitable for a range of design projects that require a touch of lightheartedness. Whether used in headlines, posters, or branding materials.
-
----
+LC Mogi adalah font playful dengan karakter yang kuat dan unik. Tambahan sentuhan keceriaan dengan bentuk yang gemuk dan tebal. Terdapat opsi 3 corak lebar yang berbeda. Cocok untuk berbagai proyek desain yang membutuhkan sentuhan keceriaan. Baik berupa judul, poster, atau materi branding.
 
 ## Specimen
 
-"![filename](filename.png)"
+"![LCMogiImage](./documentation/images/LCMogi.png)"
 
 ## License
 
