@@ -87,7 +87,7 @@ Width = 426:
 less, greater
 
 Width = 439:
-logicalnot, plusminus
+plusminus, logicalnot
 
 Width = 457:
 multiply

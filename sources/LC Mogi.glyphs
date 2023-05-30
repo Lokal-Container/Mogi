@@ -1,7 +1,7 @@
 {
 .appVersion = "3197";
 DisplayStrings = (
-"Mond/idotless j/jdotless rian"
+"i/iogonek/brevecomb/space/iogonek/dotaccentcomb/space/iogonek/dieresiscomb/space/iogonek/ringcomb/space/iogonek/hungarumlautcomb/space/iogonek/commaturnedabovecomb/space/iogonek/commaaccentcomb/gravecomb/space/iogonek/commaaccentcomb/acutecomb/space/iogonek/commaaccentcomb/circumflexcomb/space/iogonek/commaaccentcomb/tildecomb/space/iogonek/commaaccentcomb/macroncomb/space/iogonek/commaaccentcomb/brevecomb/space/iogonek/commaaccentcomb/dotaccentcomb/space/iogonek/commaaccentcomb/dieresiscomb/space/iogonek/commaaccentcomb/ringcomb/space/iogonek/commaaccentcomb/hungarumlautcomb/space/iogonek/commaaccentcomb/caroncomb/space/iogonek/commaaccentcomb/commaturnedabovecomb/space/iogonek/cedillacomb/gravecomb/space/iogonek/cedillacomb/acutecomb/space"
 );
 copyright = "Copyright © 2018 by Deni Anggara. All rights reserved.";
 customParameters = (
@@ -10897,7 +10897,7 @@ unicode = 0127;
 },
 {
 glyphname = i;
-lastChange = "2023-05-23 19:28:12 +0000";
+lastChange = "2023-05-30 16:45:28 +0000";
 layers = (
 {
 anchors = (
@@ -10908,6 +10908,10 @@ position = "{206, 0}";
 {
 name = ogonek;
 position = "{304, 0}";
+},
+{
+name = top;
+position = "{206, 690}";
 }
 );
 background = {
@@ -10990,6 +10994,10 @@ position = "{174, 0}";
 {
 name = ogonek;
 position = "{269, 0}";
+},
+{
+name = top;
+position = "{174, 690}";
 }
 );
 layerId = "685D33D6-AC85-457D-AB31-6AFB1340D947";
