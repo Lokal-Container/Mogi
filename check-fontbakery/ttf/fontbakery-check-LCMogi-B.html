@@ -73,23 +73,23 @@
             </tr>
             <tr>
                 <td>0</td>
-                <td>4</td>
-                <td>7</td>
-                <td>40</td>
                 <td>2</td>
-                <td>52</td>
+                <td>6</td>
+                <td>38</td>
+                <td>2</td>
+                <td>57</td>
             </tr>
             <tr>
                 <td>0%</td>
-                <td>4%</td>
-                <td>7%</td>
-                <td>38%</td>
                 <td>2%</td>
-                <td>50%</td>
+                <td>6%</td>
+                <td>36%</td>
+                <td>2%</td>
+                <td>54%</td>
             </tr>
             </table>
             
-<h2>&lt;Section: Universal&gt; 🔥🔥🔥🔥⚠️⚠️⚠️⏩⏩⏩⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
+<h2>&lt;Section: Universal&gt; 🔥🔥⚠️⚠️⚠️⏩⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
 <h3>Checking all files are in the same directory.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/single_directory&gt;</div>
 <p>If the set of font files passed in the command line is not all in the same directory, then we warn the user since the tool will interpret the set of files as belonging to a single family (and it is unlikely that the user would store the files from a single family spreaded in several separate directories).</p>
@@ -113,7 +113,7 @@
 <p>If the font includes tall/deep writing systems such as Arabic or Devanagari, the winAscent and winDescent can be greater than the yMax and abs(yMin) to accommodate vowel marks.</p>
 <p>When the win Metrics are significantly greater than the upm, the linespacing can appear too loose. To counteract this, enabling the OS/2 fsSelection bit 7 (Use_Typo_Metrics), will force Windows to use the OS/2 typo values instead. This means the font developer can control the linespacing with the typo values, whilst avoiding clipping by setting the win values to values greater than the yMax and abs(yMin).</p>
 
-<details><summary>🔥 <strong>fonts/ttf/LCMogi-B.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>OS/2.usWinDescent value 960 is too large. It should be less than double the yMin. Current absolute yMin value is 270 [code: descent]</p>
+<details><summary>✅ <strong>fonts/ttf/LCMogi-B.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>OS/2 usWinAscent &amp; usWinDescent values look good!</p>
 </span></li></ul></div></details>
 <h3>Checking OS/2 Metrics match hhea Metrics.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/os2_metrics_match_hhea&gt;</div>
@@ -151,13 +151,13 @@
 <h3>Font contains glyphs for whitespace characters?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/whitespace_glyphs&gt;</div>
 
-<details><summary>🔥 <strong>fonts/ttf/LCMogi-B.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>Whitespace glyph missing for codepoint 0x00A0. [code: missing-whitespace-glyph-0x00A0]</p>
+<details><summary>✅ <strong>fonts/ttf/LCMogi-B.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font contains glyphs for whitespace characters.</p>
 </span></li></ul></div></details>
 <h3>Font has **proper** whitespace glyph names?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/whitespace_glyphnames&gt;</div>
 <p>This check enforces adherence to recommended whitespace (codepoints 0020 and 00A0) glyph names according to the Adobe Glyph List.</p>
 
-<details><summary>⏩ <strong>fonts/ttf/LCMogi-B.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: not missing_whitespace_chars</p>
+<details><summary>✅ <strong>fonts/ttf/LCMogi-B.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font has <strong>AGL recommended</strong> names for whitespace glyphs.</p>
 </span></li></ul></div></details>
 <h3>Whitespace glyphs have ink?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/whitespace_ink&gt;</div>
@@ -386,7 +386,7 @@ or inverted outline direction:</p>
 <p>The nbspace is used to replace the space character in multiple situations in documents; such as the space before punctuation in languages that do that. It avoids the punctuation to be separated from the last word and go to next line.</p>
 <p>This is automatic substitution by the text editors, not by fonts. It is also used by designers in text composition practice to create nicely shaped paragraphs. If the space and the nbspace are not the same width, it breaks the text composition of documents.</p>
 
-<details><summary>⏩ <strong>fonts/ttf/LCMogi-B.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: not missing_whitespace_chars</p>
+<details><summary>✅ <strong>fonts/ttf/LCMogi-B.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Space and non-breaking space have the same width.</p>
 </span></li></ul></div></details>
 <h3>Detect any interpolation issues in the font.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/interpolation_issues&gt;</div>
@@ -407,7 +407,7 @@ plus</p>
 <p>Width = 431:
 equal</p>
 <p>Width = 476:
-logicalnot, plusminus</p>
+plusminus, logicalnot</p>
 <p>Width = 494:
 multiply</p>
 <p>Width = 376:
@@ -419,7 +419,7 @@ approxequal</p>
 <p>Width = 446:
 notequal</p>
 <p>Width = 468:
-lessequal, greaterequal
+greaterequal, lessequal
 [code: width-outliers]</p>
 </span></li></ul></div></details>
 <h2>&lt;Section: fontbakery.profiles.cff&gt; ⏩⏩⏩</h2>
@@ -634,11 +634,11 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 <details><summary>✅ <strong>fonts/ttf/LCMogi-B.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>'loca' table matches numGlyphs in 'maxp' table.</p>
 </span></li></ul></div></details>
-<h2>&lt;Section: fontbakery.profiles.hhea&gt; ⚠️</h2>
+<h2>&lt;Section: fontbakery.profiles.hhea&gt; </h2>
 <h3>Checking Vertical Metric Linegaps.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/linegaps&gt;</div>
 
-<details><summary>⚠️ <strong>fonts/ttf/LCMogi-B.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>hhea lineGap is not equal to 0. [code: hhea]</p>
+<details><summary>✅ <strong>fonts/ttf/LCMogi-B.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>OS/2 sTypoLineGap and hhea lineGap are both 0.</p>
 </span></li></ul></div></details>
 <h3>MaxAdvanceWidth is consistent with values in the Hmtx and Hhea tables?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/maxadvancewidth&gt;</div>

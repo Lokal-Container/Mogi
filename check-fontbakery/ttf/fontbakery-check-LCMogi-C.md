@@ -60,21 +60,7 @@ Fontbakery version: 0.8.11
 >This four-way distinction should also be reflected in the OS/2.fsSelection field, using bits 0 and 5.
 >
 * 💤 **SKIP** Unfulfilled Conditions: RIBBI_ttFonts
-</div></details><br></div></details><details><summary><b>[95] LCMogi-C.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
-
->
->A font's winAscent and winDescent values should be greater than or equal to the head table's yMax, abs(yMin) values. If they are less than these values, clipping can occur on Windows platforms (https://github.com/RedHatBrand/Overpass/issues/33).
->
->If the font includes tall/deep writing systems such as Arabic or Devanagari, the winAscent and winDescent can be greater than the yMax and abs(yMin) to accommodate vowel marks.
->
->When the win Metrics are significantly greater than the upm, the linespacing can appear too loose. To counteract this, enabling the OS/2 fsSelection bit 7 (Use_Typo_Metrics), will force Windows to use the OS/2 typo values instead. This means the font developer can control the linespacing with the typo values, whilst avoiding clipping by setting the win values to values greater than the yMax and abs(yMin).
->
-* 🔥 **FAIL** OS/2.usWinDescent value 960 is too large. It should be less than double the yMin. Current absolute yMin value is 273 [code: descent]
-</div></details><details><summary>🔥 <b>FAIL:</b> Font contains glyphs for whitespace characters? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/whitespace_glyphs">com.google.fonts/check/whitespace_glyphs</a>)</summary><div>
-
-
-* 🔥 **FAIL** Whitespace glyph missing for codepoint 0x00A0. [code: missing-whitespace-glyph-0x00A0]
-</div></details><details><summary>🔥 <b>FAIL:</b> Ensure component transforms do not perform scaling or rotation. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/transformed_components">com.google.fonts/check/transformed_components</a>)</summary><div>
+</div></details><br></div></details><details><summary><b>[95] LCMogi-C.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Ensure component transforms do not perform scaling or rotation. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/transformed_components">com.google.fonts/check/transformed_components</a>)</summary><div>
 
 >
 >Some families have glyphs which have been constructed by using transformed components e.g the 'u' being constructed from a flipped 'n'.
@@ -203,12 +189,8 @@ Width = 521:
 notequal
 
 Width = 543:
-lessequal, greaterequal
+greaterequal, lessequal
  [code: width-outliers]
-</div></details><details><summary>⚠ <b>WARN:</b> Checking Vertical Metric Linegaps. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/hhea.html#com.google.fonts/check/linegaps">com.google.fonts/check/linegaps</a>)</summary><div>
-
-
-* ⚠ **WARN** hhea lineGap is not equal to 0. [code: hhea]
 </div></details><details><summary>⚠ <b>WARN:</b> Are there any misaligned on-curve points? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_alignment_miss">com.google.fonts/check/outline_alignment_miss</a>)</summary><div>
 
 >
@@ -313,12 +295,6 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-misalig
 	* 11 more.
 
 Use -F or --full-lists to disable shortening of long lists. [code: found-semi-vertical]
-</div></details><details><summary>💤 <b>SKIP:</b> Font has **proper** whitespace glyph names? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/whitespace_glyphnames">com.google.fonts/check/whitespace_glyphnames</a>)</summary><div>
-
->
->This check enforces adherence to recommended whitespace (codepoints 0020 and 00A0) glyph names according to the Adobe Glyph List.
->
-* 💤 **SKIP** Unfulfilled Conditions: not missing_whitespace_chars
 </div></details><details><summary>💤 <b>SKIP:</b> Check correctness of STAT table strings  (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/STAT_strings">com.google.fonts/check/STAT_strings</a>)</summary><div>
 
 >
@@ -353,16 +329,6 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-semi-ve
 >Malformed fonts can cause FreeType to crash.
 >
 * 💤 **SKIP** FreeType is not available; to install it, invoke the 'freetype' extra when installing Font Bakery. [code: freetype-not-installed]
-</div></details><details><summary>💤 <b>SKIP:</b> Space and non-breaking space have the same width? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/whitespace_widths">com.google.fonts/check/whitespace_widths</a>)</summary><div>
-
->
->If the space and nbspace glyphs have different widths, then Google Workspace has problems with the font.
->
->The nbspace is used to replace the space character in multiple situations in documents; such as the space before punctuation in languages that do that. It avoids the punctuation to be separated from the last word and go to next line.
->
->This is automatic substitution by the text editors, not by fonts. It is also used by designers in text composition practice to create nicely shaped paragraphs. If the space and the nbspace are not the same width, it breaks the text composition of documents.
->
-* 💤 **SKIP** Unfulfilled Conditions: not missing_whitespace_chars
 </div></details><details><summary>💤 <b>SKIP:</b> Detect any interpolation issues in the font. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/interpolation_issues">com.google.fonts/check/interpolation_issues</a>)</summary><div>
 
 >
@@ -653,6 +619,16 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 
 * 🍞 **PASS** No trailing spaces on name table entries.
+</div></details><details><summary>🍞 <b>PASS:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
+
+>
+>A font's winAscent and winDescent values should be greater than or equal to the head table's yMax, abs(yMin) values. If they are less than these values, clipping can occur on Windows platforms (https://github.com/RedHatBrand/Overpass/issues/33).
+>
+>If the font includes tall/deep writing systems such as Arabic or Devanagari, the winAscent and winDescent can be greater than the yMax and abs(yMin) to accommodate vowel marks.
+>
+>When the win Metrics are significantly greater than the upm, the linespacing can appear too loose. To counteract this, enabling the OS/2 fsSelection bit 7 (Use_Typo_Metrics), will force Windows to use the OS/2 typo values instead. This means the font developer can control the linespacing with the typo values, whilst avoiding clipping by setting the win values to values greater than the yMax and abs(yMin).
+>
+* 🍞 **PASS** OS/2 usWinAscent & usWinDescent values look good!
 </div></details><details><summary>🍞 <b>PASS:</b> Checking OS/2 Metrics match hhea Metrics. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/os2_metrics_match_hhea">com.google.fonts/check/os2_metrics_match_hhea</a>)</summary><div>
 
 >
@@ -690,6 +666,16 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >Pre-v1.8, it was recommended that fonts should also contain 'space', 'CR' and '.null' glyphs. This might have been relevant for MacOS 9 applications.
 >
 * 🍞 **PASS** OK
+</div></details><details><summary>🍞 <b>PASS:</b> Font contains glyphs for whitespace characters? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/whitespace_glyphs">com.google.fonts/check/whitespace_glyphs</a>)</summary><div>
+
+
+* 🍞 **PASS** Font contains glyphs for whitespace characters.
+</div></details><details><summary>🍞 <b>PASS:</b> Font has **proper** whitespace glyph names? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/whitespace_glyphnames">com.google.fonts/check/whitespace_glyphnames</a>)</summary><div>
+
+>
+>This check enforces adherence to recommended whitespace (codepoints 0020 and 00A0) glyph names according to the Adobe Glyph List.
+>
+* 🍞 **PASS** Font has **AGL recommended** names for whitespace glyphs.
 </div></details><details><summary>🍞 <b>PASS:</b> Whitespace glyphs have ink? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/whitespace_ink">com.google.fonts/check/whitespace_ink</a>)</summary><div>
 
 
@@ -766,6 +752,16 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >https://docs.microsoft.com/en-us/typography/opentype/spec/otff#table-directory
 >
 * 🍞 **PASS** Font has the correct sfntVersion value.
+</div></details><details><summary>🍞 <b>PASS:</b> Space and non-breaking space have the same width? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/whitespace_widths">com.google.fonts/check/whitespace_widths</a>)</summary><div>
+
+>
+>If the space and nbspace glyphs have different widths, then Google Workspace has problems with the font.
+>
+>The nbspace is used to replace the space character in multiple situations in documents; such as the space before punctuation in languages that do that. It avoids the punctuation to be separated from the last word and go to next line.
+>
+>This is automatic substitution by the text editors, not by fonts. It is also used by designers in text composition practice to create nicely shaped paragraphs. If the space and the nbspace are not the same width, it breaks the text composition of documents.
+>
+* 🍞 **PASS** Space and non-breaking space have the same width.
 </div></details><details><summary>🍞 <b>PASS:</b> Checking unitsPerEm value is reasonable. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/head.html#com.google.fonts/check/unitsperem">com.google.fonts/check/unitsperem</a>)</summary><div>
 
 >
@@ -888,6 +884,10 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 
 * 🍞 **PASS** 'loca' table matches numGlyphs in 'maxp' table.
+</div></details><details><summary>🍞 <b>PASS:</b> Checking Vertical Metric Linegaps. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/hhea.html#com.google.fonts/check/linegaps">com.google.fonts/check/linegaps</a>)</summary><div>
+
+
+* 🍞 **PASS** OS/2 sTypoLineGap and hhea lineGap are both 0.
 </div></details><details><summary>🍞 <b>PASS:</b> MaxAdvanceWidth is consistent with values in the Hmtx and Hhea tables? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/hhea.html#com.google.fonts/check/maxadvancewidth">com.google.fonts/check/maxadvancewidth</a>)</summary><div>
 
 
@@ -1004,5 +1004,5 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 | 💔 ERROR | 🔥 FAIL | ⚠ WARN | 💤 SKIP | ℹ INFO | 🍞 PASS | 🔎 DEBUG |
 |:-----:|:----:|:----:|:----:|:----:|:----:|:----:|
-| 0 | 4 | 8 | 40 | 2 | 51 | 0 |
-| 0% | 4% | 8% | 38% | 2% | 49% | 0% |
+| 0 | 2 | 7 | 38 | 2 | 56 | 0 |
+| 0% | 2% | 7% | 36% | 2% | 53% | 0% |
