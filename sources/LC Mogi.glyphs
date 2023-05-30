@@ -1,7 +1,7 @@
 {
 .appVersion = "3197";
 DisplayStrings = (
-Mondrian
+"Mond/idotless j/jdotless rian"
 );
 copyright = "Copyright © 2018 by Deni Anggara. All rights reserved.";
 customParameters = (
@@ -47,17 +47,17 @@ name = Languagesystems;
 features = (
 {
 automatic = 1;
-code = "feature locl;\012feature subs;\012feature sinf;\012feature sups;\012feature numr;\012feature dnom;\012feature frac;\012feature ordn;\012feature case;\012feature salt;\012feature ss01;\012feature ss03;\012";
+code = "feature locl;\012feature subs;\012feature sinf;\012feature sups;\012feature numr;\012feature dnom;\012feature frac;\012feature ordn;\012feature case;\012feature ss01;\012feature ss03;\012";
 name = aalt;
 },
 {
 automatic = 1;
-code = "lookup ccmp_Other_1 {\012	@CombiningTopAccents = [acutecomb brevecomb caroncomb circumflexcomb commaturnedabovecomb dieresiscomb dotaccentcomb gravecomb hungarumlautcomb macroncomb ringcomb tildecomb];\012	@CombiningNonTopAccents = [cedillacomb ogonekcomb slashlongcomb slashshortcomb strokeshortcomb];\012	sub [i]' @CombiningTopAccents by [idotless];\012	sub [i]' @CombiningNonTopAccents @CombiningTopAccents by [idotless];\012} ccmp_Other_1;\012";
+code = "lookup ccmp_Other_1 {\012	@CombiningTopAccents = [acutecomb brevecomb caroncomb circumflexcomb commaturnedabovecomb dieresiscomb dotaccentcomb gravecomb hungarumlautcomb macroncomb ringcomb tildecomb];\012	lookupflag UseMarkFilteringSet @CombiningTopAccents;\012	sub i' @CombiningTopAccents by idotless;\012	sub j' @CombiningTopAccents by jdotless;\012} ccmp_Other_1;\012";
 name = ccmp;
 },
 {
 automatic = 1;
-code = "lookup locl_latn_0 {\012	script latn;\012	language AZE;\012	sub i by idotaccent;\012	language CRT;\012	sub i by idotaccent;\012	language KAZ;\012	sub i by idotaccent;\012	language TAT;\012	sub i by idotaccent;\012	language TRK;\012	sub i by idotaccent;\012} locl_latn_0;\012\012lookup locl_latn_1 {\012	script latn;\012	language ROM;\012	sub Scedilla by Scommaaccent;\012	sub scedilla by scommaaccent;\012	sub Tcedilla by Tcommaaccent;\012	sub tcedilla by tcommaaccent;\012	language MOL;\012	sub Scedilla by Scommaaccent;\012	sub scedilla by scommaaccent;\012	sub Tcedilla by Tcommaaccent;\012	sub tcedilla by tcommaaccent;\012} locl_latn_1;\012";
+code = "script latn;\012language AZE;\012lookup locl_latn_0 {\012	sub i by idotaccent;\012} locl_latn_0;\012language CRT;\012lookup locl_latn_0;\012language KAZ;\012lookup locl_latn_0;\012language TAT;\012lookup locl_latn_0;\012language TRK;\012lookup locl_latn_0;\012\012script latn;\012language ROM;\012lookup locl_latn_1 {\012	sub Scedilla by Scommaaccent;\012	sub scedilla by scommaaccent;\012	sub Tcedilla by Tcommaaccent;\012	sub tcedilla by tcommaaccent;\012} locl_latn_1;\012language MOL;\012lookup locl_latn_1;\012";
 name = locl;
 },
 {
@@ -112,12 +112,7 @@ name = liga;
 },
 {
 automatic = 1;
-code = "sub upArrow by upArrow.ss01;\012sub northEastArrow by northEastArrow.ss01;\012sub rightArrow by rightArrow.ss01;\012sub southEastArrow by southEastArrow.ss01;\012sub downArrow by downArrow.ss01;\012sub southWestArrow by southWestArrow.ss01;\012sub leftArrow by leftArrow.ss01;\012sub northWestArrow by northWestArrow.ss01;\012sub registered by registered.ss01;\012";
-name = salt;
-},
-{
-automatic = 1;
-code = "sub upArrow by upArrow.ss01;\012sub northEastArrow by northEastArrow.ss01;\012sub rightArrow by rightArrow.ss01;\012sub southEastArrow by southEastArrow.ss01;\012sub downArrow by downArrow.ss01;\012sub southWestArrow by southWestArrow.ss01;\012sub leftArrow by leftArrow.ss01;\012sub northWestArrow by northWestArrow.ss01;\012sub registered by registered.ss01;\012";
+code = "sub registered by registered.ss01;\012sub upArrow by upArrow.ss01;\012sub northEastArrow by northEastArrow.ss01;\012sub rightArrow by rightArrow.ss01;\012sub southEastArrow by southEastArrow.ss01;\012sub downArrow by downArrow.ss01;\012sub southWestArrow by southWestArrow.ss01;\012sub leftArrow by leftArrow.ss01;\012sub northWestArrow by northWestArrow.ss01;\012";
 name = ss01;
 },
 {
@@ -11655,6 +11650,83 @@ width = 345;
 );
 leftKerningGroup = j;
 unicode = 006A;
+},
+{
+glyphname = jdotless;
+lastChange = "2023-05-30 16:42:04 +0000";
+layers = (
+{
+anchors = (
+{
+name = bottom;
+position = "{173, -125}";
+},
+{
+name = top;
+position = "{173, 565}";
+}
+);
+layerId = "685D33D6-AC85-457D-AB31-6AFB1340D947";
+paths = (
+{
+closed = 1;
+nodes = (
+"248 -138 OFFCURVE",
+"327 -84 OFFCURVE",
+"327 49 CURVE SMOOTH",
+"327 565 LINE",
+"20 565 LINE",
+"20 37 LINE SMOOTH",
+"20 -11 OFFCURVE",
+"-3 -21 OFFCURVE",
+"-41 -17 CURVE",
+"-41 -120 LINE",
+"-15 -130 OFFCURVE",
+"37 -138 OFFCURVE",
+"102 -138 CURVE SMOOTH"
+);
+}
+);
+width = 340;
+},
+{
+anchors = (
+{
+name = bottom;
+position = "{206, -125}";
+},
+{
+name = top;
+position = "{206, 565}";
+}
+);
+layerId = "3B426CF6-0C00-48CC-B0F4-6E2C4CD07FAD";
+paths = (
+{
+closed = 1;
+nodes = (
+"314 -138 OFFCURVE",
+"393 -63 OFFCURVE",
+"393 70 CURVE SMOOTH",
+"393 565 LINE",
+"19 565 LINE",
+"19 48 LINE SMOOTH",
+"19 -6 OFFCURVE",
+"-2 -21 OFFCURVE",
+"-55 -23 CURVE",
+"-55 -115 LINE",
+"-25 -129 OFFCURVE",
+"41 -138 OFFCURVE",
+"111 -138 CURVE SMOOTH"
+);
+}
+);
+width = 412;
+}
+);
+leftKerningGroup = j;
+rightMetricsKey = j;
+unicode = 0237;
 },
 {
 glyphname = k;
