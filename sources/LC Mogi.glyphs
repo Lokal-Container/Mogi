@@ -16,6 +16,10 @@ wght = {
 };
 },
 {
+name = "Use Typo Metrics";
+value = 1;
+},
+{
 name = Axes;
 value = (
 {
@@ -140,6 +144,38 @@ Axis = Width;
 Location = 100;
 }
 );
+},
+{
+name = hheaAscender;
+value = 880;
+},
+{
+name = hheaDescender;
+value = -280;
+},
+{
+name = hheaLineGap;
+value = 440;
+},
+{
+name = typoAscender;
+value = 880;
+},
+{
+name = typoDescender;
+value = -280;
+},
+{
+name = typoLineGap;
+value = 440;
+},
+{
+name = winAscent;
+value = 1350;
+},
+{
+name = winDescent;
+value = 960;
 }
 );
 descender = -200;
@@ -178,6 +214,38 @@ Axis = Width;
 Location = 130;
 }
 );
+},
+{
+name = hheaAscender;
+value = 880;
+},
+{
+name = hheaDescender;
+value = -280;
+},
+{
+name = hheaLineGap;
+value = 440;
+},
+{
+name = typoAscender;
+value = 880;
+},
+{
+name = typoDescender;
+value = -280;
+},
+{
+name = typoLineGap;
+value = 440;
+},
+{
+name = winAscent;
+value = 1350;
+},
+{
+name = winDescent;
+value = 960;
 }
 );
 descender = -200;

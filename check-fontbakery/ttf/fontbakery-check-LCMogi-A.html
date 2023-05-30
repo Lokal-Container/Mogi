@@ -73,23 +73,23 @@
             </tr>
             <tr>
                 <td>0</td>
-                <td>5</td>
-                <td>7</td>
+                <td>4</td>
+                <td>8</td>
                 <td>40</td>
                 <td>2</td>
                 <td>51</td>
             </tr>
             <tr>
                 <td>0%</td>
-                <td>5%</td>
-                <td>7%</td>
+                <td>4%</td>
+                <td>8%</td>
                 <td>38%</td>
                 <td>2%</td>
                 <td>49%</td>
             </tr>
             </table>
             
-<h2>&lt;Section: Universal&gt; 🔥🔥🔥🔥🔥⚠️⚠️⚠️⏩⏩⏩⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
+<h2>&lt;Section: Universal&gt; 🔥🔥🔥🔥⚠️⚠️⚠️⏩⏩⏩⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
 <h3>Checking all files are in the same directory.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/single_directory&gt;</div>
 <p>If the set of font files passed in the command line is not all in the same directory, then we warn the user since the tool will interpret the set of files as belonging to a single family (and it is unlikely that the user would store the files from a single family spreaded in several separate directories).</p>
@@ -113,7 +113,7 @@
 <p>If the font includes tall/deep writing systems such as Arabic or Devanagari, the winAscent and winDescent can be greater than the yMax and abs(yMin) to accommodate vowel marks.</p>
 <p>When the win Metrics are significantly greater than the upm, the linespacing can appear too loose. To counteract this, enabling the OS/2 fsSelection bit 7 (Use_Typo_Metrics), will force Windows to use the OS/2 typo values instead. This means the font developer can control the linespacing with the typo values, whilst avoiding clipping by setting the win values to values greater than the yMax and abs(yMin).</p>
 
-<details><summary>🔥 <strong>fonts/ttf/LCMogi-A.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>OS/2.usWinDescent value should be equal or greater than 269, but got 200 instead. [code: descent]</p>
+<details><summary>🔥 <strong>fonts/ttf/LCMogi-A.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>OS/2.usWinDescent value 960 is too large. It should be less than double the yMin. Current absolute yMin value is 269 [code: descent]</p>
 </span></li></ul></div></details>
 <h3>Checking OS/2 Metrics match hhea Metrics.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/os2_metrics_match_hhea&gt;</div>
@@ -126,7 +126,7 @@
 <p>But we have a duty to fix broken stuff, and inconsistent paragraph layout is unacceptably broken when it is possible to avoid it.</p>
 <p>If users complain and prefer the old broken version, they have the freedom to take care of their own situation.</p>
 
-<details><summary>🔥 <strong>fonts/ttf/LCMogi-A.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>OS/2 sTypoAscender (800) and hhea ascent (1000) must be equal. [code: ascender]</p>
+<details><summary>✅ <strong>fonts/ttf/LCMogi-A.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>OS/2.sTypoAscender/Descender values match hhea.ascent/descent.</p>
 </span></li></ul></div></details>
 <h3>Checking with ots-sanitize.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/ots&gt;</div>
@@ -636,7 +636,7 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 <h3>Checking Vertical Metric Linegaps.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/linegaps&gt;</div>
 
-<details><summary>⚠️ <strong>fonts/ttf/LCMogi-A.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>OS/2 sTypoLineGap is not equal to 0. [code: OS/2]</p>
+<details><summary>⚠️ <strong>fonts/ttf/LCMogi-A.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>hhea lineGap is not equal to 0. [code: hhea]</p>
 </span></li></ul></div></details>
 <h3>MaxAdvanceWidth is consistent with values in the Hmtx and Hhea tables?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/maxadvancewidth&gt;</div>
@@ -885,13 +885,36 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 <details><summary>✅ <strong>fonts/ttf/LCMogi-A.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>No invalid language tags were found</p>
 </span></li></ul></div></details>
-<h2>&lt;Section: Outline Correctness Checks&gt; ⚠️⚠️⚠️</h2>
+<h2>&lt;Section: Outline Correctness Checks&gt; ⚠️⚠️⚠️⚠️</h2>
 <h3>Are there any misaligned on-curve points?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/outline_alignment_miss&gt;</div>
 <p>This check heuristically looks for on-curve points which are close to, but do not sit on, significant boundary coordinates. For example, a point which has a Y-coordinate of 1 or -1 might be a misplaced baseline point. As well as the baseline, here we also check for points near the x-height (but only for lowercase Latin letters), cap-height, ascender and descender Y coordinates.</p>
 <p>Not all such misaligned curve points are a mistake, and sometimes the design may call for points in locations near the boundaries. As this check is liable to generate significant numbers of false positives, it will pass if there are more than 100 reported misalignments.</p>
 
-<details><summary>✅ <strong>fonts/ttf/LCMogi-A.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>So many Y-coordinates of points were close to boundaries that this was probably by design.</p>
+<details><summary>⚠️ <strong>fonts/ttf/LCMogi-A.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>The following glyphs have on-curve points which have potentially incorrect y coordinates:</p>
+<pre><code>* dollar (U+0024): X=261.0,Y=-2.0 (should be at baseline 0?)
+
+* dollar (U+0024): X=280.0,Y=689.0 (should be at cap-height 690?)
+
+* dollar (U+0024): X=308.0,Y=-1.0 (should be at baseline 0?)
+
+* dollar (U+0024): X=280.0,Y=-2.0 (should be at baseline 0?)
+
+* dollar (U+0024): X=261.0,Y=-2.0 (should be at baseline 0?)
+
+* ampersand (U+0026): X=338.5,Y=-2.0 (should be at baseline 0?)
+
+* three (U+0033): X=146.5,Y=1.0 (should be at baseline 0?)
+
+* five (U+0035): X=129.0,Y=-0.5 (should be at baseline 0?)
+
+* nine (U+0039): X=139.5,Y=-0.5 (should be at baseline 0?)
+
+* question (U+003F): X=128.0,Y=692.0 (should be at cap-height 690?) 
+
+* 74 more.
+</code></pre>
+<p>Use -F or --full-lists to disable shortening of long lists. [code: found-misalignments]</p>
 </span></li></ul></div></details>
 <h3>Are any segments inordinately short?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/outline_short_segments&gt;</div>

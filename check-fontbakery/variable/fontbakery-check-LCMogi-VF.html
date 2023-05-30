@@ -73,23 +73,23 @@
             </tr>
             <tr>
                 <td>0</td>
-                <td>7</td>
+                <td>6</td>
                 <td>5</td>
                 <td>28</td>
                 <td>2</td>
-                <td>63</td>
+                <td>64</td>
             </tr>
             <tr>
                 <td>0%</td>
-                <td>7%</td>
+                <td>6%</td>
                 <td>5%</td>
                 <td>27%</td>
                 <td>2%</td>
-                <td>60%</td>
+                <td>61%</td>
             </tr>
             </table>
             
-<h2>&lt;Section: Universal&gt; 🔥🔥🔥🔥🔥⚠️⚠️⚠️⏩⏩⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
+<h2>&lt;Section: Universal&gt; 🔥🔥🔥🔥⚠️⚠️⚠️⏩⏩⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
 <h3>Checking all files are in the same directory.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/single_directory&gt;</div>
 <p>If the set of font files passed in the command line is not all in the same directory, then we warn the user since the tool will interpret the set of files as belonging to a single family (and it is unlikely that the user would store the files from a single family spreaded in several separate directories).</p>
@@ -113,7 +113,7 @@
 <p>If the font includes tall/deep writing systems such as Arabic or Devanagari, the winAscent and winDescent can be greater than the yMax and abs(yMin) to accommodate vowel marks.</p>
 <p>When the win Metrics are significantly greater than the upm, the linespacing can appear too loose. To counteract this, enabling the OS/2 fsSelection bit 7 (Use_Typo_Metrics), will force Windows to use the OS/2 typo values instead. This means the font developer can control the linespacing with the typo values, whilst avoiding clipping by setting the win values to values greater than the yMax and abs(yMin).</p>
 
-<details><summary>🔥 <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>OS/2.usWinDescent value should be equal or greater than 269, but got 200 instead. [code: descent]</p>
+<details><summary>🔥 <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>OS/2.usWinDescent value 960 is too large. It should be less than double the yMin. Current absolute yMin value is 269 [code: descent]</p>
 </span></li></ul></div></details>
 <h3>Checking OS/2 Metrics match hhea Metrics.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/os2_metrics_match_hhea&gt;</div>
@@ -126,7 +126,7 @@
 <p>But we have a duty to fix broken stuff, and inconsistent paragraph layout is unacceptably broken when it is possible to avoid it.</p>
 <p>If users complain and prefer the old broken version, they have the freedom to take care of their own situation.</p>
 
-<details><summary>🔥 <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>OS/2 sTypoAscender (800) and hhea ascent (1000) must be equal. [code: ascender]</p>
+<details><summary>✅ <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>OS/2.sTypoAscender/Descender values match hhea.ascent/descent.</p>
 </span></li></ul></div></details>
 <h3>Checking with ots-sanitize.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/ots&gt;</div>
@@ -367,12 +367,12 @@ or inverted outline direction:</p>
 <p>When creating a variable font, the designer must make sure that corresponding paths have the same start points across masters, as well as that corresponding component shapes are placed in the same order within a glyph across masters. If this is not done, the glyph will not interpolate correctly.</p>
 <p>Here we check for the presence of potential interpolation errors using the fontTools.varLib.interpolatable module.</p>
 
-<details><summary>⚠️ <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>Interpolation issues were found in the font: 	- Contour order differs in glyph 'ellipsis': [0, 1, 2] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11d8eb340&gt;, [2, 1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11d8e8a30&gt;.</p>
-<pre><code>- Contour order differs in glyph 'quotedblright': [0, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11d8eb340&gt;, [1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11d8e8a30&gt;.
+<details><summary>⚠️ <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>Interpolation issues were found in the font: 	- Contour order differs in glyph 'quotedblbase': [0, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1145af340&gt;, [1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1145aca30&gt;.</p>
+<pre><code>- Contour order differs in glyph 'quotedblleft': [0, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1145af340&gt;, [1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1145aca30&gt;.
 
-- Contour order differs in glyph 'quotedblbase': [0, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11d8eb340&gt;, [1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11d8e8a30&gt;. 
+- Contour order differs in glyph 'ellipsis': [0, 1, 2] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1145af340&gt;, [2, 1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1145aca30&gt;. 
 
-- Contour order differs in glyph 'quotedblleft': [0, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11d8eb340&gt;, [1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11d8e8a30&gt;. [code: interpolation-issues]
+- Contour order differs in glyph 'quotedblright': [0, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1145af340&gt;, [1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1145aca30&gt;. [code: interpolation-issues]
 </code></pre>
 </span></li></ul></div></details>
 <h3>Check math signs have the same width.</h3>
@@ -387,7 +387,7 @@ plus</p>
 <p>Width = 426:
 less, greater</p>
 <p>Width = 439:
-logicalnot, plusminus</p>
+plusminus, logicalnot</p>
 <p>Width = 457:
 multiply</p>
 <p>Width = 339:
@@ -619,7 +619,7 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 <h3>Checking Vertical Metric Linegaps.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/linegaps&gt;</div>
 
-<details><summary>⚠️ <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>OS/2 sTypoLineGap is not equal to 0. [code: OS/2]</p>
+<details><summary>⚠️ <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>hhea lineGap is not equal to 0. [code: hhea]</p>
 </span></li></ul></div></details>
 <h3>MaxAdvanceWidth is consistent with values in the Hmtx and Hhea tables?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/maxadvancewidth&gt;</div>
@@ -895,7 +895,7 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 * bracketleft (U+005B): X=20.0,Y=689.0 (should be at cap-height 690?) 
 
-* 86 more.
+* 64 more.
 </code></pre>
 <p>Use -F or --full-lists to disable shortening of long lists. [code: found-misalignments]</p>
 </span></li></ul></div></details>
