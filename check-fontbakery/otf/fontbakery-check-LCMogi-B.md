@@ -130,7 +130,7 @@ Width = 431:
 equal
 
 Width = 476:
-plusminus, logicalnot
+logicalnot, plusminus
 
 Width = 494:
 multiply
@@ -148,7 +148,7 @@ Width = 446:
 notequal
 
 Width = 468:
-greaterequal, lessequal
+lessequal, greaterequal
  [code: width-outliers]
 </div></details><details><summary>⚠ <b>WARN:</b> Are there any misaligned on-curve points? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_alignment_miss">com.google.fonts/check/outline_alignment_miss</a>)</summary><div>
 
