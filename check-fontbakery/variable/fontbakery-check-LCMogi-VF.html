@@ -73,23 +73,23 @@
             </tr>
             <tr>
                 <td>0</td>
-                <td>4</td>
+                <td>6</td>
                 <td>4</td>
                 <td>26</td>
                 <td>2</td>
-                <td>69</td>
+                <td>67</td>
             </tr>
             <tr>
                 <td>0%</td>
-                <td>4%</td>
+                <td>6%</td>
                 <td>4%</td>
                 <td>25%</td>
                 <td>2%</td>
-                <td>66%</td>
+                <td>64%</td>
             </tr>
             </table>
             
-<h2>&lt;Section: Universal&gt; 🔥🔥⚠️⚠️⚠️⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
+<h2>&lt;Section: Universal&gt; 🔥🔥🔥🔥⚠️⚠️⚠️⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
 <h3>Checking all files are in the same directory.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/single_directory&gt;</div>
 <p>If the set of font files passed in the command line is not all in the same directory, then we warn the user since the tool will interpret the set of files as belonging to a single family (and it is unlikely that the user would store the files from a single family spreaded in several separate directories).</p>
@@ -138,7 +138,7 @@
 <p>Running old versions of FontBakery can lead to a poor report which may include false WARNs and FAILs due do bugs, as well as outdated quality assurance criteria.</p>
 <p>Older versions will also not report problems that are detected by new checks added to the tool in more recent updates.</p>
 
-<details><summary>✅ <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font Bakery is up-to-date.</p>
+<details><summary>🔥 <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>Current Font Bakery version is 0.8.11, while a newer 0.8.12 is already available. Please upgrade it with 'pip install -U fontbakery' [code: outdated-fontbakery]</p>
 </span></li></ul></div></details>
 <h3>Font contains '.notdef' as its first glyph?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/mandatory_glyphs&gt;</div>
@@ -259,7 +259,22 @@
 <p>In Color Fonts, glyphs are also referenced by the COLR table.</p>
 <p>Any glyphs not accessible by either of these means are redundant and serve only to increase the font's file size.</p>
 
-<details><summary>✅ <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font did not contain any unreachable glyphs</p>
+<details><summary>⚠️ <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>The following glyphs could not be reached by codepoint or substitution rules:</p>
+<pre><code>- uni004A0301
+
+- uni006A0301
+
+- uni03020300
+
+- uni03020301
+
+- uni03060300
+
+- uni03060301 
+
+- uni03080301
+</code></pre>
+<p>[code: unreachable-glyphs]</p>
 </span></li></ul></div></details>
 <h3>Check if each glyph has the recommended amount of contours.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/contour_count&gt;</div>
@@ -296,7 +311,6 @@
 <details><summary>🔥 <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The following glyphs had components with scaling or rotation
 or inverted outline direction:</p>
 <ul>
-<li>exclamdown (component exclam)</li>
 <li>backslash (component slash)</li>
 <li>parenright (component parenleft)</li>
 <li>braceright (component braceleft)</li>
@@ -312,7 +326,9 @@ or inverted outline direction:</p>
 <li>uni21B0 (component uni21B2)</li>
 <li>uni2198.ss01 (component uni2197.ss01)</li>
 <li>arrowleft.ss01 (component arrowright.ss01)</li>
-<li>uni2196.ss01 (component uni2197.ss01)
+<li>uni2196.ss01 (component uni2197.ss01)</li>
+<li>uni25C0 (component uni25B6)</li>
+<li>uni25C2 (component uni25B8)
 [code: transformed-components]</li>
 </ul>
 </span></li></ul></div></details>
@@ -322,15 +338,38 @@ or inverted outline direction:</p>
 <p>For fonts containing combining marks, it is recommended that the dotted circle character be included so that these isolated marks can be displayed properly; for fonts supporting complex scripts, this should be considered mandatory.</p>
 <p>Additionally, when a dotted circle glyph is present, it should be able to display all marks correctly, meaning that it should contain anchors for all attaching marks.</p>
 
-<details><summary>⚠️ <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>No dotted circle glyph present [code: missing-dotted-circle]</p>
+<details><summary>🔥 <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The following glyphs could not be attached to the dotted circle glyph:</p>
+<pre><code>- acutecomb
+
+- dotbelowcomb
+
+- hookabovecomb
+
+- tildecomb
+
+- uni0302
+
+- uni0306
+
+- uni0312
+
+- uni031B
+
+- uni0326
+
+- uni0335 
+
+- 3 more.
+</code></pre>
+<p>Use -F or --full-lists to disable shortening of long lists. [code: unattached-dotted-circle-marks]</p>
 </span></li></ul></div></details>
 <h3>Ensure soft_dotted characters lose their dot when combined with marks that replace the dot.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/soft_dotted&gt;</div>
 <p>An accent placed on characters with a &quot;soft dot&quot;, like i or j, causes the dot to disappear. An explicit dot above can be added where required. See &quot;Diacritics on i and j&quot; in Section 7.1, &quot;Latin&quot; in The Unicode Standard.</p>
 <p>Characters with the Soft_Dotted property are listed in https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt</p>
 
-<details><summary>🔥 <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌</p>
-<p>The dot of soft dotted characters should disappear in other cases, for example: į̆ į̇ į̈ į̊ į̋ į̒ į̦̀ į̦́ į̦̂ į̦̃ į̦̄ į̦̆ į̦̇ į̦̈ į̦̊ į̦̋ į̦̌ į̦̒ į̧̀ į̧́ [code: soft-dotted]</p>
+<details><summary>🔥 <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌ ị̀ ị́ ị̂ ị̃ ị̄</p>
+<p>The dot of soft dotted characters should disappear in other cases, for example: j̉ j̛̉ j̣̉ j̦̉ j̧̉ j̨̉ j̵̉ j̶̉ j̷̉ j̸̉ į̆ į̇ į̈ į̉ į̊ į̋ į̒ į̛̀ į̛́ į̛̂ [code: soft-dotted]</p>
 </span></li></ul></div></details>
 <h3>Ensure no GPOS7 lookups are present.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/gpos7&gt;</div>
@@ -367,12 +406,8 @@ or inverted outline direction:</p>
 <p>When creating a variable font, the designer must make sure that corresponding paths have the same start points across masters, as well as that corresponding component shapes are placed in the same order within a glyph across masters. If this is not done, the glyph will not interpolate correctly.</p>
 <p>Here we check for the presence of potential interpolation errors using the fontTools.varLib.interpolatable module.</p>
 
-<details><summary>⚠️ <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>Interpolation issues were found in the font: 	- Contour order differs in glyph 'quotedblleft': [0, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e8fa0&gt;, [1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e91b0&gt;.</p>
-<pre><code>- Contour order differs in glyph 'ellipsis': [0, 1, 2] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e8fa0&gt;, [2, 1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e91b0&gt;.
-
-- Contour order differs in glyph 'quotedblbase': [0, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e8fa0&gt;, [1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e91b0&gt;. 
-
-- Contour order differs in glyph 'quotedblright': [0, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e8fa0&gt;, [1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e91b0&gt;. [code: interpolation-issues]
+<details><summary>⚠️ <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>Interpolation issues were found in the font: 	- Contour order differs in glyph 'ellipsis': [0, 1, 2] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6a1b40&gt;, [2, 1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6a0820&gt;.</p>
+<pre><code>- Contour order differs in glyph 'uni20BD': [0, 1, 2] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6a1b40&gt;, [0, 2, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6a0820&gt;. [code: interpolation-issues]
 </code></pre>
 </span></li></ul></div></details>
 <h3>Check math signs have the same width.</h3>
@@ -895,7 +930,7 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 * bracketleft (U+005B): X=20.0,Y=689.0 (should be at cap-height 690?) 
 
-* 64 more.
+* 85 more.
 </code></pre>
 <p>Use -F or --full-lists to disable shortening of long lists. [code: found-misalignments]</p>
 </span></li></ul></div></details>

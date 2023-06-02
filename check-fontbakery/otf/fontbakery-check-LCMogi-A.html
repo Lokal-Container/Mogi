@@ -73,23 +73,23 @@
             </tr>
             <tr>
                 <td>0</td>
-                <td>1</td>
+                <td>2</td>
                 <td>6</td>
                 <td>46</td>
                 <td>2</td>
-                <td>50</td>
+                <td>49</td>
             </tr>
             <tr>
                 <td>0%</td>
-                <td>1%</td>
+                <td>2%</td>
                 <td>6%</td>
                 <td>44%</td>
                 <td>2%</td>
-                <td>48%</td>
+                <td>47%</td>
             </tr>
             </table>
             
-<h2>&lt;Section: Universal&gt; 🔥⚠️⏩⏩⏩⏩⏩⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
+<h2>&lt;Section: Universal&gt; 🔥🔥⚠️⚠️⏩⏩⏩⏩⏩⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
 <h3>Checking all files are in the same directory.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/single_directory&gt;</div>
 <p>If the set of font files passed in the command line is not all in the same directory, then we warn the user since the tool will interpret the set of files as belonging to a single family (and it is unlikely that the user would store the files from a single family spreaded in several separate directories).</p>
@@ -138,7 +138,7 @@
 <p>Running old versions of FontBakery can lead to a poor report which may include false WARNs and FAILs due do bugs, as well as outdated quality assurance criteria.</p>
 <p>Older versions will also not report problems that are detected by new checks added to the tool in more recent updates.</p>
 
-<details><summary>✅ <strong>fonts/otf/LCMogi-A.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font Bakery is up-to-date.</p>
+<details><summary>🔥 <strong>fonts/otf/LCMogi-A.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>Current Font Bakery version is 0.8.11, while a newer 0.8.12 is already available. Please upgrade it with 'pip install -U fontbakery' [code: outdated-fontbakery]</p>
 </span></li></ul></div></details>
 <h3>Font contains '.notdef' as its first glyph?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/mandatory_glyphs&gt;</div>
@@ -257,7 +257,31 @@
 <p>In Color Fonts, glyphs are also referenced by the COLR table.</p>
 <p>Any glyphs not accessible by either of these means are redundant and serve only to increase the font's file size.</p>
 
-<details><summary>✅ <strong>fonts/otf/LCMogi-A.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font did not contain any unreachable glyphs</p>
+<details><summary>⚠️ <strong>fonts/otf/LCMogi-A.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>The following glyphs could not be reached by codepoint or substitution rules:</p>
+<pre><code>- horngrave
+
+- uni004A0301
+
+- uni006A0301
+
+- uni03020300
+
+- uni03020301
+
+- uni03020303
+
+- uni03020309
+
+- uni03030304
+
+- uni03060300
+
+- uni03060301 
+
+- 5 more.
+</code></pre>
+<p>Use -F or --full-lists to disable shortening of long lists.
+[code: unreachable-glyphs]</p>
 </span></li></ul></div></details>
 <h3>Check if each glyph has the recommended amount of contours.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/contour_count&gt;</div>
@@ -306,8 +330,8 @@
 <p>An accent placed on characters with a &quot;soft dot&quot;, like i or j, causes the dot to disappear. An explicit dot above can be added where required. See &quot;Diacritics on i and j&quot; in Section 7.1, &quot;Latin&quot; in The Unicode Standard.</p>
 <p>Characters with the Soft_Dotted property are listed in https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt</p>
 
-<details><summary>🔥 <strong>fonts/otf/LCMogi-A.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌</p>
-<p>The dot of soft dotted characters should disappear in other cases, for example: į̆ į̇ į̈ į̊ į̋ į̒ į̦̀ į̦́ į̦̂ į̦̃ į̦̄ į̦̆ į̦̇ į̦̈ į̦̊ į̦̋ į̦̌ į̦̒ į̧̀ į̧́ [code: soft-dotted]</p>
+<details><summary>🔥 <strong>fonts/otf/LCMogi-A.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌ ị̀ ị́ ị̂ ị̃ ị̄</p>
+<p>The dot of soft dotted characters should disappear in other cases, for example: j̉ j̛̉ j̣̉ j̦̉ j̧̉ j̨̉ j̵̉ j̶̉ j̷̉ j̸̉ į̆ į̇ į̈ į̉ į̊ į̋ į̒ į̛̀ į̛́ į̛̂ [code: soft-dotted]</p>
 </span></li></ul></div></details>
 <h3>Ensure no GPOS7 lookups are present.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/gpos7&gt;</div>
@@ -836,7 +860,7 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 <details><summary>✅ <strong>fonts/otf/LCMogi-A.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>No invalid language tags were found</p>
 </span></li></ul></div></details>
-<h2>&lt;Section: Outline Correctness Checks&gt; ⚠️⚠️⚠️⚠️⚠️</h2>
+<h2>&lt;Section: Outline Correctness Checks&gt; ⚠️⚠️⚠️⚠️</h2>
 <h3>Are there any misaligned on-curve points?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/outline_alignment_miss&gt;</div>
 <p>This check heuristically looks for on-curve points which are close to, but do not sit on, significant boundary coordinates. For example, a point which has a Y-coordinate of 1 or -1 might be a misplaced baseline point. As well as the baseline, here we also check for points near the x-height (but only for lowercase Latin letters), cap-height, ascender and descender Y coordinates.</p>
@@ -863,7 +887,7 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 * bracketright (U+005D): X=317.0,Y=689.0 (should be at cap-height 690?) 
 
-* 35 more.
+* 49 more.
 </code></pre>
 <p>Use -F or --full-lists to disable shortening of long lists. [code: found-misalignments]</p>
 </span></li></ul></div></details>
@@ -872,30 +896,7 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 <p>This check looks for outline segments which seem particularly short (less than 0.6% of the overall path length).</p>
 <p>This check is not run for variable fonts, as they may legitimately have short segments. As this check is liable to generate significant numbers of false positives, it will pass if there are more than 100 reported short segments.</p>
 
-<details><summary>⚠️ <strong>fonts/otf/LCMogi-A.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>The following glyphs have segments which seem very short:</p>
-<pre><code>* dollar (U+0024) contains a short segment B&lt;&lt;261.0,-2.0&gt;-&lt;267.0,-2.0&gt;-&lt;274.0,-2.0&gt;-&lt;280.0,-2.0&gt;&gt;
-
-* ampersand (U+0026) contains a short segment L&lt;&lt;876.0,331.0&gt;--&lt;876.0,340.0&gt;&gt;
-
-* two (U+0032) contains a short segment L&lt;&lt;20.0,392.0&gt;--&lt;32.0,384.0&gt;&gt;
-
-* six (U+0036) contains a short segment L&lt;&lt;285.0,376.0&gt;--&lt;292.0,387.0&gt;&gt;
-
-* nine (U+0039) contains a short segment L&lt;&lt;438.0,314.0&gt;--&lt;430.0,303.0&gt;&gt;
-
-* less (U+003C) contains a short segment L&lt;&lt;237.0,293.0&gt;--&lt;237.0,305.0&gt;&gt;
-
-* greater (U+003E) contains a short segment L&lt;&lt;189.0,305.0&gt;--&lt;189.0,293.0&gt;&gt;
-
-* at (U+0040) contains a short segment L&lt;&lt;573.0,409.0&gt;--&lt;563.0,404.0&gt;&gt;
-
-* C (U+0043) contains a short segment L&lt;&lt;640.0,316.0&gt;--&lt;626.0,322.0&gt;&gt;
-
-* K (U+004B) contains a short segment L&lt;&lt;332.0,207.0&gt;--&lt;350.0,207.0&gt;&gt; 
-
-* 79 more.
-</code></pre>
-<p>Use -F or --full-lists to disable shortening of long lists. [code: found-short-segments]</p>
+<details><summary>✅ <strong>fonts/otf/LCMogi-A.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>So many short segments were found that this was probably by design.</p>
 </span></li></ul></div></details>
 <h3>Do any segments have colinear vectors?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/outline_colinear_vectors&gt;</div>
@@ -907,9 +908,11 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 * dcaron (U+010F): L&lt;&lt;549.0,227.0&gt;--&lt;549.0,226.0&gt;&gt; -&gt; L&lt;&lt;549.0,226.0&gt;--&lt;558.0,0.0&gt;&gt;
 
-* dcroat (U+0111): L&lt;&lt;549.0,227.0&gt;--&lt;549.0,226.0&gt;&gt; -&gt; L&lt;&lt;549.0,226.0&gt;--&lt;558.0,0.0&gt;&gt; 
+* dcroat (U+0111): L&lt;&lt;549.0,227.0&gt;--&lt;549.0,226.0&gt;&gt; -&gt; L&lt;&lt;549.0,226.0&gt;--&lt;558.0,0.0&gt;&gt;
 
-* p (U+0070): L&lt;&lt;327.0,338.0&gt;--&lt;327.0,339.0&gt;&gt; -&gt; L&lt;&lt;327.0,339.0&gt;--&lt;318.0,565.0&gt;&gt; [code: found-colinear-vectors]
+* p (U+0070): L&lt;&lt;327.0,338.0&gt;--&lt;327.0,339.0&gt;&gt; -&gt; L&lt;&lt;327.0,339.0&gt;--&lt;318.0,565.0&gt;&gt; 
+
+* uni20B9 (U+20B9): L&lt;&lt;571.0,21.0&gt;--&lt;443.0,202.0&gt;&gt; -&gt; L&lt;&lt;443.0,202.0&gt;--&lt;416.0,236.0&gt;&gt; [code: found-colinear-vectors]
 </code></pre>
 </span></li></ul></div></details>
 <h3>Do outlines contain any jaggy segments?</h3>
@@ -919,9 +922,11 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 <details><summary>⚠️ <strong>fonts/otf/LCMogi-A.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>The following glyphs have jaggy segments:</p>
 <pre><code>* onehalf (U+00BD): B&lt;&lt;950.0,160.0&gt;-&lt;918.0,160.0&gt;-&lt;867.0,156.0&gt;-&lt;816.0,149.0&gt;&gt;/B&lt;&lt;816.0,149.0&gt;-&lt;924.0,181.0&gt;-&lt;972.0,231.0&gt;-&lt;972.0,318.0&gt;&gt; = 8.689067834988142
 
-* uni00B2 (U+00B2): B&lt;&lt;447.0,350.0&gt;-&lt;412.0,350.0&gt;-&lt;358.0,346.0&gt;-&lt;302.0,338.0&gt;&gt;/B&lt;&lt;302.0,338.0&gt;-&lt;419.0,372.0&gt;-&lt;470.0,427.0&gt;-&lt;470.0,520.0&gt;&gt; = 8.073671860734773 
+* uni00B2 (U+00B2): B&lt;&lt;447.0,350.0&gt;-&lt;412.0,350.0&gt;-&lt;358.0,346.0&gt;-&lt;302.0,338.0&gt;&gt;/B&lt;&lt;302.0,338.0&gt;-&lt;419.0,372.0&gt;-&lt;470.0,427.0&gt;-&lt;470.0,520.0&gt;&gt; = 8.073671860734773
 
-* uni2082 (U+2082): B&lt;&lt;447.0,172.0&gt;-&lt;412.0,172.0&gt;-&lt;358.0,168.0&gt;-&lt;302.0,160.0&gt;&gt;/B&lt;&lt;302.0,160.0&gt;-&lt;419.0,194.0&gt;-&lt;470.0,249.0&gt;-&lt;470.0,342.0&gt;&gt; = 8.073671860734773 [code: found-jaggy-segments]
+* uni2082 (U+2082): B&lt;&lt;447.0,172.0&gt;-&lt;412.0,172.0&gt;-&lt;358.0,168.0&gt;-&lt;302.0,160.0&gt;&gt;/B&lt;&lt;302.0,160.0&gt;-&lt;419.0,194.0&gt;-&lt;470.0,249.0&gt;-&lt;470.0,342.0&gt;&gt; = 8.073671860734773 
+
+* uni2154 (U+2154): B&lt;&lt;415.0,378.0&gt;-&lt;383.0,378.0&gt;-&lt;332.0,374.0&gt;-&lt;281.0,367.0&gt;&gt;/B&lt;&lt;281.0,367.0&gt;-&lt;389.0,399.0&gt;-&lt;437.0,449.0&gt;-&lt;437.0,536.0&gt;&gt; = 8.689067834988142 [code: found-jaggy-segments]
 </code></pre>
 </span></li></ul></div></details>
 <h3>Do outlines contain any semi-vertical or semi-horizontal lines?</h3>
@@ -940,17 +945,17 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 * uni00B5 (U+00B5): L&lt;&lt;409.0,565.0&gt;--&lt;408.0,271.0&gt;&gt;
 
-* uni03BC (U+03BC): L&lt;&lt;409.0,565.0&gt;--&lt;408.0,271.0&gt;&gt;
+* uni01C5 (U+01C5): L&lt;&lt;1342.0,565.0&gt;--&lt;760.0,566.0&gt;&gt;
 
-* uni21B0 (U+21B0): L&lt;&lt;607.0,0.0&gt;--&lt;606.0,316.0&gt;&gt;
+* uni01C5 (U+01C5): L&lt;&lt;760.0,1.0&gt;--&lt;1342.0,0.0&gt;&gt;
 
-* uni21B1 (U+21B1): L&lt;&lt;11.0,316.0&gt;--&lt;10.0,0.0&gt;&gt;
+* uni01F2 (U+01F2): L&lt;&lt;1342.0,565.0&gt;--&lt;760.0,566.0&gt;&gt;
 
-* uni21B2 (U+21B2): L&lt;&lt;606.0,374.0&gt;--&lt;607.0,690.0&gt;&gt;
+* uni01F2 (U+01F2): L&lt;&lt;760.0,1.0&gt;--&lt;1342.0,0.0&gt;&gt;
 
-* z (U+007A): L&lt;&lt;20.0,1.0&gt;--&lt;602.0,0.0&gt;&gt; 
+* uni03BC (U+03BC): L&lt;&lt;409.0,565.0&gt;--&lt;408.0,271.0&gt;&gt; 
 
-* 6 more.
+* 10 more.
 </code></pre>
 <p>Use -F or --full-lists to disable shortening of long lists. [code: found-semi-vertical]</p>
 </span></li></ul></div></details>

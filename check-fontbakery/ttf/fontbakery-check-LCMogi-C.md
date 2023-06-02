@@ -60,7 +60,15 @@ Fontbakery version: 0.8.11
 >This four-way distinction should also be reflected in the OS/2.fsSelection field, using bits 0 and 5.
 >
 * 💤 **SKIP** Unfulfilled Conditions: RIBBI_ttFonts
-</div></details><br></div></details><details><summary><b>[95] LCMogi-C.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Ensure component transforms do not perform scaling or rotation. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/transformed_components">com.google.fonts/check/transformed_components</a>)</summary><div>
+</div></details><br></div></details><details><summary><b>[95] LCMogi-C.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Do we have the latest version of FontBakery installed? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/fontbakery_version">com.google.fonts/check/fontbakery_version</a>)</summary><div>
+
+>
+>Running old versions of FontBakery can lead to a poor report which may include false WARNs and FAILs due do bugs, as well as outdated quality assurance criteria.
+>
+>Older versions will also not report problems that are detected by new checks added to the tool in more recent updates.
+>
+* 🔥 **FAIL** Current Font Bakery version is 0.8.11, while a newer 0.8.12 is already available. Please upgrade it with 'pip install -U fontbakery' [code: outdated-fontbakery]
+</div></details><details><summary>🔥 <b>FAIL:</b> Ensure component transforms do not perform scaling or rotation. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/transformed_components">com.google.fonts/check/transformed_components</a>)</summary><div>
 
 >
 >Some families have glyphs which have been constructed by using transformed components e.g the 'u' being constructed from a flipped 'n'.
@@ -78,7 +86,6 @@ Fontbakery version: 0.8.11
 * 🔥 **FAIL** The following glyphs had components with scaling or rotation
 or inverted outline direction:
 
-* exclamdown (component exclam)
 * backslash (component slash)
 * parenright (component parenleft)
 * braceright (component braceleft)
@@ -95,7 +102,43 @@ or inverted outline direction:
 * uni2198.ss01 (component uni2197.ss01)
 * arrowleft.ss01 (component arrowright.ss01)
 * uni2196.ss01 (component uni2197.ss01)
+* uni25C0 (component uni25B6)
+* uni25C2 (component uni25B8)
  [code: transformed-components]
+</div></details><details><summary>🔥 <b>FAIL:</b> Ensure dotted circle glyph is present and can attach marks. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/dotted_circle">com.google.fonts/check/dotted_circle</a>)</summary><div>
+
+>
+>The dotted circle character (U+25CC) is inserted by shaping engines before mark glyphs which do not have an associated base, especially in the context of broken syllabic clusters.
+>
+>For fonts containing combining marks, it is recommended that the dotted circle character be included so that these isolated marks can be displayed properly; for fonts supporting complex scripts, this should be considered mandatory.
+>
+>Additionally, when a dotted circle glyph is present, it should be able to display all marks correctly, meaning that it should contain anchors for all attaching marks.
+>
+* 🔥 **FAIL** The following glyphs could not be attached to the dotted circle glyph:
+
+	- acutecomb
+
+	- dotbelowcomb
+
+	- hookabovecomb
+
+	- tildecomb
+
+	- uni0302
+
+	- uni0306
+
+	- uni0312
+
+	- uni031B
+
+	- uni0326
+
+	- uni0335 
+
+	- 3 more.
+
+Use -F or --full-lists to disable shortening of long lists. [code: unattached-dotted-circle-marks]
 </div></details><details><summary>🔥 <b>FAIL:</b> Ensure soft_dotted characters lose their dot when combined with marks that replace the dot. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/soft_dotted">com.google.fonts/check/soft_dotted</a>)</summary><div>
 
 >
@@ -103,9 +146,34 @@ or inverted outline direction:
 >
 >Characters with the Soft_Dotted property are listed in https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt
 >
-* 🔥 **FAIL** The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌
+* 🔥 **FAIL** The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌ ị̀ ị́ ị̂ ị̃ ị̄
 
-The dot of soft dotted characters should disappear in other cases, for example: į̆ į̇ į̈ į̊ į̋ į̒ į̦̀ į̦́ į̦̂ į̦̃ į̦̄ į̦̆ į̦̇ į̦̈ į̦̊ į̦̋ į̦̌ į̦̒ į̧̀ į̧́ [code: soft-dotted]
+The dot of soft dotted characters should disappear in other cases, for example: j̉ j̛̉ j̣̉ j̦̉ j̧̉ j̨̉ j̵̉ j̶̉ j̷̉ j̸̉ į̆ į̇ į̈ į̉ į̊ į̋ į̒ į̛̀ į̛́ į̛̂ [code: soft-dotted]
+</div></details><details><summary>⚠ <b>WARN:</b> Check font contains no unreachable glyphs (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/unreachable_glyphs">com.google.fonts/check/unreachable_glyphs</a>)</summary><div>
+
+>
+>Glyphs are either accessible directly through Unicode codepoints or through substitution rules.
+>
+>In Color Fonts, glyphs are also referenced by the COLR table.
+>
+>Any glyphs not accessible by either of these means are redundant and serve only to increase the font's file size.
+>
+* ⚠ **WARN** The following glyphs could not be reached by codepoint or substitution rules:
+
+	- uni004A0301
+
+	- uni006A0301
+
+	- uni03020300
+
+	- uni03020301
+
+	- uni03060300
+
+	- uni03060301 
+
+	- uni03080301
+ [code: unreachable-glyphs]
 </div></details><details><summary>⚠ <b>WARN:</b> Check if each glyph has the recommended amount of contours. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/contour_count">com.google.fonts/check/contour_count</a>)</summary><div>
 
 >
@@ -139,20 +207,10 @@ The following glyphs do not have the recommended number of contours:
 
 	- Glyph name: ohungarumlaut	Contours detected: 3	Expected: 4 
 
-	- 38 more.
+	- 80 more.
 
 Use -F or --full-lists to disable shortening of long lists.
  [code: contour-count]
-</div></details><details><summary>⚠ <b>WARN:</b> Ensure dotted circle glyph is present and can attach marks. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/dotted_circle">com.google.fonts/check/dotted_circle</a>)</summary><div>
-
->
->The dotted circle character (U+25CC) is inserted by shaping engines before mark glyphs which do not have an associated base, especially in the context of broken syllabic clusters.
->
->For fonts containing combining marks, it is recommended that the dotted circle character be included so that these isolated marks can be displayed properly; for fonts supporting complex scripts, this should be considered mandatory.
->
->Additionally, when a dotted circle glyph is present, it should be able to display all marks correctly, meaning that it should contain anchors for all attaching marks.
->
-* ⚠ **WARN** No dotted circle glyph present [code: missing-dotted-circle]
 </div></details><details><summary>⚠ <b>WARN:</b> Check math signs have the same width. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/math_signs_width">com.google.fonts/check/math_signs_width</a>)</summary><div>
 
 >
@@ -188,7 +246,7 @@ Width = 521:
 notequal
 
 Width = 543:
-lessequal, greaterequal
+greaterequal, lessequal
  [code: width-outliers]
 </div></details><details><summary>⚠ <b>WARN:</b> Are there any misaligned on-curve points? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_alignment_miss">com.google.fonts/check/outline_alignment_miss</a>)</summary><div>
 
@@ -219,7 +277,7 @@ lessequal, greaterequal
 
 	* bracketright (U+005D): X=15.0,Y=1.0 (should be at baseline 0?) 
 
-	* 42 more.
+	* 66 more.
 
 Use -F or --full-lists to disable shortening of long lists. [code: found-misalignments]
 </div></details><details><summary>⚠ <b>WARN:</b> Do any segments have colinear vectors? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_colinear_vectors">com.google.fonts/check/outline_colinear_vectors</a>)</summary><div>
@@ -230,6 +288,8 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-misalig
 >This check is not run for variable fonts, as they may legitimately have colinear vectors.
 >
 * ⚠ **WARN** The following glyphs have colinear vectors:
+
+	* uni20B9 (U+20B9): L<<434.0,232.0>--<464.0,195.0>> -> L<<464.0,195.0>--<595.0,21.0>>
 
 	* w (U+0077): L<<340.0,565.0>--<344.0,276.0>> -> L<<344.0,276.0>--<344.0,216.0>>
 
@@ -259,9 +319,11 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-misalig
 
 	* onehalf (U+00BD): B<<1162.5,213.0>-<1115.0,173.0>-<1011.0,148.0>>/B<<1011.0,148.0>-<1060.0,154.0>-<1106.0,157.0>> = 6.535510701961528
 
-	* uni00B2 (U+00B2): B<<532.0,407.5>-<482.0,364.0>-<371.0,338.0>>/B<<371.0,338.0>-<424.0,344.0>-<472.5,347.0>> = 6.724148779822157 
+	* uni00B2 (U+00B2): B<<532.0,407.5>-<482.0,364.0>-<371.0,338.0>>/B<<371.0,338.0>-<424.0,344.0>-<472.5,347.0>> = 6.724148779822157
 
-	* uni2082 (U+2082): B<<532.0,229.5>-<482.0,186.0>-<371.0,160.0>>/B<<371.0,160.0>-<424.0,166.0>-<472.5,169.0>> = 6.724148779822157 [code: found-jaggy-segments]
+	* uni2082 (U+2082): B<<532.0,229.5>-<482.0,186.0>-<371.0,160.0>>/B<<371.0,160.0>-<424.0,166.0>-<472.5,169.0>> = 6.724148779822157 
+
+	* uni2154 (U+2154): B<<501.5,431.0>-<454.0,391.0>-<350.0,366.0>>/B<<350.0,366.0>-<399.0,372.0>-<445.0,375.0>> = 6.535510701961528 [code: found-jaggy-segments]
 </div></details><details><summary>⚠ <b>WARN:</b> Do outlines contain any semi-vertical or semi-horizontal lines? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_semi_vertical">com.google.fonts/check/outline_semi_vertical</a>)</summary><div>
 
 >
@@ -289,9 +351,9 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-misalig
 
 	* bracketright (U+005D): L<<429.0,689.0>--<15.0,690.0>>
 
-	* uni00B5 (U+00B5): L<<470.0,267.0>--<471.0,565.0>> 
+	* colonmonetary (U+20A1): L<<742.0,648.0>--<741.0,390.0>> 
 
-	* 11 more.
+	* 18 more.
 
 Use -F or --full-lists to disable shortening of long lists. [code: found-semi-vertical]
 </div></details><details><summary>💤 <b>SKIP:</b> Check correctness of STAT table strings  (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/STAT_strings">com.google.fonts/check/STAT_strings</a>)</summary><div>
@@ -647,14 +709,6 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 
 * 🍞 **PASS** ots-sanitize passed this file
-</div></details><details><summary>🍞 <b>PASS:</b> Do we have the latest version of FontBakery installed? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/fontbakery_version">com.google.fonts/check/fontbakery_version</a>)</summary><div>
-
->
->Running old versions of FontBakery can lead to a poor report which may include false WARNs and FAILs due do bugs, as well as outdated quality assurance criteria.
->
->Older versions will also not report problems that are detected by new checks added to the tool in more recent updates.
->
-* 🍞 **PASS** Font Bakery is up-to-date.
 </div></details><details><summary>🍞 <b>PASS:</b> Font contains '.notdef' as its first glyph? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/mandatory_glyphs">com.google.fonts/check/mandatory_glyphs</a>)</summary><div>
 
 >
@@ -711,16 +765,6 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 
 * 🍞 **PASS** Hey! It all looks good!
-</div></details><details><summary>🍞 <b>PASS:</b> Check font contains no unreachable glyphs (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/unreachable_glyphs">com.google.fonts/check/unreachable_glyphs</a>)</summary><div>
-
->
->Glyphs are either accessible directly through Unicode codepoints or through substitution rules.
->
->In Color Fonts, glyphs are also referenced by the COLR table.
->
->Any glyphs not accessible by either of these means are redundant and serve only to increase the font's file size.
->
-* 🍞 **PASS** Font did not contain any unreachable glyphs
 </div></details><details><summary>🍞 <b>PASS:</b> Does the font contain a soft hyphen? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/soft_hyphen">com.google.fonts/check/soft_hyphen</a>)</summary><div>
 
 >
@@ -1003,5 +1047,5 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 | 💔 ERROR | 🔥 FAIL | ⚠ WARN | 💤 SKIP | ℹ INFO | 🍞 PASS | 🔎 DEBUG |
 |:-----:|:----:|:----:|:----:|:----:|:----:|:----:|
-| 0 | 2 | 7 | 38 | 2 | 56 | 0 |
-| 0% | 2% | 7% | 36% | 2% | 53% | 0% |
+| 0 | 4 | 7 | 38 | 2 | 54 | 0 |
+| 0% | 4% | 7% | 36% | 2% | 51% | 0% |

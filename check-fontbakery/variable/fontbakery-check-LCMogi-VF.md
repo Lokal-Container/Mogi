@@ -60,7 +60,15 @@ Fontbakery version: 0.8.11
 >Check that related Upright and Italic VFs have a 'ital' axis in STAT table.
 >
 * 🍞 **PASS** OK
-</div></details><br></div></details><details><summary><b>[95] LCMogi-VF.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Ensure component transforms do not perform scaling or rotation. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/transformed_components">com.google.fonts/check/transformed_components</a>)</summary><div>
+</div></details><br></div></details><details><summary><b>[95] LCMogi-VF.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Do we have the latest version of FontBakery installed? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/fontbakery_version">com.google.fonts/check/fontbakery_version</a>)</summary><div>
+
+>
+>Running old versions of FontBakery can lead to a poor report which may include false WARNs and FAILs due do bugs, as well as outdated quality assurance criteria.
+>
+>Older versions will also not report problems that are detected by new checks added to the tool in more recent updates.
+>
+* 🔥 **FAIL** Current Font Bakery version is 0.8.11, while a newer 0.8.12 is already available. Please upgrade it with 'pip install -U fontbakery' [code: outdated-fontbakery]
+</div></details><details><summary>🔥 <b>FAIL:</b> Ensure component transforms do not perform scaling or rotation. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/transformed_components">com.google.fonts/check/transformed_components</a>)</summary><div>
 
 >
 >Some families have glyphs which have been constructed by using transformed components e.g the 'u' being constructed from a flipped 'n'.
@@ -78,7 +86,6 @@ Fontbakery version: 0.8.11
 * 🔥 **FAIL** The following glyphs had components with scaling or rotation
 or inverted outline direction:
 
-* exclamdown (component exclam)
 * backslash (component slash)
 * parenright (component parenleft)
 * braceright (component braceleft)
@@ -95,7 +102,43 @@ or inverted outline direction:
 * uni2198.ss01 (component uni2197.ss01)
 * arrowleft.ss01 (component arrowright.ss01)
 * uni2196.ss01 (component uni2197.ss01)
+* uni25C0 (component uni25B6)
+* uni25C2 (component uni25B8)
  [code: transformed-components]
+</div></details><details><summary>🔥 <b>FAIL:</b> Ensure dotted circle glyph is present and can attach marks. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/dotted_circle">com.google.fonts/check/dotted_circle</a>)</summary><div>
+
+>
+>The dotted circle character (U+25CC) is inserted by shaping engines before mark glyphs which do not have an associated base, especially in the context of broken syllabic clusters.
+>
+>For fonts containing combining marks, it is recommended that the dotted circle character be included so that these isolated marks can be displayed properly; for fonts supporting complex scripts, this should be considered mandatory.
+>
+>Additionally, when a dotted circle glyph is present, it should be able to display all marks correctly, meaning that it should contain anchors for all attaching marks.
+>
+* 🔥 **FAIL** The following glyphs could not be attached to the dotted circle glyph:
+
+	- acutecomb
+
+	- dotbelowcomb
+
+	- hookabovecomb
+
+	- tildecomb
+
+	- uni0302
+
+	- uni0306
+
+	- uni0312
+
+	- uni031B
+
+	- uni0326
+
+	- uni0335 
+
+	- 3 more.
+
+Use -F or --full-lists to disable shortening of long lists. [code: unattached-dotted-circle-marks]
 </div></details><details><summary>🔥 <b>FAIL:</b> Ensure soft_dotted characters lose their dot when combined with marks that replace the dot. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/soft_dotted">com.google.fonts/check/soft_dotted</a>)</summary><div>
 
 >
@@ -103,9 +146,9 @@ or inverted outline direction:
 >
 >Characters with the Soft_Dotted property are listed in https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt
 >
-* 🔥 **FAIL** The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌
+* 🔥 **FAIL** The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌ ị̀ ị́ ị̂ ị̃ ị̄
 
-The dot of soft dotted characters should disappear in other cases, for example: į̆ į̇ į̈ į̊ į̋ į̒ į̦̀ į̦́ į̦̂ į̦̃ į̦̄ į̦̆ į̦̇ į̦̈ į̦̊ į̦̋ į̦̌ į̦̒ į̧̀ į̧́ [code: soft-dotted]
+The dot of soft dotted characters should disappear in other cases, for example: j̉ j̛̉ j̣̉ j̦̉ j̧̉ j̨̉ j̵̉ j̶̉ j̷̉ j̸̉ į̆ į̇ į̈ į̉ į̊ į̋ į̒ į̛̀ į̛́ į̛̂ [code: soft-dotted]
 </div></details><details><summary>🔥 <b>FAIL:</b> The variable font 'wdth' (Width) axis coordinate must be 100 on the 'Regular' instance. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.google.fonts/check/varfont/regular_wdth_coord">com.google.fonts/check/varfont/regular_wdth_coord</a>)</summary><div>
 
 >
@@ -126,16 +169,31 @@ The dot of soft dotted characters should disappear in other cases, for example: 
 >https://docs.microsoft.com/en-us/typography/opentype/spec/stat#axis-value-tables
 >
 * 🔥 **FAIL** STAT table has no Axis Value tables. [code: no-axis-value-tables]
-</div></details><details><summary>⚠ <b>WARN:</b> Ensure dotted circle glyph is present and can attach marks. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/dotted_circle">com.google.fonts/check/dotted_circle</a>)</summary><div>
+</div></details><details><summary>⚠ <b>WARN:</b> Check font contains no unreachable glyphs (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/unreachable_glyphs">com.google.fonts/check/unreachable_glyphs</a>)</summary><div>
 
 >
->The dotted circle character (U+25CC) is inserted by shaping engines before mark glyphs which do not have an associated base, especially in the context of broken syllabic clusters.
+>Glyphs are either accessible directly through Unicode codepoints or through substitution rules.
 >
->For fonts containing combining marks, it is recommended that the dotted circle character be included so that these isolated marks can be displayed properly; for fonts supporting complex scripts, this should be considered mandatory.
+>In Color Fonts, glyphs are also referenced by the COLR table.
 >
->Additionally, when a dotted circle glyph is present, it should be able to display all marks correctly, meaning that it should contain anchors for all attaching marks.
+>Any glyphs not accessible by either of these means are redundant and serve only to increase the font's file size.
 >
-* ⚠ **WARN** No dotted circle glyph present [code: missing-dotted-circle]
+* ⚠ **WARN** The following glyphs could not be reached by codepoint or substitution rules:
+
+	- uni004A0301
+
+	- uni006A0301
+
+	- uni03020300
+
+	- uni03020301
+
+	- uni03060300
+
+	- uni03060301 
+
+	- uni03080301
+ [code: unreachable-glyphs]
 </div></details><details><summary>⚠ <b>WARN:</b> Detect any interpolation issues in the font. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/interpolation_issues">com.google.fonts/check/interpolation_issues</a>)</summary><div>
 
 >
@@ -143,13 +201,9 @@ The dot of soft dotted characters should disappear in other cases, for example: 
 >
 >Here we check for the presence of potential interpolation errors using the fontTools.varLib.interpolatable module.
 >
-* ⚠ **WARN** Interpolation issues were found in the font: 	- Contour order differs in glyph 'quotedblleft': [0, 1] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e8fa0>, [1, 0] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e91b0>.
+* ⚠ **WARN** Interpolation issues were found in the font: 	- Contour order differs in glyph 'ellipsis': [0, 1, 2] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6a1b40>, [2, 1, 0] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6a0820>. 
 
-	- Contour order differs in glyph 'ellipsis': [0, 1, 2] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e8fa0>, [2, 1, 0] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e91b0>.
-
-	- Contour order differs in glyph 'quotedblbase': [0, 1] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e8fa0>, [1, 0] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e91b0>. 
-
-	- Contour order differs in glyph 'quotedblright': [0, 1] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e8fa0>, [1, 0] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6e91b0>. [code: interpolation-issues]
+	- Contour order differs in glyph 'uni20BD': [0, 1, 2] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6a1b40>, [0, 2, 1] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x11c6a0820>. [code: interpolation-issues]
 </div></details><details><summary>⚠ <b>WARN:</b> Check math signs have the same width. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/math_signs_width">com.google.fonts/check/math_signs_width</a>)</summary><div>
 
 >
@@ -213,7 +267,7 @@ notequal
 
 	* bracketleft (U+005B): X=20.0,Y=689.0 (should be at cap-height 690?) 
 
-	* 64 more.
+	* 85 more.
 
 Use -F or --full-lists to disable shortening of long lists. [code: found-misalignments]
 </div></details><details><summary>💤 <b>SKIP:</b> Each font in set of sibling families must have the same set of vertical metrics values. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/superfamily/vertical_metrics">com.google.fonts/check/superfamily/vertical_metrics</a>)</summary><div>
@@ -485,14 +539,6 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 
 * 🍞 **PASS** ots-sanitize passed this file
-</div></details><details><summary>🍞 <b>PASS:</b> Do we have the latest version of FontBakery installed? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/fontbakery_version">com.google.fonts/check/fontbakery_version</a>)</summary><div>
-
->
->Running old versions of FontBakery can lead to a poor report which may include false WARNs and FAILs due do bugs, as well as outdated quality assurance criteria.
->
->Older versions will also not report problems that are detected by new checks added to the tool in more recent updates.
->
-* 🍞 **PASS** Font Bakery is up-to-date.
 </div></details><details><summary>🍞 <b>PASS:</b> Font contains '.notdef' as its first glyph? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/mandatory_glyphs">com.google.fonts/check/mandatory_glyphs</a>)</summary><div>
 
 >
@@ -555,16 +601,6 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 
 * 🍞 **PASS** Hey! It all looks good!
-</div></details><details><summary>🍞 <b>PASS:</b> Check font contains no unreachable glyphs (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/unreachable_glyphs">com.google.fonts/check/unreachable_glyphs</a>)</summary><div>
-
->
->Glyphs are either accessible directly through Unicode codepoints or through substitution rules.
->
->In Color Fonts, glyphs are also referenced by the COLR table.
->
->Any glyphs not accessible by either of these means are redundant and serve only to increase the font's file size.
->
-* 🍞 **PASS** Font did not contain any unreachable glyphs
 </div></details><details><summary>🍞 <b>PASS:</b> Does the font contain a soft hyphen? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/soft_hyphen">com.google.fonts/check/soft_hyphen</a>)</summary><div>
 
 >
@@ -932,5 +968,5 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 | 💔 ERROR | 🔥 FAIL | ⚠ WARN | 💤 SKIP | ℹ INFO | 🍞 PASS | 🔎 DEBUG |
 |:-----:|:----:|:----:|:----:|:----:|:----:|:----:|
-| 0 | 4 | 4 | 26 | 2 | 69 | 0 |
-| 0% | 4% | 4% | 25% | 2% | 66% | 0% |
+| 0 | 6 | 4 | 26 | 2 | 67 | 0 |
+| 0% | 6% | 4% | 25% | 2% | 64% | 0% |
