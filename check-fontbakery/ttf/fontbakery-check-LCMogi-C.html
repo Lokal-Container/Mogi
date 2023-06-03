@@ -73,23 +73,23 @@
             </tr>
             <tr>
                 <td>0</td>
-                <td>3</td>
-                <td>7</td>
-                <td>39</td>
                 <td>2</td>
-                <td>57</td>
+                <td>7</td>
+                <td>38</td>
+                <td>2</td>
+                <td>59</td>
             </tr>
             <tr>
                 <td>0%</td>
-                <td>3%</td>
-                <td>6%</td>
-                <td>36%</td>
                 <td>2%</td>
-                <td>53%</td>
+                <td>6%</td>
+                <td>35%</td>
+                <td>2%</td>
+                <td>55%</td>
             </tr>
             </table>
             
-<h2>&lt;Section: Universal&gt; 🔥🔥🔥⚠️⚠️⚠️⏩⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
+<h2>&lt;Section: Universal&gt; 🔥🔥⚠️⚠️⚠️⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
 <h3>Checking all files are in the same directory.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/single_directory&gt;</div>
 <p>If the set of font files passed in the command line is not all in the same directory, then we warn the user since the tool will interpret the set of files as belonging to a single family (and it is unlikely that the user would store the files from a single family spreaded in several separate directories).</p>
@@ -260,19 +260,7 @@
 <p>Any glyphs not accessible by either of these means are redundant and serve only to increase the font's file size.</p>
 
 <details><summary>⚠️ <strong>fonts/ttf/LCMogi-C.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>The following glyphs could not be reached by codepoint or substitution rules:</p>
-<pre><code>- uni004A0301
-
-- uni006A0301
-
-- uni03020300
-
-- uni03020301
-
-- uni03060300
-
-- uni03060301 
-
-- uni03080301
+<pre><code>- fi.liga
 </code></pre>
 <p>[code: unreachable-glyphs]</p>
 </span></li></ul></div></details>
@@ -364,30 +352,7 @@ or inverted outline direction:</p>
 <p>For fonts containing combining marks, it is recommended that the dotted circle character be included so that these isolated marks can be displayed properly; for fonts supporting complex scripts, this should be considered mandatory.</p>
 <p>Additionally, when a dotted circle glyph is present, it should be able to display all marks correctly, meaning that it should contain anchors for all attaching marks.</p>
 
-<details><summary>🔥 <strong>fonts/ttf/LCMogi-C.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The following glyphs could not be attached to the dotted circle glyph:</p>
-<pre><code>- acutecomb
-
-- dotbelowcomb
-
-- hookabovecomb
-
-- tildecomb
-
-- uni0302
-
-- uni0306
-
-- uni0312
-
-- uni031B
-
-- uni0326
-
-- uni0335 
-
-- 3 more.
-</code></pre>
-<p>Use -F or --full-lists to disable shortening of long lists. [code: unattached-dotted-circle-marks]</p>
+<details><summary>✅ <strong>fonts/ttf/LCMogi-C.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>All marks were anchored to dotted circle</p>
 </span></li></ul></div></details>
 <h3>Ensure soft_dotted characters lose their dot when combined with marks that replace the dot.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/soft_dotted&gt;</div>
@@ -396,7 +361,7 @@ or inverted outline direction:</p>
 <p>See also: https://googlefonts.github.io/gf-guide/diacritics.html#soft-dotted-glyphs</p>
 
 <details><summary>🔥 <strong>fonts/ttf/LCMogi-C.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌ ị̀ ị́ ị̂ ị̃ ị̄</p>
-<p>The dot of soft dotted characters should disappear in other cases, for example: j̉ j̛̉ j̣̉ j̦̉ j̧̉ j̨̉ j̵̉ j̶̉ j̷̉ j̸̉ į̆ į̇ į̈ į̉ į̊ į̋ į̒ į̛̀ į̛́ į̛̂ [code: soft-dotted]</p>
+<p>The dot of soft dotted characters should disappear in other cases, for example: į̆ į̇ į̈ į̉ į̊ į̋ į̒ į̛̀ į̛́ į̛̂ į̛̃ į̛̄ į̛̆ į̛̇ į̛̈ į̛̉ į̛̊ į̛̋ į̛̌ į̛̒ [code: soft-dotted]</p>
 </span></li></ul></div></details>
 <h3>Ensure no GPOS7 lookups are present.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/gpos7&gt;</div>
@@ -410,8 +375,7 @@ or inverted outline direction:</p>
 <div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/freetype_rasterizer&gt;</div>
 <p>Malformed fonts can cause FreeType to crash.</p>
 
-<details><summary>⏩ <strong>fonts/ttf/LCMogi-C.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>FreeType is not available. To fix this, invoke the 'freetype' extra when installing Font Bakery:
-pip3 install -U fontbakery[freetype] [code: freetype-not-installed]</p>
+<details><summary>✅ <strong>fonts/ttf/LCMogi-C.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font can be rasterized by FreeType.</p>
 </span></li></ul></div></details>
 <h3>Font has the proper sfntVersion value?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/sfnt_version&gt;</div>
@@ -448,7 +412,7 @@ plus</p>
 <p>Width = 431:
 equal</p>
 <p>Width = 551:
-plusminus, logicalnot</p>
+logicalnot, plusminus</p>
 <p>Width = 569:
 multiply</p>
 <p>Width = 451:

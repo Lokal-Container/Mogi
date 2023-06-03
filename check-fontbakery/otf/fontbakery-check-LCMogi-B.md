@@ -1,6 +1,6 @@
 ## Fontbakery report
 
-Fontbakery version: 0.8.12
+Fontbakery version: 0.8.13
 
 <details><summary><b>[11] Family checks</b></summary><div><details><summary>🍞 <b>PASS:</b> Checking all files are in the same directory. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/single_directory">com.google.fonts/check/family/single_directory</a>)</summary><div>
 
@@ -83,7 +83,7 @@ Fontbakery version: 0.8.12
 >
 * 🔥 **FAIL** The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌ ị̀ ị́ ị̂ ị̃ ị̄
 
-The dot of soft dotted characters should disappear in other cases, for example: j̉ j̛̉ j̣̉ j̦̉ j̧̉ j̨̉ j̵̉ j̶̉ j̷̉ j̸̉ į̆ į̇ į̈ į̉ į̊ į̋ į̒ į̛̀ į̛́ į̛̂ [code: soft-dotted]
+The dot of soft dotted characters should disappear in other cases, for example: į̆ į̇ į̈ į̉ į̊ į̋ į̒ į̛̀ į̛́ į̛̂ į̛̃ į̛̄ į̛̆ į̛̇ į̛̈ į̛̉ į̛̊ į̛̋ į̛̌ į̛̒ [code: soft-dotted]
 </div></details><details><summary>⚠ <b>WARN:</b> Check font contains no unreachable glyphs (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/unreachable_glyphs">com.google.fonts/check/unreachable_glyphs</a>)</summary><div>
 
 >
@@ -95,29 +95,11 @@ The dot of soft dotted characters should disappear in other cases, for example: 
 >
 * ⚠ **WARN** The following glyphs could not be reached by codepoint or substitution rules:
 
-	- horngrave
+	- fi.liga
 
-	- uni004A0301
+	- horngrave 
 
-	- uni006A0301
-
-	- uni03020300
-
-	- uni03020301
-
-	- uni03020303
-
-	- uni03020309
-
-	- uni03030304
-
-	- uni03060300
-
-	- uni03060301 
-
-	- 5 more.
-
-Use -F or --full-lists to disable shortening of long lists.
+	- uni030C.alt
  [code: unreachable-glyphs]
 </div></details><details><summary>⚠ <b>WARN:</b> Check math signs have the same width. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/math_signs_width">com.google.fonts/check/math_signs_width</a>)</summary><div>
 
@@ -154,7 +136,7 @@ Width = 446:
 notequal
 
 Width = 468:
-lessequal, greaterequal
+greaterequal, lessequal
  [code: width-outliers]
 </div></details><details><summary>⚠ <b>WARN:</b> Are there any misaligned on-curve points? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_alignment_miss">com.google.fonts/check/outline_alignment_miss</a>)</summary><div>
 
@@ -314,13 +296,6 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-semi-ve
 >Additionally, when a dotted circle glyph is present, it should be able to display all marks correctly, meaning that it should contain anchors for all attaching marks.
 >
 * 💤 **SKIP** Unfulfilled Conditions: is_ttf
-</div></details><details><summary>💤 <b>SKIP:</b> Ensure that the font can be rasterized by FreeType. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.adobe.fonts/check/freetype_rasterizer">com.adobe.fonts/check/freetype_rasterizer</a>)</summary><div>
-
->
->Malformed fonts can cause FreeType to crash.
->
-* 💤 **SKIP** FreeType is not available. To fix this, invoke the 'freetype' extra when installing Font Bakery:
-pip3 install -U fontbakery[freetype] [code: freetype-not-installed]
 </div></details><details><summary>💤 <b>SKIP:</b> Detect any interpolation issues in the font. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/interpolation_issues">com.google.fonts/check/interpolation_issues</a>)</summary><div>
 
 >
@@ -764,6 +739,12 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >To fix this warning, rebuild the font with a recent version of fonttools.
 >
 * 🍞 **PASS** Font has no GPOS7 lookups
+</div></details><details><summary>🍞 <b>PASS:</b> Ensure that the font can be rasterized by FreeType. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.adobe.fonts/check/freetype_rasterizer">com.adobe.fonts/check/freetype_rasterizer</a>)</summary><div>
+
+>
+>Malformed fonts can cause FreeType to crash.
+>
+* 🍞 **PASS** Font can be rasterized by FreeType.
 </div></details><details><summary>🍞 <b>PASS:</b> Font has the proper sfntVersion value? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.adobe.fonts/check/sfnt_version">com.adobe.fonts/check/sfnt_version</a>)</summary><div>
 
 >
@@ -1004,5 +985,5 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 | 💔 ERROR | 🔥 FAIL | ⚠ WARN | 💤 SKIP | ℹ INFO | 🍞 PASS | 🔎 DEBUG |
 |:-----:|:----:|:----:|:----:|:----:|:----:|:----:|
-| 0 | 1 | 6 | 47 | 2 | 52 | 0 |
-| 0% | 1% | 6% | 44% | 2% | 48% | 0% |
+| 0 | 1 | 6 | 46 | 2 | 53 | 0 |
+| 0% | 1% | 6% | 43% | 2% | 49% | 0% |

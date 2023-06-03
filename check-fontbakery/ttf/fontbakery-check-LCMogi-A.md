@@ -1,6 +1,6 @@
 ## Fontbakery report
 
-Fontbakery version: 0.8.12
+Fontbakery version: 0.8.13
 
 <details><summary><b>[11] Family checks</b></summary><div><details><summary>🍞 <b>PASS:</b> Checking all files are in the same directory. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/single_directory">com.google.fonts/check/family/single_directory</a>)</summary><div>
 
@@ -109,40 +109,6 @@ or inverted outline direction:
 * uni25C0 (component uni25B6)
 * uni25C2 (component uni25B8)
  [code: transformed-components]
-</div></details><details><summary>🔥 <b>FAIL:</b> Ensure dotted circle glyph is present and can attach marks. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/dotted_circle">com.google.fonts/check/dotted_circle</a>)</summary><div>
-
->
->The dotted circle character (U+25CC) is inserted by shaping engines before mark glyphs which do not have an associated base, especially in the context of broken syllabic clusters.
->
->For fonts containing combining marks, it is recommended that the dotted circle character be included so that these isolated marks can be displayed properly; for fonts supporting complex scripts, this should be considered mandatory.
->
->Additionally, when a dotted circle glyph is present, it should be able to display all marks correctly, meaning that it should contain anchors for all attaching marks.
->
-* 🔥 **FAIL** The following glyphs could not be attached to the dotted circle glyph:
-
-	- acutecomb
-
-	- dotbelowcomb
-
-	- hookabovecomb
-
-	- tildecomb
-
-	- uni0302
-
-	- uni0306
-
-	- uni0312
-
-	- uni031B
-
-	- uni0326
-
-	- uni0335 
-
-	- 3 more.
-
-Use -F or --full-lists to disable shortening of long lists. [code: unattached-dotted-circle-marks]
 </div></details><details><summary>🔥 <b>FAIL:</b> Ensure soft_dotted characters lose their dot when combined with marks that replace the dot. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/soft_dotted">com.google.fonts/check/soft_dotted</a>)</summary><div>
 
 >
@@ -154,7 +120,7 @@ Use -F or --full-lists to disable shortening of long lists. [code: unattached-do
 >
 * 🔥 **FAIL** The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌ ị̀ ị́ ị̂ ị̃ ị̄
 
-The dot of soft dotted characters should disappear in other cases, for example: j̉ j̛̉ j̣̉ j̦̉ j̧̉ j̨̉ j̵̉ j̶̉ j̷̉ j̸̉ į̆ į̇ į̈ į̉ į̊ į̋ į̒ į̛̀ į̛́ į̛̂ [code: soft-dotted]
+The dot of soft dotted characters should disappear in other cases, for example: į̆ į̇ į̈ į̉ į̊ į̋ į̒ į̛̀ į̛́ į̛̂ į̛̃ į̛̄ į̛̆ į̛̇ į̛̈ į̛̉ į̛̊ į̛̋ į̛̌ į̛̒ [code: soft-dotted]
 </div></details><details><summary>⚠ <b>WARN:</b> Check font contains no unreachable glyphs (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/unreachable_glyphs">com.google.fonts/check/unreachable_glyphs</a>)</summary><div>
 
 >
@@ -166,19 +132,7 @@ The dot of soft dotted characters should disappear in other cases, for example: 
 >
 * ⚠ **WARN** The following glyphs could not be reached by codepoint or substitution rules:
 
-	- uni004A0301
-
-	- uni006A0301
-
-	- uni03020300
-
-	- uni03020301
-
-	- uni03060300
-
-	- uni03060301 
-
-	- uni03080301
+	- fi.liga
  [code: unreachable-glyphs]
 </div></details><details><summary>⚠ <b>WARN:</b> Check if each glyph has the recommended amount of contours. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/contour_count">com.google.fonts/check/contour_count</a>)</summary><div>
 
@@ -234,7 +188,7 @@ Width = 426:
 greater, less
 
 Width = 439:
-plusminus, logicalnot
+logicalnot, plusminus
 
 Width = 457:
 multiply
@@ -343,13 +297,6 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-semi-ve
 >The chws_tool utility (https://github.com/googlefonts/chws_tool) can be used to add these features automatically.
 >
 * 💤 **SKIP** Unfulfilled Conditions: is_cjk_font
-</div></details><details><summary>💤 <b>SKIP:</b> Ensure that the font can be rasterized by FreeType. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.adobe.fonts/check/freetype_rasterizer">com.adobe.fonts/check/freetype_rasterizer</a>)</summary><div>
-
->
->Malformed fonts can cause FreeType to crash.
->
-* 💤 **SKIP** FreeType is not available. To fix this, invoke the 'freetype' extra when installing Font Bakery:
-pip3 install -U fontbakery[freetype] [code: freetype-not-installed]
 </div></details><details><summary>💤 <b>SKIP:</b> Detect any interpolation issues in the font. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/interpolation_issues">com.google.fonts/check/interpolation_issues</a>)</summary><div>
 
 >
@@ -751,6 +698,16 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >More discussion at: https://typedrawers.com/discussion/2046/special-dash-things-softhyphen-horizontalbar
 >
 * 🍞 **PASS** Looks good!
+</div></details><details><summary>🍞 <b>PASS:</b> Ensure dotted circle glyph is present and can attach marks. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/dotted_circle">com.google.fonts/check/dotted_circle</a>)</summary><div>
+
+>
+>The dotted circle character (U+25CC) is inserted by shaping engines before mark glyphs which do not have an associated base, especially in the context of broken syllabic clusters.
+>
+>For fonts containing combining marks, it is recommended that the dotted circle character be included so that these isolated marks can be displayed properly; for fonts supporting complex scripts, this should be considered mandatory.
+>
+>Additionally, when a dotted circle glyph is present, it should be able to display all marks correctly, meaning that it should contain anchors for all attaching marks.
+>
+* 🍞 **PASS** All marks were anchored to dotted circle
 </div></details><details><summary>🍞 <b>PASS:</b> Ensure no GPOS7 lookups are present. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/gpos7">com.google.fonts/check/gpos7</a>)</summary><div>
 
 >
@@ -761,6 +718,12 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >To fix this warning, rebuild the font with a recent version of fonttools.
 >
 * 🍞 **PASS** Font has no GPOS7 lookups
+</div></details><details><summary>🍞 <b>PASS:</b> Ensure that the font can be rasterized by FreeType. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.adobe.fonts/check/freetype_rasterizer">com.adobe.fonts/check/freetype_rasterizer</a>)</summary><div>
+
+>
+>Malformed fonts can cause FreeType to crash.
+>
+* 🍞 **PASS** Font can be rasterized by FreeType.
 </div></details><details><summary>🍞 <b>PASS:</b> Font has the proper sfntVersion value? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.adobe.fonts/check/sfnt_version">com.adobe.fonts/check/sfnt_version</a>)</summary><div>
 
 >
@@ -1049,5 +1012,5 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 | 💔 ERROR | 🔥 FAIL | ⚠ WARN | 💤 SKIP | ℹ INFO | 🍞 PASS | 🔎 DEBUG |
 |:-----:|:----:|:----:|:----:|:----:|:----:|:----:|
-| 0 | 3 | 6 | 39 | 2 | 58 | 0 |
-| 0% | 3% | 6% | 36% | 2% | 54% | 0% |
+| 0 | 2 | 6 | 38 | 2 | 60 | 0 |
+| 0% | 2% | 6% | 35% | 2% | 56% | 0% |

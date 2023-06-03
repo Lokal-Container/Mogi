@@ -1,4 +1,4 @@
 fonttools
 fontmake
-fontbakery
+fontbakery[freetype]
 brotli

@@ -73,23 +73,23 @@
             </tr>
             <tr>
                 <td>0</td>
-                <td>5</td>
+                <td>3</td>
                 <td>4</td>
-                <td>28</td>
+                <td>27</td>
                 <td>2</td>
-                <td>69</td>
+                <td>72</td>
             </tr>
             <tr>
                 <td>0%</td>
-                <td>5%</td>
+                <td>3%</td>
                 <td>4%</td>
-                <td>26%</td>
+                <td>25%</td>
                 <td>2%</td>
-                <td>64%</td>
+                <td>67%</td>
             </tr>
             </table>
             
-<h2>&lt;Section: Universal&gt; 🔥🔥🔥⚠️⚠️⚠️⏩⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
+<h2>&lt;Section: Universal&gt; 🔥⚠️⚠️⚠️⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
 <h3>Checking all files are in the same directory.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/single_directory&gt;</div>
 <p>If the set of font files passed in the command line is not all in the same directory, then we warn the user since the tool will interpret the set of files as belonging to a single family (and it is unlikely that the user would store the files from a single family spreaded in several separate directories).</p>
@@ -260,19 +260,7 @@
 <p>Any glyphs not accessible by either of these means are redundant and serve only to increase the font's file size.</p>
 
 <details><summary>⚠️ <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>The following glyphs could not be reached by codepoint or substitution rules:</p>
-<pre><code>- uni004A0301
-
-- uni006A0301
-
-- uni03020300
-
-- uni03020301
-
-- uni03060300
-
-- uni03060301 
-
-- uni03080301
+<pre><code>- fi.liga
 </code></pre>
 <p>[code: unreachable-glyphs]</p>
 </span></li></ul></div></details>
@@ -309,29 +297,7 @@
 <p>When building the font with fontmake, the problem can be fixed by adding this to the command line:</p>
 <p>--filter DecomposeTransformedComponentsFilter</p>
 
-<details><summary>🔥 <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The following glyphs had components with scaling or rotation
-or inverted outline direction:</p>
-<ul>
-<li>backslash (component slash)</li>
-<li>parenright (component parenleft)</li>
-<li>braceright (component braceleft)</li>
-<li>bracketright (component bracketleft)</li>
-<li>guillemotright (component guillemotleft)</li>
-<li>guilsinglright (component guilsinglleft)</li>
-<li>less (component greater)</li>
-<li>lessequal (component greaterequal)</li>
-<li>uni2198 (component uni2197)</li>
-<li>arrowleft (component arrowright)</li>
-<li>uni2196 (component uni2197)</li>
-<li>uni21A6 (component uni21A4)</li>
-<li>uni21B0 (component uni21B2)</li>
-<li>uni2198.ss01 (component uni2197.ss01)</li>
-<li>arrowleft.ss01 (component arrowright.ss01)</li>
-<li>uni2196.ss01 (component uni2197.ss01)</li>
-<li>uni25C0 (component uni25B6)</li>
-<li>uni25C2 (component uni25B8)
-[code: transformed-components]</li>
-</ul>
+<details><summary>✅ <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>No glyphs had components with scaling or rotation</p>
 </span></li></ul></div></details>
 <h3>Ensure dotted circle glyph is present and can attach marks.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/dotted_circle&gt;</div>
@@ -339,30 +305,7 @@ or inverted outline direction:</p>
 <p>For fonts containing combining marks, it is recommended that the dotted circle character be included so that these isolated marks can be displayed properly; for fonts supporting complex scripts, this should be considered mandatory.</p>
 <p>Additionally, when a dotted circle glyph is present, it should be able to display all marks correctly, meaning that it should contain anchors for all attaching marks.</p>
 
-<details><summary>🔥 <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The following glyphs could not be attached to the dotted circle glyph:</p>
-<pre><code>- acutecomb
-
-- dotbelowcomb
-
-- hookabovecomb
-
-- tildecomb
-
-- uni0302
-
-- uni0306
-
-- uni0312
-
-- uni031B
-
-- uni0326
-
-- uni0335 
-
-- 3 more.
-</code></pre>
-<p>Use -F or --full-lists to disable shortening of long lists. [code: unattached-dotted-circle-marks]</p>
+<details><summary>✅ <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>All marks were anchored to dotted circle</p>
 </span></li></ul></div></details>
 <h3>Ensure soft_dotted characters lose their dot when combined with marks that replace the dot.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/soft_dotted&gt;</div>
@@ -371,7 +314,7 @@ or inverted outline direction:</p>
 <p>See also: https://googlefonts.github.io/gf-guide/diacritics.html#soft-dotted-glyphs</p>
 
 <details><summary>🔥 <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌ ị̀ ị́ ị̂ ị̃ ị̄</p>
-<p>The dot of soft dotted characters should disappear in other cases, for example: j̉ j̛̉ j̣̉ j̦̉ j̧̉ j̨̉ j̵̉ j̶̉ j̷̉ j̸̉ į̆ į̇ į̈ į̉ į̊ į̋ į̒ į̛̀ į̛́ į̛̂ [code: soft-dotted]</p>
+<p>The dot of soft dotted characters should disappear in other cases, for example: į̆ į̇ į̈ į̉ į̊ į̋ į̒ į̛̀ į̛́ į̛̂ į̛̃ į̛̄ į̛̆ į̛̇ į̛̈ į̛̉ į̛̊ į̛̋ į̛̌ į̛̒ [code: soft-dotted]</p>
 </span></li></ul></div></details>
 <h3>Ensure no GPOS7 lookups are present.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/gpos7&gt;</div>
@@ -385,8 +328,7 @@ or inverted outline direction:</p>
 <div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/freetype_rasterizer&gt;</div>
 <p>Malformed fonts can cause FreeType to crash.</p>
 
-<details><summary>⏩ <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>FreeType is not available. To fix this, invoke the 'freetype' extra when installing Font Bakery:
-pip3 install -U fontbakery[freetype] [code: freetype-not-installed]</p>
+<details><summary>✅ <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font can be rasterized by FreeType.</p>
 </span></li></ul></div></details>
 <h3>Font has the proper sfntVersion value?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/sfnt_version&gt;</div>
@@ -409,8 +351,8 @@ pip3 install -U fontbakery[freetype] [code: freetype-not-installed]</p>
 <p>When creating a variable font, the designer must make sure that corresponding paths have the same start points across masters, as well as that corresponding component shapes are placed in the same order within a glyph across masters. If this is not done, the glyph will not interpolate correctly.</p>
 <p>Here we check for the presence of potential interpolation errors using the fontTools.varLib.interpolatable module.</p>
 
-<details><summary>⚠️ <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>Interpolation issues were found in the font: 	- Contour order differs in glyph 'ellipsis': [0, 1, 2] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1102f46a0&gt;, [2, 1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1102f4370&gt;.</p>
-<pre><code>- Contour order differs in glyph 'uni20BD': [0, 1, 2] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1102f46a0&gt;, [0, 2, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1102f4370&gt;. [code: interpolation-issues]
+<details><summary>⚠️ <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>Interpolation issues were found in the font: 	- Contour order differs in glyph 'ellipsis': [0, 1, 2] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1071c9ed0&gt;, [2, 1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1071caf20&gt;.</p>
+<pre><code>- Contour order differs in glyph 'uni20BD': [0, 1, 2] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1071c9ed0&gt;, [0, 2, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1071caf20&gt;. [code: interpolation-issues]
 </code></pre>
 </span></li></ul></div></details>
 <h3>Check math signs have the same width.</h3>
@@ -900,7 +842,8 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 <p>If present, Format 4 Axis Value tables are checked to ensure they have more than one AxisValueRecord (a strong recommendation from the OpenType spec).</p>
 <p>https://docs.microsoft.com/en-us/typography/opentype/spec/stat#axis-value-tables</p>
 
-<details><summary>🔥 <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>STAT table has no Axis Value tables. [code: no-axis-value-tables]</p>
+<details><summary>🔥 <strong>fonts/variable/LCMogi-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>STAT table is missing Axis Value for 'wdth' value '120.0' [code: missing-axis-value-table]</p>
+</span></li><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>STAT table is missing Axis Value for 'wdth' value '130.0' [code: missing-axis-value-table]</p>
 </span></li></ul></div></details>
 <h3>Ensure 'ital' STAT axis is boolean value</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/italic_axis_in_stat_is_boolean&gt;</div>

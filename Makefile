@@ -36,6 +36,12 @@ check-variable: $(VARDIR)
 check-fonts:
 	make check-ttf; make check-otf; make check-variable
 
+fix-fonts:
+	gftools gen-stat $(VARDIR)/*.ttf
+	for file in $(VARDIR)/*.ttf.fix; do \
+		mv $$file $${file%.fix}; \
+	done
+	
 build: dependencies
 	. venv/bin/activate
 	mkdir -p $(TTFDIR)
@@ -44,7 +50,7 @@ build: dependencies
 	fontmake -g "$(SOURCES)" -o otf --output-dir $(OTFDIR) -i --verbose DEBUG
 	python3 scripts/build.py
 	mkdir -p $(VARDIR)
-	fontmake -g "$(SOURCES)" -o variable --output-dir $(VARDIR) --flatten-components
+	fontmake -g "$(SOURCES)" -o variable --output-dir $(VARDIR) --filter DecomposeTransformedComponentsFilter
 
 clearFolder:
 	rm -rf $(TTFDIR)/*.ttf; rm -rf $(OTFDIR)/*.otf; rm -rf $(VARDIR)/*.ttf; rm -rf $(WOFF2DIR)/*.woff2
@@ -54,7 +60,7 @@ clearFolder:
 dependencies:
 	python3 -m venv venv
 	. venv/bin/activate
-	pip install --upgrade -r requirements.txt
+	pip install -r requirements.txt
 
 clean:
 	rm -rf venv

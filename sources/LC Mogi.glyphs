@@ -1,23 +1,20 @@
 {
-.appVersion = "3197";
+.appVersion = "3198";
 copyright = "Copyright © 2018 by Deni Anggara. All rights reserved.";
 customParameters = (
+{
+name = "Use Typo Metrics";
+value = 1;
+},
 {
 name = "Axis Mappings";
 value = {
 wdth = {
-400 = 400;
-700 = 700;
-};
-wght = {
-400 = 400;
-700 = 700;
+100 = 400;
+120 = 500;
+130 = 700;
 };
 };
-},
-{
-name = "Use Typo Metrics";
-value = 1;
 },
 {
 name = Axes;
@@ -37,24 +34,24 @@ familyName = "LC Mogi";
 featurePrefixes = (
 {
 automatic = 1;
-code = "languagesystem DFLT dflt;\012\012languagesystem latn dflt;\012languagesystem latn AZE;\012languagesystem latn CRT;\012languagesystem latn KAZ;\012languagesystem latn TAT;\012languagesystem latn TRK;\012languagesystem latn ROM;\012languagesystem latn MOL;\012languagesystem latn CAT;\012";
+code = "languagesystem DFLT dflt;\012\012languagesystem latn dflt;\012languagesystem latn AZE;\012languagesystem latn CRT;\012languagesystem latn KAZ;\012languagesystem latn TAT;\012languagesystem latn TRK;\012languagesystem latn ROM;\012languagesystem latn MOL;\012languagesystem latn CAT;\012languagesystem latn NLD;\012";
 name = Languagesystems;
 }
 );
 features = (
 {
 automatic = 1;
-code = "feature locl;\012feature subs;\012feature sinf;\012feature sups;\012feature numr;\012feature dnom;\012feature frac;\012feature ordn;\012feature case;\012feature ss01;\012feature ss03;\012";
+code = "feature locl;\012feature subs;\012feature sinf;\012feature sups;\012feature numr;\012feature dnom;\012feature frac;\012feature ordn;\012feature case;\012feature fwid;\012feature ss01;\012feature ss03;\012";
 name = aalt;
 },
 {
 automatic = 1;
-code = "lookup ccmp_Other_1 {\012	@CombiningTopAccents = [acutecomb brevecomb caroncomb circumflexcomb commaturnedabovecomb dieresiscomb dotaccentcomb gravecomb hungarumlautcomb macroncomb ringcomb tildecomb];\012	lookupflag UseMarkFilteringSet @CombiningTopAccents;\012	sub i' @CombiningTopAccents by idotless;\012	sub j' @CombiningTopAccents by jdotless;\012} ccmp_Other_1;\012\012lookup ccmp_latn_1 {\012	sub Ldot by L periodcentered.loclCAT.case;\012} ccmp_latn_1;\012\012script latn;\012lookup ccmp_latn_1;\012";
+code = "lookup ccmp_DFLT_1 {\012	lookupflag 0;\012	sub brevecomb acutecomb by brevecomb_acutecomb;\012	sub brevecomb gravecomb by brevecomb_gravecomb;\012	sub brevecomb hookabovecomb by brevecomb_hookabovecomb;\012	sub brevecomb tildecomb by brevecomb_tildecomb;\012	sub circumflexcomb acutecomb by circumflexcomb_acutecomb;\012	sub circumflexcomb gravecomb by circumflexcomb_gravecomb;\012	sub circumflexcomb hookabovecomb by circumflexcomb_hookabovecomb;\012	sub circumflexcomb tildecomb by circumflexcomb_tildecomb;\012	sub dieresiscomb acutecomb by dieresiscomb_acutecomb;\012	sub dieresiscomb macroncomb by dieresiscomb_macroncomb;\012	sub tildecomb macroncomb by tildecomb_macroncomb;\012} ccmp_DFLT_1;\012\012lookup ccmp_Other_1 {\012	@CombiningTopAccents = [acutecomb brevecomb caroncomb circumflexcomb commaturnedabovecomb dieresiscomb dotaccentcomb gravecomb hookabovecomb hungarumlautcomb macroncomb ringcomb tildecomb];\012	lookupflag UseMarkFilteringSet @CombiningTopAccents;\012	sub i' @CombiningTopAccents by idotless;\012	sub j' @CombiningTopAccents by jdotless;\012} ccmp_Other_1;\012\012lookup ccmp_latn_1 {\012	sub fi by f i;\012	sub Ldot by L periodcentered.loclCAT.case;\012	sub Dzcaron by D zcaron;\012	sub DZcaron by D Zcaron;\012} ccmp_latn_1;\012\012script latn;\012lookup ccmp_latn_1;\012";
 name = ccmp;
 },
 {
 automatic = 1;
-code = "script latn;\012language AZE;\012lookup locl_latn_0 {\012	sub i by idotaccent;\012} locl_latn_0;\012language CRT;\012lookup locl_latn_0;\012language KAZ;\012lookup locl_latn_0;\012language TAT;\012lookup locl_latn_0;\012language TRK;\012lookup locl_latn_0;\012\012script latn;\012language ROM;\012lookup locl_latn_1 {\012	sub Scedilla by Scommaaccent;\012	sub scedilla by scommaaccent;\012	sub Tcedilla by Tcommaaccent;\012	sub tcedilla by tcommaaccent;\012} locl_latn_1;\012language MOL;\012lookup locl_latn_1;\012\012script latn;\012language CAT;\012lookup locl_latn_2 {\012	sub l periodcentered' l by periodcentered.loclCAT;\012	sub L periodcentered' L by periodcentered.loclCAT.case;\012} locl_latn_2;\012";
+code = "script latn;\012language AZE;\012lookup locl_latn_0 {\012	sub i by idotaccent;\012} locl_latn_0;\012language CRT;\012lookup locl_latn_0;\012language KAZ;\012lookup locl_latn_0;\012language TAT;\012lookup locl_latn_0;\012language TRK;\012lookup locl_latn_0;\012\012script latn;\012language ROM;\012lookup locl_latn_1 {\012	sub Scedilla by Scommaaccent;\012	sub scedilla by scommaaccent;\012	sub Tcedilla by Tcommaaccent;\012	sub tcedilla by tcommaaccent;\012} locl_latn_1;\012language MOL;\012lookup locl_latn_1;\012\012script latn;\012language CAT;\012lookup locl_latn_2 {\012	sub l periodcentered' l by periodcentered.loclCAT;\012	sub L periodcentered' L by periodcentered.loclCAT.case;\012} locl_latn_2;\012\012script latn;\012language NLD;\012lookup locl_latn_3 {\012	sub iacute j' by jacute;\012	sub Iacute J' by Jacute;\012} locl_latn_3;\012";
 name = locl;
 },
 {
@@ -104,18 +101,25 @@ name = dlig;
 },
 {
 automatic = 1;
-code = "lookupflag IgnoreMarks;\012sub f f by f_f.liga;\012sub f i by fi.liga;\012";
+code = "lookupflag IgnoreMarks;\012sub f f by f_f.liga;\012sub f i by fi;\012";
 name = liga;
+},
+{
+automatic = 1;
+code = "sub plus by plus.full;\012";
+name = fwid;
 },
 {
 automatic = 1;
 code = "sub registered by registered.ss01;\012sub upArrow by upArrow.ss01;\012sub northEastArrow by northEastArrow.ss01;\012sub rightArrow by rightArrow.ss01;\012sub southEastArrow by southEastArrow.ss01;\012sub downArrow by downArrow.ss01;\012sub southWestArrow by southWestArrow.ss01;\012sub leftArrow by leftArrow.ss01;\012sub northWestArrow by northWestArrow.ss01;\012";
 name = ss01;
+notes = "Name: ";
 },
 {
 automatic = 1;
 code = "sub ampersand by ampersand.ss03;\012";
 name = ss03;
+notes = "Name: ";
 }
 );
 fontMaster = (
@@ -171,6 +175,15 @@ value = 1350;
 {
 name = winDescent;
 value = 280;
+},
+{
+name = "Axis Location";
+value = (
+{
+Axis = Width;
+Location = 100;
+}
+);
 }
 );
 descender = -200;
@@ -246,6 +259,15 @@ value = 1350;
 {
 name = winDescent;
 value = 280;
+},
+{
+name = "Axis Location";
+value = (
+{
+Axis = Width;
+Location = 130;
+}
+);
 }
 );
 descender = -200;
@@ -45835,9 +45857,19 @@ unicode = 25CB;
 },
 {
 glyphname = dottedCircle;
-lastChange = "2023-06-01 23:21:15 +0000";
+lastChange = "2023-06-02 09:48:48 +0000";
 layers = (
 {
+anchors = (
+{
+name = bottom;
+position = "{381, 0}";
+},
+{
+name = top;
+position = "{381, 690}";
+}
+);
 layerId = "685D33D6-AC85-457D-AB31-6AFB1340D947";
 paths = (
 {
@@ -46080,6 +46112,16 @@ nodes = (
 width = 754;
 },
 {
+anchors = (
+{
+name = bottom;
+position = "{381, 0}";
+},
+{
+name = top;
+position = "{381, 690}";
+}
+);
 layerId = "3B426CF6-0C00-48CC-B0F4-6E2C4CD07FAD";
 paths = (
 {
@@ -50810,6 +50852,10 @@ Axis = Width;
 Location = 100;
 }
 );
+},
+{
+name = "Elidable STAT Axis Value Name";
+value = wdth;
 }
 );
 interpolationWeight = 400;
@@ -50844,7 +50890,7 @@ instanceInterpolations = {
 "685D33D6-AC85-457D-AB31-6AFB1340D947" = 0.66667;
 };
 name = B;
-weightClass = Medium;
+widthClass = "Semi Expanded";
 },
 {
 customParameters = (
@@ -50871,7 +50917,7 @@ instanceInterpolations = {
 "3B426CF6-0C00-48CC-B0F4-6E2C4CD07FAD" = 1;
 };
 name = C;
-weightClass = Bold;
+widthClass = Expanded;
 }
 );
 kerning = {
